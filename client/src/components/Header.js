@@ -1,5 +1,5 @@
-import '../styles/header.css';
-import logo from '../images/disney-logo.png';
+import '../styles/Header.css';
+import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 /*import { userContext } from '../App';*/
@@ -27,7 +27,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender, username, use
     }, [])
 
     return(
-        <div ref = {headerRef} className='default-header'>
+        <div /*ref = {headerRef}*/ className='default-header'>
             <header className='header' ref={header}>
                 <div className='options-header'>
                     <div className='logo'>
@@ -101,7 +101,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender, username, use
                         <img src={userPicture} alt ="headerpicture" className='header-picture-profile' ></img>
                     </div>
                     <div className='signOut-user'>
-                        <div className='button-log-out' onClick={logOut}>
+                        <div className='button-log-out'>
                             Log Out
                         </div>
                     </div>
