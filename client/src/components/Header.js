@@ -2,43 +2,15 @@ import '../styles/header.css';
 import logo from '../images/disney-logo.png';
 import { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { recoverDoc } from '../firebase';
-import { signUserOut } from '../firebase';
-import { userContext } from '../App';
+/*import { userContext } from '../App';*/
 
 
 const Header = ({headerRef, userID, shouldRender, setShouldRender, username, userPicture}) => {
 
     const header = useRef(null);
-    const setMoviesInWatchList = useContext(userContext)[1];
+    /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
-    const setUsernameHeader = useContext(userContext)[5];
-
-    const logOut = async () => {
-        await signUserOut();
-        setUserPictureHeader(null);
-        setUsernameHeader(null);
-        setMoviesInWatchList([]);
-        setShouldRender("yes");
-        /*console.log(userID);*/
-    }
-
-    useEffect(() => {
-        if(shouldRender === "yes"){
-                //Recuperar username y foto de Firebase //
-                if(userID !== null){
-                    const getDataAsync = async() => {
-                        const userData = await recoverDoc(userID);
-                        setUsernameHeader(userData.username);
-                        setUserPictureHeader(userData.image);
-                    }
-                    getDataAsync();
-                }
-            setShouldRender("no");
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userID, shouldRender, userPicture])
-
+    const setUsernameHeader = useContext(userContext)[5];*/
 
     useEffect(() => {
         window.addEventListener("scroll", ()=>{      
@@ -140,8 +112,6 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender, username, use
                     </div>
                 </Link>
                 )}
-
-
             </header>
         </div>
     )
