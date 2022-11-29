@@ -1,4 +1,4 @@
-import '../styles/carousel.css';
+import '../styles/Carousel.css';
 import Obiwan from '../images/Obi-wan-poster.webp';
 import Daredevil from '../images/Daredevil.png';
 import DrStrange from '../images/DrStrange.png';
