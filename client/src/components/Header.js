@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 /*import { userContext } from '../App';*/
 
 
-const Header = ({headerRef, userID, shouldRender, setShouldRender, username, userPicture}) => {
+const Header = ({/*headerRef, userID, shouldRender, setShouldRender, username, userPicture*/}) => {
 
     const header = useRef(null);
     /*const setMoviesInWatchList = useContext(userContext)[1];
@@ -94,7 +94,8 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender, username, use
                         </div>
                     </Link>
                 </div>
-                {(userID !== null) ? (
+                
+                {/*(userID !== null) ? (
                 <div className='profile-user'>
                     <div className='username-header'>{username}</div>
                     <div className='profile-picture-header'>
@@ -111,7 +112,7 @@ const Header = ({headerRef, userID, shouldRender, setShouldRender, username, use
                         Log in
                     </div>
                 </Link>
-                )}
+                )*/}
             </header>
         </div>
     )
