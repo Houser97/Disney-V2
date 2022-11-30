@@ -1,0 +1,32 @@
+footer {
+    width: 100%; min-height: 250px; max-height: 250px;
+    background-color: rgb(14, 16, 26);
+    display: flex; flex-flow: column; 
+    justify-content: space-between; align-items: center;
+    padding: 20px 0px;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-logo{
+    height: 40px; width: 80px;
+}
+
+.footer-logo .logo-footer{
+    height: 100%; width: 100%;
+}
+
+.second-section-footer, .third-section-footer {
+    display: flex; flex-flow: row;
+    justify-content: space-between;
+    width: 400px; 
+}
+
+.third-section-footer {
+    display: flex; flex-flow: row;
+    width: 300px;
+}
+
+.fourth-section-footer {
+    width: 430px;
+}
