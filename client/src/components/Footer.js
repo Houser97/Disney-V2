@@ -1,5 +1,5 @@
-import '../styles/footer.css';
-import logo from '../images/disney-logo.png';
+import '../styles/Footer.css';
+import logo from '../assets/images/disney-logo.png';
 
 const Footer = ({footerRef}) => {
     return(
