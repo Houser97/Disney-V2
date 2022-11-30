@@ -1,0 +1,35 @@
+.drop-down-menu .options .option {
+    padding: 5px 18px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.drop-down-menu .options .option:hover {
+    background-color: rgba(254, 254, 254, 0.249);
+}
+
+.span-effect-option {
+    display: block;
+    height: 0%; width: 0px;
+    border-right: 2px solid white;
+    position: absolute;
+    left: 10px;
+    pointer-events: none;
+}
+
+/* Efectos */
+
+.span-effect-selected {
+    height: 70%;
+}
+
+.selected-option-dropdown{
+    background-color: rgba(254, 254, 254, 0.249);
+    font-weight: 600;
+}
+
+.option-name {
+    pointer-events: none;
+}
