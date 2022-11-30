@@ -1,4 +1,4 @@
-import '../styles/movieCard.css';
+import '../styles/MovieCard.css';
 import { userContext } from '../App';
 import { useContext, useEffect, useState } from 'react';
 
