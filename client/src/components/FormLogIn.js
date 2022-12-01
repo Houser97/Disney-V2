@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import '../styles/formLogIn.css';
+import '../styles/FormLogIn.css';
 import { Link } from 'react-router-dom';
-import { logIn } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { checkIfUserIsLogged } from '../App';
 
@@ -20,7 +19,6 @@ const FormLogIn = ({setUserID, userID}) => {
             console.log(email);
             const pwd = userData[1];
             console.log(pwd);
-            logIn(email, pwd);
             checkIfUserIsLogged(setUserID, userID);
             navigate("/")
         }
