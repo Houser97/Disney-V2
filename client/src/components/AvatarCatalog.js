@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../styles/AvatarCatalog.css';
-import AvatarCard from './avatarCard';
+import AvatarCard from './AvatarCard';
 import spidermanAvatar from '../images/avatars/SpiderManAvatar.png';
 import buzzAvatar from '../images/avatars/BuzzAvatar.png';
 import darthAvatar from '../images/avatars/DarthVaderAvatar.png';
