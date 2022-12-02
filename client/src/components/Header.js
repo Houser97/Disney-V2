@@ -95,7 +95,7 @@ const Header = ({/*headerRef, userID, shouldRender, setShouldRender, username, u
                     </Link>
                 </div>
                 
-                {(userID !== 'undefined') ? (
+                {(userID !== null) ? (
                 <div className='profile-user'>
                     <div className='username-header'>Username</div>
                     <div className='profile-picture-header'>
