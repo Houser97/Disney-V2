@@ -8,7 +8,7 @@ function App() {
     {/*<userContext.Provider value={valueProvider}>*/}
       <div className="App">
         <div className='full-height'>
-          <Header/>
+          <Header userID = {false}/>
           {/*<Routes >
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
