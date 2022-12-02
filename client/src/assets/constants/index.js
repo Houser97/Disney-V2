@@ -224,7 +224,7 @@ export const movies =
     isOriginal: true, 
     isAnimated: true },]
 
-export const carouselImagens = {
+export const carouselImages = {
     DaredevilCarousel,
     BaymaxCarousel,
     DrStrangeCarousel,
