@@ -95,11 +95,11 @@ const Header = ({/*headerRef, userID, shouldRender, setShouldRender, username, u
                     </Link>
                 </div>
                 
-                {/*(userID !== null) ? (
+                {(userID !== 'undefined') ? (
                 <div className='profile-user'>
-                    <div className='username-header'>{username}</div>
+                    <div className='username-header'>Username</div>
                     <div className='profile-picture-header'>
-                        <img src={userPicture} alt ="headerpicture" className='header-picture-profile' ></img>
+                        <img /*src={userPicture}*/ alt ="headerpicture" className='header-picture-profile' ></img>
                     </div>
                     <div className='signOut-user'>
                         <div className='button-log-out'>
@@ -112,7 +112,7 @@ const Header = ({/*headerRef, userID, shouldRender, setShouldRender, username, u
                         Log in
                     </div>
                 </Link>
-                )*/}
+                )}
             </header>
         </div>
     )
