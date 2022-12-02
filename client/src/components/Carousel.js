@@ -18,7 +18,7 @@ const Carousel = () => {
 
     return(
         <div className='carousel-section' id='carousel'>
-            <CarouselSlick {...settings} className = "carousel">
+            <Slider {...settings} className = "carousel">
                 {carouselImages.map(
                     function iterateMovies(image, iterator){
                         return(
@@ -26,7 +26,7 @@ const Carousel = () => {
                         )
                     }
                 )}
-            </CarouselSlick>
+            </Slider>
         </div>
     )
 }
