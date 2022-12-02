@@ -20,9 +20,9 @@ const Carousel = () => {
         <div className='carousel-section' id='carousel'>
             <CarouselSlick {...settings} className = "carousel">
                 {carouselImages.map(
-                    function iterateMovies(item, iterator){
+                    function iterateMovies(image, iterator){
                         return(
-                            <SliderCreated key={iterator} image={item.image}/>
+                            <SliderCreated key={iterator} image={image}/>
                         )
                     }
                 )}
