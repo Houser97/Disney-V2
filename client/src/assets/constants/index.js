@@ -34,7 +34,7 @@ import MalcolmCarousel from '../images/Carousel/Malcolm.png'
 import RonsCarousel from '../images/Carousel/Rons.png'
 import Thor from '../images/Carousel/Thor.PNG'
 
-const movies = 
+export const movies = 
 [   {image:Daredevil, 
     title: "Daredevil", 
     isMovie: false, 
@@ -224,8 +224,11 @@ const movies =
     isOriginal: true, 
     isAnimated: true },]
 
-export default movies;
-
 export const carouselImagens = {
-
+    DaredevilCarousel,
+    BaymaxCarousel,
+    DrStrangeCarousel,
+    MalcolmCarousel,
+    RonsCarousel,
+    Thor
 }
