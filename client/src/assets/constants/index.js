@@ -27,7 +27,12 @@ import StarWarsAn from './images/MoviesSeries/StarWarsAnimated.JPG';
 import Mickey from './images/MoviesSeries/Mickey.JPG';
 
 /*Carousel*/
-import DaredevilCarousel from './'
+import DaredevilCarousel from '../images/Carousel/Daredevil.png'
+import BaymaxCarousel from '../images/Carousel/Baymax.png'
+import DrStrangeCarousel from '../images/Carousel/DrStrange.png'
+import MalcolmCarousel from '../images/Carousel/Malcolm.png'
+import RonsCarousel from '../images/Carousel/Rons.png'
+import Thor from '../images/Carousel/Thor.PNG'
 
 const movies = 
 [   {image:Daredevil, 
