@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 /*import { userContext } from '../App';*/
 
 
-const Header = ({/*headerRef, userID, shouldRender, setShouldRender, username, userPicture*/}) => {
+const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, userPicture*/}) => {
 
     const header = useRef(null);
     /*const setMoviesInWatchList = useContext(userContext)[1];
