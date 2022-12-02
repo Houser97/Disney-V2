@@ -1,30 +1,33 @@
-import Daredevil from './images/movies/DaredevilSerie.JPG';
-import Malcolm from './images/movies/MalcolmSerie.JPG';
-import Luca from './images/movies/Luca.JPG';
-import ObiWan from './images/movies/ObiSerie.JPG';
-import Rio from './images/movies/RioSerie.JPG';
-import Luke from './images/movies/LukeSerie.JPG';
-import Chip from './images/movies/ChipSerie.JPG';
-import Moon from './images/movies/MoonSerie.JPG';
-import Punisher from './images/movies/PunisherSerie.JPG';
-import Defenders from './images/movies/DefendersSerie.JPG';
-import Loki from './images/movies/LokiSerie.JPG';
-import IronFist from './images/movies/IronSerie.JPG';
-import Jessica from './images/movies/JessiSerie.JPG';
-import Bluey from './images/movies/BlueySerie.JPG';
-import Dino from './images/movies/DinoSerie.JPG';
-import Mira from './images/movies/MiraSerie.JPG';
-import Raya from './images/movies/RayaSerie.JPG';
-import Robots from './images/movies/RobotsSerie.JPG';
-import Toystory from './images/movies/ToyStorySerie.JPG';
-import WallE from './images/movies/WallESerie.JPG';
-import Bymax from './images/movies/BymaxSerie.JPG';
-import Increibles from './images/movies/Increibles.JPG';
-import Dalmatas from './images/movies/Dalmatas.JPG';
-import Kim from './images/movies/Kim.JPG';
-import Kusko from './images/movies/Kusko.JPG';
-import StarWarsAn from './images/movies/StarWarsAnimated.JPG';
-import Mickey from './images/movies/Mickey.JPG';
+import Daredevil from '../images/MoviesSeries/DaredevilSerie.JPG';
+import Malcolm from './images/MoviesSeries/MalcolmSerie.JPG';
+import Luca from './images/MoviesSeries/Luca.JPG';
+import ObiWan from './images/MoviesSeries/ObiSerie.JPG';
+import Rio from './images/MoviesSeries/RioSerie.JPG';
+import Luke from './images/MoviesSeries/LukeSerie.JPG';
+import Chip from './images/MoviesSeries/ChipSerie.JPG';
+import Moon from './images/MoviesSeries/MoonSerie.JPG';
+import Punisher from './images/MoviesSeries/PunisherSerie.JPG';
+import Defenders from './images/MoviesSeries/DefendersSerie.JPG';
+import Loki from './images/MoviesSeries/LokiSerie.JPG';
+import IronFist from './images/MoviesSeries/IronSerie.JPG';
+import Jessica from './images/MoviesSeries/JessiSerie.JPG';
+import Bluey from './images/MoviesSeries/BlueySerie.JPG';
+import Dino from './images/MoviesSeries/DinoSerie.JPG';
+import Mira from './images/MoviesSeries/MiraSerie.JPG';
+import Raya from './images/MoviesSeries/RayaSerie.JPG';
+import Robots from './images/MoviesSeries/RobotsSerie.JPG';
+import Toystory from './images/MoviesSeries/ToyStorySerie.JPG';
+import WallE from './images/MoviesSeries/WallESerie.JPG';
+import Bymax from './images/MoviesSeries/BymaxSerie.JPG';
+import Increibles from './images/MoviesSeries/Increibles.JPG';
+import Dalmatas from './images/MoviesSeries/Dalmatas.JPG';
+import Kim from './images/MoviesSeries/Kim.JPG';
+import Kusko from './images/MoviesSeries/Kusko.JPG';
+import StarWarsAn from './images/MoviesSeries/StarWarsAnimated.JPG';
+import Mickey from './images/MoviesSeries/Mickey.JPG';
+
+/*Carousel*/
+import DaredevilCarousel from './'
 
 const movies = 
 [   {image:Daredevil, 
@@ -217,3 +220,7 @@ const movies =
     isAnimated: true },]
 
 export default movies;
+
+export const carouselImagens = {
+
+}
