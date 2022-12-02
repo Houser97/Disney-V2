@@ -27,3 +27,11 @@
     height: 100%;
     overflow: visible;
 }
+
+.slick-list{
+    overflow: visible !important;
+}
+
+.carousel-section button{
+    z-index: 2;
+}
