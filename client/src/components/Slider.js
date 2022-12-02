@@ -1,4 +1,4 @@
-import '../styles/slider.css';
+import '../styles/Slider.css';
 
 const SliderCreated = ({image}) => {
 
