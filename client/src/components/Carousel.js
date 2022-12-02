@@ -3,7 +3,7 @@ import { carouselImages } from '../assets/constants';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import SliderCreated from './slider';
+import SliderCreated from './Slider';
 
 const Carousel = () => {
 
