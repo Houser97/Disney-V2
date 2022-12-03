@@ -1,7 +1,7 @@
-import '../styles/imageCategories.css';
+import '../styles/MainCategories.css';
 import { useEffect, useRef, useState } from 'react';
-import ImageVideo from './imageVideo';
-import VideosImages from '../assets/constants/index.js'
+import ImageVideo from './ImageVideo';
+import {VideosImages} from '../assets/constants/index.js'
 
 const MainCategories = () => {
 
@@ -18,6 +18,17 @@ const MainCategories = () => {
             })
         })
         
+        return()=>{
+            videoElement.current.forEach(video => {
+                video.RemoveEventListener("mouseover", () => {
+                    video.play();
+                })
+    
+                video.RemoveEventListener("mouseleave", () => {
+                    video.pause();
+                })
+            })
+        }
     }, [])
 
     return(
