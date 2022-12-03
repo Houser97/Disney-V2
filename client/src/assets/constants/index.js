@@ -36,11 +36,11 @@ import RonsCarousel from '../images/Carousel/Rons.png'
 import Thor from '../images/Carousel/Thor.PNG'
 
 /*Videos e imágenes*/
-import Marvel from '../images/Videos/Images/Marvel.png'
-import Pixar from '../images/Videos/Images/Pixar.png'
-import StarWars from '../images/Videos/Images/Star.png'
-import National from '../images/Videos/Images/National.png'
-import Disney from '../images/Videos/Images/Disney.png'
+import MarvelVI from '../images/Videos/Images/Marvel.png'
+import PixarVI from '../images/Videos/Images/Pixar.png'
+import StarWarsVI from '../images/Videos/Images/Star.png'
+import NationalVI from '../images/Videos/Images/National.png'
+import DisneyVI from '../images/Videos/Images/Disney.png'
 
 import MarvelVideo from '../images/Videos/marvel.mp4'
 import PixarVideo from '../images/Videos/pixar.mp4'
@@ -246,4 +246,27 @@ export const carouselImages = [
     MalcolmCarousel,
     RonsCarousel,
     Thor
+]
+
+export const VideosImages = [
+    {
+        image: MarvelVI,
+        video: MarvelVideo
+    },
+    {
+        image: PixarVI,
+        video: PixarVideo
+    },
+    {
+        image: StarWarsVI,
+        video: StarVideo
+    },
+    {
+        image: NationalVI,
+        video: NationalVideo
+    },
+    {
+        image: DisneyVI,
+        video: DisneyVideo
+    },
 ]
