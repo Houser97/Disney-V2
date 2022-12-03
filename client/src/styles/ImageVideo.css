@@ -36,4 +36,13 @@
     .image-category .image-png{
         height: 105%; width: 133%;
     }
+
+    .image-category {
+        border: 2px solid rgb(138, 126, 126);
+    }
+    
+    .image-category:hover {
+        transform: scale(1.05);
+        border: 2px solid rgb(231, 228, 228);
+    }
 }
