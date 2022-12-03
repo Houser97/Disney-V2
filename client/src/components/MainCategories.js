@@ -1,4 +1,4 @@
-import '../styles/imageVideo.css';
+import '../styles/MainCategories.css';
 
 const MainCategories = ({imageAndVideo, videoElement, iterator}) => {
     const image = imageAndVideo.image;
