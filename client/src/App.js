@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Carousel from './components/Carousel';
+import MainCategories from './components/MainCategories'
 import Header from './components/Header';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <div className='full-height'>
           <Header userID = {false}/>
           <Carousel />
+          <MainCategories />
           {/*<Routes >
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
