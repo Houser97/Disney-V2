@@ -52,6 +52,6 @@
 #slider-created #poster { /* Se debe cambiar la imagen también para ver cambios en alto y ancho */
     object-fit: cover;
     margin-left: auto;
-    width: 100%; height: 310px;
+    width: 100%; height: 100%;
     display: block;
 }
