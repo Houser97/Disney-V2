@@ -41,6 +41,13 @@ import Pixar from '../images/Videos/Images/Pixar.png'
 import StarWars from '../images/Videos/Images/Star.png'
 import National from '../images/Videos/Images/National.png'
 import Disney from '../images/Videos/Images/Disney.png'
+
+import MarvelVideo from '../images/Videos/marvel.mp4'
+import PixarVideo from '../images/Videos/pixar.mp4'
+import DisneyVideo from '../images/Videos/disney.mp4'
+import NationalVideo from '../images/Videos/geographic.mp4'
+import StarVideo from '../images/Videos/starwars.mp4'
+
 /*
 export const movies = 
 [   {image:Daredevil, 
