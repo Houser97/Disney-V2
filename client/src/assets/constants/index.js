@@ -34,6 +34,13 @@ import DrStrangeCarousel from '../images/Carousel/DrStrange.png'
 import MalcolmCarousel from '../images/Carousel/Malcolm.png'
 import RonsCarousel from '../images/Carousel/Rons.png'
 import Thor from '../images/Carousel/Thor.PNG'
+
+/*Videos e imágenes*/
+import Marvel from '../images/Videos/Images/Marvel.png'
+import Pixar from '../images/Videos/Images/Pixar.png'
+import StarWars from '../images/Videos/Images/Star.png'
+import National from '../images/Videos/Images/National.png'
+import Disney from '../images/Videos/Images/Disney.png'
 /*
 export const movies = 
 [   {image:Daredevil, 
