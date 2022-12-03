@@ -1,14 +1,9 @@
 import '../styles/imageCategories.css';
 import { useEffect, useRef, useState } from 'react';
 import ImageVideo from './imageVideo';
+import VideosImages from '../assets/constants/index.js'
 
 const MainCategories = () => {
-
-    const [imagesVideos] = useState([{image: Disney, video: videoDisney},
-                                     {image: Pixar, video: videoPixar},
-                                     {image: Marvel, video: videoMarvel},
-                                     {image: StarWars, video: videoStar},
-                                     {image: National, video: videoNational}])
 
     const videoElement = useRef([]);
 
@@ -28,7 +23,7 @@ const MainCategories = () => {
     return(
         <div className='images-category-container'>
             {
-                imagesVideos.map(function iterateImageVideos(item, iterator){
+                VideosImages.map(function iterateImageVideos(item, iterator){
                     return(
                         <ImageVideo key={iterator} imageAndVideo = {item} videoElement = {videoElement} iterator = {iterator} />
                     )
