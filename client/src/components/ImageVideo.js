@@ -1,6 +1,6 @@
-import '../styles/MainCategories.css';
+import '../styles/ImageVideo.css';
 
-const MainCategories = ({imageAndVideo, videoElement, iterator}) => {
+const ImageVideo = ({imageAndVideo, videoElement, iterator}) => {
     const image = imageAndVideo.image;
     const video = imageAndVideo.video;
 
@@ -12,4 +12,4 @@ const MainCategories = ({imageAndVideo, videoElement, iterator}) => {
     )
 }
 
-export default MainCategories;
+export default ImageVideo;
