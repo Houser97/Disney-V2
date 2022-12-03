@@ -1,8 +1,8 @@
 import '../styles/MainCategories.css';
 
-const MainCategories = ({videoElement, iterator}) => {
-    /*const image = imageAndVideo.image;
-    const video = imageAndVideo.video;*/
+const MainCategories = ({imageAndVideo, videoElement, iterator}) => {
+    const image = imageAndVideo.image;
+    const video = imageAndVideo.video;
 
     return(
     <div className='image-category'>
