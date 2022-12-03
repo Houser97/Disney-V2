@@ -3,21 +3,21 @@
     width: 100%;
     height: 330px;
     padding: 20px 0px;
-    
 }
 
 .carousel-section .carousel { /*Contenedor que cambiar el ancho y alto en la pantalla,
     pero también se debe cambiar el tamaño de imagen.*/
     width: 90%;
-    height: 330px;
+    height: 430px;
     margin: auto; /* Para centrar */
     position: relative;
+    
 }
 
 .carousel-section .carousel .slick-dots{
     position: absolute;
     width: 50%;
-    bottom: -10px;
+    bottom: 15px;
     right: 50px;
     text-align: end;
 }
