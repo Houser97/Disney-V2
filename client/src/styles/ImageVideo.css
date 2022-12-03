@@ -31,3 +31,9 @@
 .image-category:hover .image-png {
     display: none;
 }
+
+@media (max-width: 650px) {
+    .image-category .image-png{
+        height: 105%; width: 133%;
+    }
+}
