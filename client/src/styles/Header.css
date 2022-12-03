@@ -28,7 +28,6 @@ header {
 .options-header{
     display: flex;
     align-items: center; justify-content: space-between;
-    width: 75%;
 }
 
 .options-header .option{
@@ -53,7 +52,7 @@ header {
 
 .logo {
     height: 40px; width: 80px;
-    margin-right: 30px;
+    margin-right: 40px;
     cursor: pointer;
 }
 
@@ -76,6 +75,10 @@ header {
 
 .option:hover .span-style {
     width: 100%;
+}
+
+header .link{
+    margin-right: 20px;
 }
 
 .link {
