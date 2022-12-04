@@ -17,7 +17,7 @@ const MainCategories = () => {
                 video.pause();
             })
         })
-        
+        /*
         return()=>{
             videoElement.current.forEach(video => {
                 video.RemoveEventListener("mouseover", () => {
@@ -28,7 +28,7 @@ const MainCategories = () => {
                     video.pause();
                 })
             })
-        }
+        }*/
     }, [])
 
     return(
