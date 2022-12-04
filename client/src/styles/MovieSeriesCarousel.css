@@ -1,0 +1,55 @@
+.container-movies {
+    width: 100%; height: 210px;
+    display: flex; flex-flow: column;
+    justify-content: space-between;
+    padding: 30px 80px;
+    padding-top: 0px;
+    padding-right: 0px;
+    overflow: hidden;
+}
+
+.title-section {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; 
+}
+
+.images-section-movies {
+    display: flex; flex-flow: row;
+    align-items: center;
+    height: 80%; width: 100%;
+    
+}
+
+#images-section-movies .slick-slider {
+    width: 97%; height: 100%;
+    display: flex; align-items: center; justify-content: flex-start;
+    /*background-color: blueviolet;*/
+    box-sizing: border-box;
+}
+
+#images-section-movies .slick-slider .slick-list{
+    overflow: visible;
+    /*background: grey;*/
+    width: 100%; height: 100%;
+}
+
+
+#images-section-movies .slick-slider button{
+    z-index: 2;
+}
+
+#images-section-movies .slick-slider .slick-track { /*Es el DIV que se va moviendo para mostrar imágenes*/
+    height: 100%;
+    display: flex; align-items: center; justify-content: flex-start;
+}
+
+#images-section-movies .slick-slider .slick-track .slick-slide { /*ESta es cada tarjeta individual en donde
+    están las tarjetas creadas. Viene por defecto,*/
+    display: flex; align-items: center;
+
+}
