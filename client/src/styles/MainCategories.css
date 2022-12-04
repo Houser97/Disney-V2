@@ -19,9 +19,9 @@
 }
 
 @media (max-width: 650px) {
-    .images-category-container{ 
+    /*.images-category-container{ 
         height: 165px;
-    }
+    }*/
 
     .images-category-container{ 
         padding: 50px 10px;
