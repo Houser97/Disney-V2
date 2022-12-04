@@ -30,3 +30,9 @@ footer {
 .fourth-section-footer {
     width: 430px;
 }
+
+@media (max-width: 520px) {
+    footer{
+        display: none;
+    }
+}
