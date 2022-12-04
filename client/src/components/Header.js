@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, userPicture*/}) => {
 
-    const header = useRef(null);
+    const headerBg = useRef(null);
     /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
     const setUsernameHeader = useContext(userContext)[5];*/
@@ -15,11 +15,9 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
     useEffect(() => {
         window.addEventListener("scroll", ()=>{      
             if(document.documentElement.scrollTop !== 0){
-                header.current.style.position = "fixed";
-                header.current.style.backgroundColor = "rgb(14, 16, 26)";
+                headerBg.current.style.opacity = 1;
             } else {
-                header.current.style.position = "relative";
-                header.current.style.backgroundColor = "transparent";
+                headerBg.current.style.opacity = 0;
             }
             /*console.log(document.documentElement.scrollTop)*/
         })
@@ -28,8 +26,8 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
 
     return(
         <div /*ref = {headerRef}*/ className='default-header'>
-            <header className='header' ref={header}>
-                <div className='bg-header'></div>
+            <header className='header'>
+                <div className='bg-header' ref={headerBg}></div>
                 <div className='options-header'>
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
