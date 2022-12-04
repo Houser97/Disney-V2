@@ -28,3 +28,5 @@ const Footer = ({footerRef}) => {
         </footer>
     )
 }
+
+export default Footer;

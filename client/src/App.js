@@ -3,6 +3,7 @@ import './App.css';
 import Carousel from './components/Carousel';
 import MainCategories from './components/MainCategories'
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Header userID = {false}/>
           <Carousel />
           <MainCategories />
+          <Footer />
           {/*<Routes >
             <Route path='/' element = {<Home />}/>
             <Route path='/search' element = {<Search />}/>
