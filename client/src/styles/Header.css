@@ -220,11 +220,11 @@ header .link{
         justify-self: center;
     }
 
-    .profile-user{
+    header .profile-user{
         display: none;
     }
 
-    .log-in-container{
+    header .log-in-container{
         display: none;
     }
 
