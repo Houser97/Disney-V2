@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../styles/HeaderSD.css'
 
-const HeaderSD = () => {
+const HeaderSD = ({userID}) => {
   return (
     <div className='header-sd-container'>
         <Link className='link' to = "/">
@@ -32,6 +32,24 @@ const HeaderSD = () => {
                 </div>
             </div>
         </Link>
+        {(userID) ? (
+            <div className='profile-user'>
+                <div className='username-header'>Username</div>
+                <div className='profile-picture-header'>
+                    <img /*src={userPicture}*/ alt ="headerpicture" className='header-picture-profile' ></img>
+                </div>
+                <div className='signOut-user'>
+                    <div className='button-log-out'>
+                        Log Out
+                    </div>
+                </div>
+            </div>) : (
+            <Link className='link log-in-container' to = "/login">
+                <div className='log-in-button-header'>
+                    Log in
+                </div>
+            </Link>
+        )}
     </div>
   )
 }
