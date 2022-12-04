@@ -106,7 +106,7 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
                         </div>
                     </div>
                 </div>) : (
-                <Link className='link' to = "/login">
+                <Link className='link log-in-container' to = "/login">
                     <div className='log-in-button-header'>
                         Log in
                     </div>
