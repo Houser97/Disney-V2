@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 70px; max-height: 70px;
     display: flex;
-    align-items: center; justify-content: space-between;
+    align-items: center; justify-content: center;
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -186,13 +186,13 @@ header .link{
 
 @media (max-width: 880px) {
     .text-option{
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 880px) {
-    .text-option{
         display: none;
+    }
+
+    .log-in-button-header {
+        height: 35px; width: 70px;
+        border: 2px solid white;
+        font-size: 16px;
     }
 
     .options-header{
@@ -201,5 +201,23 @@ header .link{
 
     .log-in-button-header{
         margin-left: 60px;
+    }
+}
+
+@media (max-width: 520px) {
+    .options-header .link {
+        display: none;
+    }
+
+    header .log-in-button-header {
+        display: none;
+    }
+
+    .options-header{
+        justify-content: center;
+    }
+
+    .logo {
+        margin: 0px;
     }
 }
