@@ -23,6 +23,15 @@
     text-align: end;
 }
 
+.carousel-section .carousel ul li button:before {
+    color: white;
+    font-size: 8px;
+}
+
+.carousel-section .carousel li.slick-active button::before{
+color: white;
+}
+
 .carousel-section .slick-slider{
     display: inline-block;
     height: 100% !important;
