@@ -14,6 +14,7 @@ header {
     width: 100%;
     height: 70px;
     display: flex;
+    position: fixed;
     align-items: center; justify-content: space-between;
     color: white;
     font-weight: bolder;
@@ -25,17 +26,11 @@ header {
 .bg-header{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 70px;
     opacity: 0;
     z-index: -10;
-}
-
-.bg-header-show{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: -10;
+    transition: opacity 250ms ease-in-out;
+    background-color: black;
 }
 
 .options-header{
