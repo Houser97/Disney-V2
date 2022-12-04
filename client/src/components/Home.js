@@ -1,6 +1,6 @@
 import '../styles/Home.css';
-import Carousel from './components/Carousel';
-import MainCategories from './components/MainCategories'
+import Carousel from './Carousel';
+import MainCategories from './MainCategories'
 /*import Movies from './moviesSection';*/
 
 const Home = () => {
