@@ -1,5 +1,5 @@
 import '../styles/MovieSeriesCarousel.css';
-import MovieCard from './MovieSerieCard';
+import MovieSerieCard from './MovieSerieCard.js';
 import Slider from 'react-slick';
 
 const MovieSeriesCarousel = ({movies, title}) => {
@@ -21,7 +21,7 @@ const MovieSeriesCarousel = ({movies, title}) => {
                 {
                     movies.map(function iterateMovies(movie, i){
                         return(
-                            <MovieCard key={`${i}-movie-carousel-section`} movie = {movie} />
+                            <MovieSerieCard key={`${i}-movie-carousel-section`} movie = {movie} />
                         )
                     })
                 }
