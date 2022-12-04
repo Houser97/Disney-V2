@@ -29,6 +29,7 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
     return(
         <div /*ref = {headerRef}*/ className='default-header'>
             <header className='header' ref={header}>
+                <div className='bg-header'></div>
                 <div className='options-header'>
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
