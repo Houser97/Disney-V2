@@ -1,0 +1,24 @@
+.header-sd-container{
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: rgb(26, 28, 26);
+    z-index: 100;
+}
+
+.header-sd-container .svg-option {
+    height: 24px; width: 24px;
+}
+
+.header-sd-container .svg-option svg {
+    height: 100%; width: 100%;
+}
+
+@media (max-width: 520px) {
+    .header-sd-container{
+        display: flex;
+    }
+}
