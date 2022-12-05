@@ -46,3 +46,27 @@ color: white;
 .carousel-section button{
     z-index: 2;
 }
+
+@media (max-width: 620px) {
+    .carousel-section .carousel .slick-dots{
+        bottom: 15px;
+        right: 30px;
+    }
+
+    .carousel-section .carousel .slick-dots li{
+        height: 10px;
+        width: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .carousel-section .carousel .slick-dots{
+        bottom: 5px;
+        right: 30px;
+    }
+
+    .carousel-section .carousel .slick-dots li{
+        height: 7px;
+        width: 7px;
+    }
+}
