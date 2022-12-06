@@ -237,6 +237,17 @@ export const movies =
     isOriginal: true, 
     isAnimated: true },]
 
+export const MarvelMovies = [
+    {image: Punisher},
+    {image: Jessica},
+    {image: IronFist},
+    {image: Loki},
+    {image: Moon},
+    {image: Luke},
+    {image: Daredevil},
+    {image: Defenders}
+]
+
 export const carouselImages = [
     DaredevilCarousel,
     BaymaxCarousel,
