@@ -1,4 +1,3 @@
-/*
 import Daredevil from '../images/MoviesSeries/DaredevilSerie.JPG';
 import Malcolm from './images/MoviesSeries/MalcolmSerie.JPG';
 import Luca from './images/MoviesSeries/Luca.JPG';
@@ -26,7 +25,7 @@ import Kim from './images/MoviesSeries/Kim.JPG';
 import Kusko from './images/MoviesSeries/Kusko.JPG';
 import StarWarsAn from './images/MoviesSeries/StarWarsAnimated.JPG';
 import Mickey from './images/MoviesSeries/Mickey.JPG';
-*/
+
 /*Carousel*/
 import DaredevilCarousel from '../images/Carousel/Daredevil.png'
 import BaymaxCarousel from '../images/Carousel/Baymax.png'
@@ -48,7 +47,6 @@ import DisneyVideo from '../images/Videos/disney.mp4'
 import NationalVideo from '../images/Videos/geographic.mp4'
 import StarVideo from '../images/Videos/starwars.mp4'
 
-/*
 export const movies = 
 [   {image:Daredevil, 
     title: "Daredevil", 
@@ -238,7 +236,7 @@ export const movies =
     isForKids: true, 
     isOriginal: true, 
     isAnimated: true },]
-*/
+
 export const carouselImages = [
     DaredevilCarousel,
     BaymaxCarousel,
