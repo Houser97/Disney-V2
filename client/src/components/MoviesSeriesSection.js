@@ -1,5 +1,7 @@
 import '../styles/MoviesSeriesSection.css'
 import { AnimatedMovies, AnimatedSeries, Recommended, MarvelMovies } from '../assets/constants'
+import MovieSeriesCarousel from './MovieSeriesCarousel'
+
 
 const MoviesSeriesSection = () => {
     const titleRecommendedSection = "Recommended for you"
@@ -10,10 +12,10 @@ const MoviesSeriesSection = () => {
 
     return(
         <div className='movies-series-section'>
-            <MovieCarousel key={"movie-carousel-1"} movies={Recommended} title = {titleRecommendedSection} />
-            <MovieCarousel key={"movie-carousel-2"} movies={MarvelMovies} title = {titleMarvelSection} />
-            <MovieCarousel key={"movie-carousel-3"} movies={AnimatedMovies} title = {titleAnimatedMoviesSection} />
-            <MovieCarousel key={"movie-carousel-4"} movies={AnimatedSeries} title = {titleAnimatedSeriesSection} />
+            <MovieSeriesCarousel key={"movie-carousel-1"} movies={Recommended} title = {titleRecommendedSection} />
+            <MovieSeriesCarousel key={"movie-carousel-2"} movies={MarvelMovies} title = {titleMarvelSection} />
+            <MovieSeriesCarousel key={"movie-carousel-3"} movies={AnimatedMovies} title = {titleAnimatedMoviesSection} />
+            <MovieSeriesCarousel key={"movie-carousel-4"} movies={AnimatedSeries} title = {titleAnimatedSeriesSection} />
         </div>
     )
 }
