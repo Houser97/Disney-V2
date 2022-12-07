@@ -1,3 +1,6 @@
+import '../styles/MoviesSeriesSection.css'
+import { AnimatedMovies, AnimatedSeries, Recommended, MarvelMovies } from '../assets/constants'
+
 const MoviesSeriesSection = () => {
 
     const [recommendedMovies] = useState([{image: Daredevil},
