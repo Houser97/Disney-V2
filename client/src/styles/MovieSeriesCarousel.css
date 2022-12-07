@@ -53,3 +53,19 @@
     height: 100%;
     margin: 0px 10px; /*ESte margen previene que las tarjetas choquen al hacer pantalla más pequeña.*/
 }
+
+@media (max-width: 1200px) {
+    .container-movies {
+        padding: 30px 40px;
+        padding-top: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container-movies {
+        padding: 30px 25px;
+        padding-top: 0px;
+        padding-right: 0px;
+    }
+}
