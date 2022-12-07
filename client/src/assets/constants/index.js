@@ -237,17 +237,6 @@ export const movies =
     isOriginal: true, 
     isAnimated: true },]
 
-export const MarvelMovies = [
-    {image: Punisher},
-    {image: Jessica},
-    {image: IronFist},
-    {image: Loki},
-    {image: Moon},
-    {image: Luke},
-    {image: Daredevil},
-    {image: Defenders}
-]
-
 export const carouselImages = [
     DaredevilCarousel,
     BaymaxCarousel,
@@ -278,4 +267,49 @@ export const VideosImages = [
         image: DisneyVI,
         video: DisneyVideo
     },
+]
+
+/* Objeto de imágenes para carousels */
+export const MarvelMovies = [
+    {image: Punisher},
+    {image: Jessica},
+    {image: IronFist},
+    {image: Loki},
+    {image: Moon},
+    {image: Luke},
+    {image: Daredevil},
+    {image: Defenders}
+]
+
+export const Recommended = [
+    {image: Daredevil},
+    {image: Luca},
+    {image: Malcolm},
+    {image: ObiWan},
+    {image: Rio},
+    {image: Luke},
+    {image: Chip},
+    {image: Moon}
+]
+
+export const AnimatedSeries = [
+    {image: Mickey},
+    {image: Bluey},
+    {image: Mira},
+    {image: Bymax},
+    {image: StarWarsAn},
+    {image: Kim},
+    {image: Dalmatas},
+    {image: Kusko}
+]
+
+export const AnimatedMovies = [
+    {image: Increibles},
+    {image: Robots},
+    {image: Rio},
+    {image: Toystory},
+    {image: Dino},
+    {image: WallE},
+    {image: Chip},
+    {image: Raya}
 ]
