@@ -1,14 +1,14 @@
 /*import '../styles/Home.css';*/
 import Carousel from './Carousel';
 import MainCategories from './MainCategories'
-/*import Movies from './moviesSection';*/
+import MoviesSeriesSection from './MoviesSeriesSection';
 
 const Home = () => {
     return(
         <div className='home'>
             <Carousel />
             <MainCategories />
-            {/*<Movies />*/}
+            <MoviesSeriesSection />
         </div>
     )
 }
