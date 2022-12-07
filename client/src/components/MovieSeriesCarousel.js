@@ -1,8 +1,23 @@
 import '../styles/MovieSeriesCarousel.css';
 import MovieSerieCard from './MovieSerieCard.js';
 import Slider from 'react-slick';
+import windowSize from '../assets/hooks/windowSize'
+import { useEffect, useState } from 'react';
 
 const MovieSeriesCarousel = ({movies, title}) => {
+
+    const windowSize = windowSize()
+
+    const [isMobile, setIsMobile] = useState(windowSize.width <= 800)
+
+    useEffect(() => {
+      if(windowSize <= 800){
+        setIsMobile(true)
+      } else {
+        setIsMobile(false)
+      }
+    }, [windowSize])
+    
 
     const settings = {
         dots: false,
