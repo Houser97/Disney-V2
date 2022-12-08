@@ -2,3 +2,10 @@
     width: 100%;
     margin-bottom: 40px;
 }
+
+@media (max-width: 520px) {
+    .movies-series-section {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+}
