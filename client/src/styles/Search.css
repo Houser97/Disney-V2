@@ -72,8 +72,16 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 250px);
     grid-template-rows: repeat(auto-fit, 150px);
+    grid-auto-rows: 150px;
     gap: 50px;
     padding: 25px 5px 50px;
     padding-bottom: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1100px) {
+    #filtered-movies {
+        gap: 50px;
+        padding: 25px 20px;
+    }
 }
