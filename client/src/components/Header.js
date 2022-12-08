@@ -3,7 +3,7 @@ import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 /*import { userContext } from '../App';*/
-import useWindowSize from '../assets/hooks/windowSize';
+import useWindowSize from '../assets/hooks/windowSize.js';
 
 
 const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, userPicture*/}) => {
@@ -24,11 +24,16 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
             }
             /*console.log(document.documentElement.scrollTop)*/
         })
-        return () => {
-            window.removeEventListener('scroll', () => {headerBg.current.style.opacity = 0;})
-        }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+      if(windowSize.width <= 520){
+            window.removeEventListener('scroll', () => {console.log('E')})
+      }
+    }, [windowSize])
+    
 
     return(
         <div /*ref = {headerRef}*/ className='default-header'>
