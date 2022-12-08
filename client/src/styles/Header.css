@@ -10,6 +10,14 @@
     z-index: 100;
 }
 
+.logo-sm{
+    display: none;
+    height: 50px;
+    width: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+
 header {
     width: 100%;
     height: 70px;
@@ -230,5 +238,13 @@ header .link{
 
     .logo {
         margin: 0px;
+    }
+
+    header{
+        display: none;
+    }
+
+    .logo-sm{
+        display: flex;
     }
 }
