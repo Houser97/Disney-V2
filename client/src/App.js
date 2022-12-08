@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HeaderSD from './components/HeaderSD';
 import Home from './components/Home';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
           <HeaderSD />
           <Routes >
             <Route path='/' element = {<Home />}/>
-            {/*<Route path='/search' element = {<Search />}/>
-            <Route path='/watchlist' element = {<Watchlist userID={userID} />} ></Route>
+            <Route path='/search' element = {<Search />}/>
+            {/*<Route path='/watchlist' element = {<Watchlist userID={userID} />} ></Route>
             <Route path='/originals' element = {<Originals key={"originals-component"} headerRefPlaceholder = {header}/>}/>
             <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} moviesSeries={moviesFiltered} titleSection = {"Movies"}  headerRefPlaceholder = {header} />} ></Route>
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} moviesSeries={seriesFiltered} titleSection = {"Series"} headerRefPlaceholder = {header} />} ></Route>
