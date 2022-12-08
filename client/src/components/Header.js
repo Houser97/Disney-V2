@@ -28,13 +28,6 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-      if(windowSize.width <= 520){
-            window.removeEventListener('scroll', () => {console.log('E')})
-      }
-    }, [windowSize])
-    
-
     return(
         <div /*ref = {headerRef}*/ className='default-header'>
             <header className='header'>
@@ -124,6 +117,9 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
                 </Link>
                 )}
             </header>
+            <div className='logo-sm'>
+                <img className='img-logo' src = {logo} alt = "logo disney"></img>
+            </div>
         </div>
     )
 }
