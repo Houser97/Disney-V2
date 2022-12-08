@@ -3,9 +3,12 @@ import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 /*import { userContext } from '../App';*/
+import useWindowSize from '../assets/hooks/windowSize';
 
 
 const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, userPicture*/}) => {
+
+    const windowSize = useWindowSize()
 
     const headerBg = useRef(null);
     /*const setMoviesInWatchList = useContext(userContext)[1];
