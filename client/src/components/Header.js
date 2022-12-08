@@ -21,6 +21,9 @@ const Header = ({userID/*headerRef, shouldRender, setShouldRender, username, use
             }
             /*console.log(document.documentElement.scrollTop)*/
         })
+        return () => {
+            window.removeEventListener('scroll', () => {headerBg.current.style.opacity = 0;})
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
