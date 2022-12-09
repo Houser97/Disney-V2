@@ -1,0 +1,36 @@
+.moviesAndSeries-section {
+    width: 100%; height: 100%;
+    display: flex; flex-flow: column;
+    background-color: rgb(26, 29, 41);
+}
+
+.title-section-placeholder {
+    width: 100%; height: 110px;
+    display: flex;
+}
+
+.title-section-placeholder .title-section-container {
+    width: 100%; height: 110px;
+    display: flex; flex-flow: row;
+    align-items: center; justify-content: flex-start;
+    gap: 30px;
+    padding-left: 100px;
+    z-index: 8;
+    background-color: rgb(26, 29, 41);
+}
+
+.title-section-movies-series {
+    color: white; 
+    font-size: 50px;
+}
+
+.section-cards {
+    z-index: 1;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 150px));
+    gap: 50px;
+    justify-content: center;
+    margin-bottom: 80px;
+}
