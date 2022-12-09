@@ -6,7 +6,12 @@ import { movies } from '../assets/constants';
 
 const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
 
-    const [moviesOrSeries, setMoviesOrSeries] = useState(moviesSeries);
+    const MoviesOrSeries = titleSection === 'Movies' ? 
+                            movies.filter(movie => movie.isMovie)
+                            :
+                            movies.filter(movie => !movie.isMovie)
+
+    const [moviesOrSeries, setMoviesOrSeries] = useState(MoviesOrSeries);
     const [filter, setFilter] = useState("ALL MOVIES A-Z");
 
     const containerToFix = useRef(null);
@@ -23,11 +28,11 @@ const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
 
     useEffect(() => {
         if(filter === "ANIMATED"){
-            setMoviesOrSeries(moviesSeries.filter(movie => movie.isAnimated ===  true));
+            setMoviesOrSeries(MoviesOrSeries.filter(movie => movie.isAnimated));
         } else if (filter === "KIDS"){
-            setMoviesOrSeries(moviesSeries.filter(movie => movie.isForKids === true))
+            setMoviesOrSeries(MoviesOrSeries.filter(movie => movie.isForKids))
         } else if (filter === "ALL MOVIES A-Z") {
-            setMoviesOrSeries(moviesSeries)
+            setMoviesOrSeries(MoviesOrSeries)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filter])
