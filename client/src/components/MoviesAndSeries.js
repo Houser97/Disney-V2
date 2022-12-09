@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import '../styles/moviesAndSeries.css';
+import '../styles/MoviesAndSeries.css';
 import DropdownMenu from './DropdownMenu';
-import MovieCard from './movieCard';
+import MovieSerieCard from './MovieSerieCard.js';
+import { movies } from '../assets/constants';
 
-const MoviesAndSeries = ({moviesSeries, titleSection, headerRefPlaceholder}) => {
+const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
 
     const [moviesOrSeries, setMoviesOrSeries] = useState(moviesSeries);
     const [filter, setFilter] = useState("ALL MOVIES A-Z");
@@ -49,7 +50,7 @@ const MoviesAndSeries = ({moviesSeries, titleSection, headerRefPlaceholder}) => 
     return(
         <div className='moviesAndSeries-section'>
             <div className='title-section-placeholder'>
-                <div ref={containerToFix} className='title-section-container'>
+                <div /*ref={containerToFix}*/ className='title-section-container'>
                     <div className='title-section-movies-series'>{titleSection}</div>
                     <DropdownMenu setFilter={setFilter} />
                 </div>
@@ -58,7 +59,7 @@ const MoviesAndSeries = ({moviesSeries, titleSection, headerRefPlaceholder}) => 
             <div className='section-cards'>
                 {moviesOrSeries.map(function iterateMovies(movie, iterator){
                     return(
-                        <MovieCard key={`${iterator}-movie-serie-react`} movie={movie} />
+                        <MovieSerieCard key={`${iterator}-movie-serie-react`} movie={movie} />
                     )
                 })}
             </div>
