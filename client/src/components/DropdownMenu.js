@@ -1,7 +1,7 @@
 import '../styles/DropdownMenu.css';
 import '../styles/OptionDropdownMenu.css';
 import { useEffect, useRef, useState } from 'react';
-/*import OptionDropdownMenu from './optionDropdownMenu';*/
+import OptionDropdownMenu from './OptionDropdownMenu';
 
 const DropdownMenu = ({setFilter}) => {
 
