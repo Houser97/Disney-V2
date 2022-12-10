@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
 
 
-const Header = ({userID,headerRef/*, shouldRender, setShouldRender, username, userPicture*/}) => {
+const Header = ({userID,HeaderRef/*, shouldRender, setShouldRender, username, userPicture*/}) => {
 
     const windowSize = useWindowSize()
 
@@ -32,7 +32,7 @@ const Header = ({userID,headerRef/*, shouldRender, setShouldRender, username, us
         <div /*ref = {headerRef}*/ className='default-header'>
             <header className='header'>
                 <div className='bg-header' ref={headerBg}></div>
-                <div className='bg-header-movies-series' ref={headerRef}></div>
+                <div className='bg-header-movies-series' ref={HeaderRef}></div>
                 <div className='options-header'>
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
