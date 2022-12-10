@@ -40,3 +40,10 @@
 .chevron-down {
     height: 24px; width: 24px;
 }
+
+@media (max-width: 420px) {
+    .drop-down-menu {
+        height: 45px;
+        top: 0px;
+    }
+}
