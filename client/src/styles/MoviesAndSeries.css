@@ -47,3 +47,10 @@
         font-size: 40px;
     }
 }
+
+@media (max-width: 420px) {
+    .title-section-placeholder .title-section-container {
+        gap: 20px;
+        flex-flow: column;
+    }
+}
