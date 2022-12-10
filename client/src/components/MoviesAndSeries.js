@@ -15,7 +15,7 @@ const MoviesAndSeries = ({titleSection, HeaderRef}) => {
     const [filter, setFilter] = useState("ALL MOVIES A-Z");
 
     const containerToFix = useRef(null);
-    const header = HeaderRef.current;
+    let header = HeaderRef.current;
     /*
     const fixTitleSection = () => {
         if(document.documentElement.scrollTop !== 0){
@@ -27,15 +27,17 @@ const MoviesAndSeries = ({titleSection, HeaderRef}) => {
     }*/
 
     useEffect(() => {
-        if(document.documentElement.scrollTop !== 0){
-            header.style.opacity = 0;
-        } else {
-            header.style.opacity = 1;
+        if(header !== null){
+            if(document.documentElement.scrollTop !== 0){
+                header.style.opacity = 0;
+            } else {
+                header.style.opacity = 1;
+            }
+            return () => {
+                header.style.opacity = 0;
+            }
         }
-        return () => {
-            header.style.opacity = 0;
-        }
-    },[])
+    },[HeaderRef])
 
     useEffect(() => {
         if(filter === "ANIMATED"){
