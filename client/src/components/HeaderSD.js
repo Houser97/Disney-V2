@@ -1,8 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/HeaderSD.css'
 
 const HeaderSD = ({userID}) => {
+
+    const location = useLocation()
+    const headerMS = useRef()
+
+    useEffect(() =>{
+        if(location.pathname === '/series' || location.pathname === '/movies'){
+            headerMS.current.style.opacity = 1
+        } else {
+            headerMS.current.style.opacity = 0
+        }
+    }, [location.pathname])
+
   return (
     <div className='header-sd-container'>
         <Link className='link' to = "/">

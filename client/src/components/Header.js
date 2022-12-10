@@ -1,16 +1,18 @@
 import '../styles/Header.css';
 import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 /*import { userContext } from '../App';*/
 import useWindowSize from '../assets/hooks/windowSize.js';
 
 
-const Header = ({userID,HeaderRef/*, shouldRender, setShouldRender, username, userPicture*/}) => {
+const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*/}) => {
 
     const windowSize = useWindowSize()
+    const location = useLocation()
 
     const headerBg = useRef(null);
+    const headerMS = useRef(null);
     /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
     const setUsernameHeader = useContext(userContext)[5];*/
@@ -28,11 +30,19 @@ const Header = ({userID,HeaderRef/*, shouldRender, setShouldRender, username, us
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() =>{
+        if(location.pathname === '/series' || location.pathname === '/movies'){
+            headerMS.current.style.opacity = 1
+        } else {
+            headerMS.current.style.opacity = 0
+        }
+    }, [location.pathname])
+
     return(
         <div /*ref = {headerRef}*/ className='default-header'>
             <header className='header'>
                 <div className='bg-header' ref={headerBg}></div>
-                <div className='bg-header-movies-series' ref={HeaderRef}></div>
+                <div className='bg-header-movies-series' ref={headerMS}></div>
                 <div className='options-header'>
                     <div className='logo'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
