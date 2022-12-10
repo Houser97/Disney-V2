@@ -28,12 +28,10 @@ const MoviesAndSeries = ({titleSection, HeaderRef}) => {
 
     useEffect(() => {
         if(header !== null){
-            if(document.documentElement.scrollTop !== 0){
-                header.style.opacity = 0;
-            } else {
-                header.style.opacity = 1;
-            }
-            return () => {
+            header.style.opacity = 1;
+        }
+        return () => {
+            if(header !== null){
                 header.style.opacity = 0;
             }
         }
