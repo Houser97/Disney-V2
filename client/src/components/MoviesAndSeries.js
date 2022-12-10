@@ -4,7 +4,7 @@ import DropdownMenu from './DropdownMenu';
 import MovieSerieCard from './MovieSerieCard.js';
 import { movies } from '../assets/constants';
 
-const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
+const MoviesAndSeries = ({titleSection, HeaderRef}) => {
 
     const MoviesOrSeries = titleSection === 'Movies' ? 
                             movies.filter(movie => movie.isMovie)
@@ -15,8 +15,8 @@ const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
     const [filter, setFilter] = useState("ALL MOVIES A-Z");
 
     const containerToFix = useRef(null);
-    /*const header = headerRefPlaceholder.current.childNodes[0];
-
+    const header = HeaderRef.current;
+    /*
     const fixTitleSection = () => {
         if(document.documentElement.scrollTop !== 0){
             containerToFix.current.style.position = "fixed";
@@ -25,6 +25,17 @@ const MoviesAndSeries = ({titleSection, headerRefPlaceholder}) => {
             header.style.backgroundColor = "rgb(26, 29, 41)" 
         }
     }*/
+
+    useEffect(() => {
+        if(document.documentElement.scrollTop !== 0){
+            header.style.opacity = 0;
+        } else {
+            header.style.opacity = 1;
+        }
+        return () => {
+            header.style.opacity = 0;
+        }
+    },[])
 
     useEffect(() => {
         if(filter === "ANIMATED"){
