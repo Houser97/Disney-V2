@@ -8,7 +8,6 @@ const Originals = ({headerRefPlaceholder}) => {
     const [originals, setOriginals] = useState(movies)
     const originalsContainer = useRef(null);
     const originalsPlaceholder = useRef(null);
-    const header = headerRefPlaceholder.current.childNodes[0];
 
     const changeTitle = () => {
         if(document.documentElement.scrollTop !== 0){
@@ -27,8 +26,6 @@ const Originals = ({headerRefPlaceholder}) => {
             originalsContainer.current.style.fontSize = "50px";
             originalsContainer.current.style.position = "relative";
             originalsContainer.current.style.transition = "0.35s ease-in-out 0s";
-            
-            header.style.backgroundColor = "rgb(26, 29, 41)" 
         }
     }
 
@@ -38,15 +35,9 @@ const Originals = ({headerRefPlaceholder}) => {
 
         window.addEventListener("scroll", changeTitle)
 
-        header.style.backgroundColor = "rgb(26, 29, 41)" 
-
 
         return () => {
             window.removeEventListener("scroll", changeTitle);
-            if(document.documentElement.scrollTop !== 0){
-                header.style.backgroundColor = "rgb(14, 16, 26)";
-            }
-            else {header.style.backgroundColor = "transparent";}
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
