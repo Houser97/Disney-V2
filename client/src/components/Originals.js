@@ -1,10 +1,9 @@
 import '../styles/Originals.css';
-import movies from '../moviesObject';
 import { useEffect, useRef, useState } from 'react';
 import MovieSerieCard from './MovieSerieCard'
+import { movies } from '../assets/constants';
 
-const Originals = ({headerRefPlaceholder}) => {
-
+const Originals = ({}) => {
     const [originals, setOriginals] = useState(movies)
     const originalsContainer = useRef(null);
     const originalsPlaceholder = useRef(null);
