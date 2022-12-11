@@ -1,12 +1,13 @@
 .drop-down-menu {
     display: flex; flex-flow: column;
-    align-items: flex-start; gap: 20px;
+    align-items: center; gap: 20px;
     color: white;
     background-color: transparent;
     position: relative;
     top: 60px;
     height: 160px;
     z-index: 3;
+    width: 200px;
 }
 
 .icon-result {
