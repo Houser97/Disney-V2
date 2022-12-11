@@ -13,6 +13,8 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
 
     const headerBg = useRef(null);
     const headerMS = useRef(null);
+
+    const RoutesGrayBG = ['/series','/movies','/originals']
     /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
     const setUsernameHeader = useContext(userContext)[5];*/
@@ -31,7 +33,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     }, [])
 
     useEffect(() =>{
-        if(location.pathname === '/series' || location.pathname === '/movies'){
+        if(RoutesGrayBG.includes(location.pathname)){
             headerMS.current.style.opacity = 1
         } else {
             headerMS.current.style.opacity = 0
