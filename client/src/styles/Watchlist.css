@@ -1,0 +1,25 @@
+.watchlist-section {
+    width: 100%; height: calc(100vh - 70px);
+    display: flex; flex-flow: column;
+    color: #f9f9f9;
+}
+
+.watchlist-userID-null {
+    height: 400px; width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 33px;
+}
+
+.watchlist-userID-noNull {
+    display: flex; flex-flow: column;
+    width: 100%; height: 400px;
+    align-items: center; justify-content: center;
+}
+
+.watchlist-userID-noNull h3 {
+    font-size: 34px;
+}
+
+.empty-watchlist-description {
+    font-size: 18px;
+}
