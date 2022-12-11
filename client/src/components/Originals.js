@@ -10,21 +10,11 @@ const Originals = ({}) => {
 
     const changeTitle = () => {
         if(document.documentElement.scrollTop !== 0){
-            originalsPlaceholder.current.style.height = "140px";
-            originalsPlaceholder.current.style.transition = "0.250s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s";
-
-            originalsContainer.current.style.fontSize = "30px";
-            originalsContainer.current.style.height = originalsPlaceholder.current.style.height;
-            originalsContainer.current.style.position = "fixed";
-            originalsContainer.current.style.transition = "0.250s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s";
+            originalsPlaceholder.current.style.transform = 'scaleY(0.5)'
+            originalsContainer.current.style.transform = 'scale(0.5)'
         } else {
-            originalsPlaceholder.current.style.height = "230px";
-            originalsPlaceholder.current.style.transition = "0.35s ease-in-out 0s";
-
-            originalsContainer.current.style.height = "230px";
-            originalsContainer.current.style.fontSize = "50px";
-            originalsContainer.current.style.position = "relative";
-            originalsContainer.current.style.transition = "0.35s ease-in-out 0s";
+            originalsPlaceholder.current.style.transform = 'scaleY(1)'
+            originalsContainer.current.style.transform = 'scale(1)'
         }
     }
 
@@ -43,10 +33,12 @@ const Originals = ({}) => {
 
     return(
         <div className='originals-section'>
-            <div ref={originalsPlaceholder} className='originals-placeholder'>
-                <div ref={originalsContainer} className='originals-title'>
-                    ORIGINALS
-                </div>
+            <div ref={originalsPlaceholder} className='originals-placeholder'></div>
+            {/*El elemento anterior sirve para como fondo para que las tarjetas se recorten
+            alcanzando el título de ORIGINALS, ya que ORIGINALS se encoge tanto vertical como horizontalmente,
+            lo cual requiere que haya un contenedor abajo de width 100% que pueda hacerla de recorte. */}
+            <div ref={originalsContainer} className='originals-title'>
+                ORIGINALS
             </div>
 
             <div className='originals-cards-section'>
