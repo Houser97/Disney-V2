@@ -1,7 +1,8 @@
 .watchlist-section {
-    width: 100%; height: calc(100vh - 70px);
+    width: 100%; min-height: calc(100vh - 70px);
     display: flex; flex-flow: column;
     color: #f9f9f9;
+    padding: 0px 20px;
 }
 
 .watchlist-userID-null {
@@ -22,4 +23,10 @@
 
 .empty-watchlist-description {
     font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .watchlist-userID-null {
+        font-size: 25px;
+    }
 }
