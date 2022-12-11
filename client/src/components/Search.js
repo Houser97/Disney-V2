@@ -28,6 +28,20 @@ const Search = () => {
                     <div className='effect-background'></div>
                 </form>
             </div>
+            <div className='container-sm-search'>
+                <div className='search-container-sm'>
+                    <form className='search-form' onSubmit={handleSubmit}>
+                        <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies} autoComplete = "off"></input>
+                        <div className='effect-background'></div>
+                    </form>
+                </div>
+                <div className='search-container-sm-nav'>
+                    <form className='search-form' onSubmit={handleSubmit}>
+                        <input id='search-movie' className='input' name='search' placeholder='Search by title' onChange={filterMovies} autoComplete = "off"></input>
+                        <div className='effect-background'></div>
+                    </form>
+                </div>
+            </div>
             <div className='filtered-movies' id = 'filtered-movies'>
                 {
                     filteredMovies.map(function iterateMovies(movie, iterator){
