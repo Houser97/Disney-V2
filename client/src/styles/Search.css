@@ -109,11 +109,36 @@
     background-color: transparent;
     border: none;
     padding: 0px 10px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .magnify{
     height: 100%;
     width: 28px;
+}
+
+/*Links*/
+.search-container-sm-nav{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+}
+
+.nav-search{
+    display: flex;
+    flex-flow: row;
+    height: 20px;
+    background-color: green;
+}
+
+.link-nav{
+    color: white;
+}
+
+.svg-option-search{
+    width: 24px;
+    height: 24px;
 }
 
 @media (max-width: 1100px) {
