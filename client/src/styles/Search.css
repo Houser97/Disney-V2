@@ -79,10 +79,41 @@
     margin-bottom: 50px;
 }
 
+.container-sm-search{
+    display: none;
+    width: 100%;
+    flex-flow: column;
+    align-items: center;
+}
+
+.search-container-sm{
+    width: 100%;
+    padding: 0px 10px;
+}
+
+.search-container-sm .search-form,
+.search-container-sm .search-form input{
+    width: 100%;
+}
+
+.search-container-sm .search-form input{
+    height: 35px;
+}
+
 @media (max-width: 1100px) {
     #filtered-movies {
         gap: 30px;
         padding: 25px 20px;
+    }
+
+    .container-sm-search{
+        display: flex;
+    }
+}
+
+@media (max-width: 520px) {
+    .search-container  {
+        display: none;
     }
 }
 
