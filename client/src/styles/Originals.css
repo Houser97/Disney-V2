@@ -10,7 +10,6 @@
     display: flex; align-items: center; justify-content: center;
     transition: transform 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     color: white;
-    font-size: 50px;
     position: fixed;
     top: 0px;
     z-index: 20;
@@ -30,6 +29,7 @@
     position: fixed;
     top: 0px;
     padding-bottom: 60px;
+    font-size: 50px;
 }
 
 .originals-title-selected {
@@ -57,6 +57,21 @@
 
     .originals-title{
         width: 100%; height: 100px;
-        padding-bottom: 0px;
+        font-size: 40px;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .originals-cards-section{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .originals-title{
+        width: 100%; height: 100px;
+        font-size: 25px;
+        align-items: center;
+        padding: 0px;
     }
 }
