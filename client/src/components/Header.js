@@ -1,6 +1,6 @@
 import '../styles/Header.css';
 import logo from '../assets/images/disney-logo.png';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 /*import { userContext } from '../App';*/
 import useWindowSize from '../assets/hooks/windowSize.js';
@@ -11,8 +11,11 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     const windowSize = useWindowSize()
     const location = useLocation()
 
+    const mainContainer = useRef(null)
     const headerBg = useRef(null);
     const headerMS = useRef(null);
+
+    const [headerDisplay, setHeaderDisplay] = useState(null)
 
     const RoutesGrayBG = ['/series','/movies','/originals']
     /*const setMoviesInWatchList = useContext(userContext)[1];
@@ -20,6 +23,8 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     const setUsernameHeader = useContext(userContext)[5];*/
 
     useEffect(() => {
+        setHeaderDisplay(mainContainer.current.style.display)
+        
         window.addEventListener("scroll", ()=>{      
             if(document.documentElement.scrollTop !== 0){
                 headerBg.current.style.opacity = 1;
@@ -35,13 +40,24 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     useEffect(() =>{
         if(RoutesGrayBG.includes(location.pathname)){
             headerMS.current.style.opacity = 1
+            /*Se checa que el display del Header no sea none*/
+            if(headerDisplay !== 'flex'){
+                mainContainer.current.style.display = 'flex'
+            }
+        } else if(location.pathname === '/login') {
+            mainContainer.current.style.display = 'none'
+            setHeaderDisplay(mainContainer.current.style.display)
         } else {
             headerMS.current.style.opacity = 0
+            /*Se checa que el display del Header no sea none*/
+            if(headerDisplay !== 'flex'){
+                mainContainer.current.style.display = 'flex'
+            }
         }
     }, [location.pathname])
 
     return(
-        <div /*ref = {headerRef}*/ className='default-header'>
+        <div ref = {mainContainer} className='default-header'>
             <div className='bg-header-movies-series' ref={headerMS}></div>
             <header className='header'>
                 <div className='bg-header' ref={headerBg}></div>
