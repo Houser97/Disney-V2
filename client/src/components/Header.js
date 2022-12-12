@@ -43,6 +43,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
             /*Se checa que el display del Header no sea none*/
             if(headerDisplay !== 'flex'){
                 mainContainer.current.style.display = 'flex'
+                setHeaderDisplay(mainContainer.current.style.display)
             }
         } else if(location.pathname === '/login') {
             mainContainer.current.style.display = 'none'
@@ -52,6 +53,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
             /*Se checa que el display del Header no sea none*/
             if(headerDisplay !== 'flex'){
                 mainContainer.current.style.display = 'flex'
+                setHeaderDisplay(mainContainer.current.style.display)
             }
         }
     }, [location.pathname])
