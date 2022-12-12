@@ -1,6 +1,6 @@
 .pdw-section-repeat {
     position: relative;
-    min-width: 370px; height: 100%;
+    width: 370px; height: 100%;
     display: flex; flex-flow: column;
     justify-content: space-evenly;
     transition: 350ms ease-in-out 0s;

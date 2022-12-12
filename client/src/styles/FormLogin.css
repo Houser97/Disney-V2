@@ -87,7 +87,9 @@
     .form-data-carousel,
     .form-data-carousel .email-section,
     .pdw-section,
-    .sign-up-section {
+    .sign-up-section,
+    .pdw-section-repeat.username,
+    .pdw-section-repeat /*Las últimas tres clases corresponden al component FormSignup*/ {
         width: 280px;
     }
 }
