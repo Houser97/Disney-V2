@@ -9,7 +9,7 @@ const Login = ({formToOpen, setUsername1, setUserID, userID}) => {
             <div className='image-log-in'>
                 <img src={logo} alt = "disney-logo" className='disney-logo-login'></img>
             </div>
-            {/*formToOpen === "1" ? <FormLogin setUserID ={setUserID} userID = {userID} /> : <FormSignUp setUsername1 = {setUsername1} />*/}
+            {formToOpen === "1" ? <FormLogin setUserID ={setUserID} userID = {userID} /> : /*<FormSignUp setUsername1 = {setUsername1} />*/ 'Upcoming'}
         </div>
     )
 }
