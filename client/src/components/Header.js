@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 /*import { userContext } from '../App';*/
 import useWindowSize from '../assets/hooks/windowSize.js';
+import UserMenu from './UserMenu';
 
 
 const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*/}) => {
@@ -130,22 +131,13 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
                 </div>
                 
                 {(userID) ? (
-                <div className='profile-user'>
-                    <div className='username-header'>Username</div>
-                    <div className='profile-picture-header'>
-                        <img /*src={userPicture}*/ alt ="headerpicture" className='header-picture-profile' ></img>
-                    </div>
-                    <div className='signOut-user'>
-                        <div className='button-log-out'>
-                            Log Out
+                    <UserMenu />
+                ) : (
+                    <Link className='link log-in-container' to = "/login">
+                        <div className='log-in-button-header'>
+                            Log in
                         </div>
-                    </div>
-                </div>) : (
-                <Link className='link log-in-container' to = "/login">
-                    <div className='log-in-button-header'>
-                        Log in
-                    </div>
-                </Link>
+                    </Link>
                 )}
             </header>
             <div className='logo-sm'>
