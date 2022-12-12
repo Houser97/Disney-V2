@@ -9,6 +9,7 @@ const FormLogIn = ({setUserID, userID}) => {
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
+    const containerForm = useRef(null);
 /*
     const [userData, setUserData] = useState([]);
 
@@ -26,9 +27,9 @@ const FormLogIn = ({setUserID, userID}) => {
 */
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.target.style.marginLeft = "-380px"
+        /*e.target.style.marginLeft = "-380px"*/
+        containerForm.current.style.transform = 'translateX(-370px)'
         e.target.style.opacity = 0;
-        
         const formArray = [...e.target];
         //console.log(formArray)
         const input = formArray[0].value;
@@ -49,25 +50,27 @@ const FormLogIn = ({setUserID, userID}) => {
     return (
         <div className='form-log-in-sign-up'>
             <div className='form-data-carousel'>
-                <form ref={emailSection} className='email-section' onSubmit={handleSubmit}>
-                    <div className='input-label-login'>
-                        <label htmlFor='login'>Log in with your email</label>
-                        <input id='login' className='input-login' type="email" required></input>
-                    </div>
-                    <div className='button-login-section'>
-                        <button className='button-login'>CONTINUE</button>
-                    </div>
-                </form>
+                <div ref={containerForm} className='form-container'>
+                    <form ref={emailSection} className='email-section' onSubmit={handleSubmit}>
+                        <div className='input-label-login'>
+                            <label htmlFor='login'>Log in with your email</label>
+                            <input id='login' className='input-login' type="email" required></input>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
 
-                <form ref={pwdSection} className='pdw-section' onSubmit={handleLastSubmit}>
-                    <div className='input-label-login'>
-                        <label htmlFor='login'>Enter your password</label>
-                        <input id='pwd' className='input-login' type="password" required></input>
-                    </div>
-                    <div className='button-login-section'>
-                        <button className='button-login'>CONTINUE</button>
-                    </div>
-                </form>
+                    <form ref={pwdSection} className='pdw-section' onSubmit={handleLastSubmit}>
+                        <div className='input-label-login'>
+                            <label htmlFor='login'>Enter your password</label>
+                            <input id='pwd' className='input-login' type="password" required></input>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div className='sign-up-section'>
                 New to Disney+?
