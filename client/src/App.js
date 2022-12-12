@@ -26,8 +26,8 @@ function App() {
             <Route path='/watchlist' element = {<Watchlist userID={null} />} ></Route>
             <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
             <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"} /*headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader}*/ />} ></Route>
-            {/*<Route path='/signup' element = {<LogInSection formToOpen={"2"} key={"signUpSection"} headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader} />} ></Route>
-            <Route path="/avatar" element = {<ChooseAvatar headerRef={header} footerRef ={footer} setUserPicture = {setUserPictureHeader} />} ></Route>           
+            <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"}  /*setUsername1 ={setUsernameHeader}*/ />} ></Route>
+            {/*<Route path="/avatar" element = {<ChooseAvatar headerRef={header} footerRef ={footer} setUserPicture = {setUserPictureHeader} />} ></Route>           
             */}
           </Routes>
           <Footer />
