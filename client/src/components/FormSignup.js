@@ -11,9 +11,12 @@ const FormSignup = ({setUsername1}) => {
     const pwdSectionRepeat = useRef(null);
     const errorMessagePwd = useRef(null);
 
+    const containerForm = useRef(null);
+
     const windowSize = useWindowSize()
 
     const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
+    let currentTranslateX = 0;
 
     useEffect(() => {
       if(windowSize.width <= 470){
@@ -36,7 +39,7 @@ const FormSignup = ({setUsername1}) => {
                 errorMessagePwd.current.style.display = "flex";
                 setUserData([...userData.slice(0, 2)]);
             } else if(pwd === pwdRepat) {
-                pwdSectionRepeat.current.style.marginLeft = "-380px";
+                translateForms();
                 /*createUser(email, pwd);*/
             }
         }
@@ -44,9 +47,17 @@ const FormSignup = ({setUsername1}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userData])
 
+    const translateForms = () => {
+        const TranslateX = isMobile ? 280 : 370;
+        let currentTranslateX = containerForm.current.style.transform;
+        currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
+        currentTranslateX = +currentTranslateX + TranslateX
+        containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.target.style.marginLeft = "-380px"
+        translateForms();
         e.target.style.opacity = 0;
         const formArray = [...e.target];
         const input = formArray[0].value;
@@ -72,7 +83,7 @@ const FormSignup = ({setUsername1}) => {
     return(
         <div className='form-log-in-sign-up'>
                 <div className='form-data-carousel'>
-                    <div className='form-container'>
+                    <div ref={containerForm} className='form-container'>
                         <form ref={emailSection} className='email-section' onSubmit={handleSubmit}>
                             <div className='input-label-login'>
                                 <label htmlFor='login'>Enter your email</label>
