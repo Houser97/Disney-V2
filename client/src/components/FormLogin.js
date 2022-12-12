@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import '../styles/formLogIn.css';
+import '../styles/FormLogin.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { checkIfUserIsLogged } from '../App';
 
 const FormLogIn = ({setUserID, userID}) => {
 
@@ -10,7 +9,7 @@ const FormLogIn = ({setUserID, userID}) => {
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
-
+/*
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
@@ -19,13 +18,12 @@ const FormLogIn = ({setUserID, userID}) => {
             console.log(email);
             const pwd = userData[1];
             console.log(pwd);
-            checkIfUserIsLogged(setUserID, userID);
             navigate("/")
         }
         //console.log(userData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userData])
-
+*/
     const handleSubmit = (e) => {
         e.preventDefault();
         e.target.style.marginLeft = "-380px"
@@ -35,7 +33,7 @@ const FormLogIn = ({setUserID, userID}) => {
         //console.log(formArray)
         const input = formArray[0].value;
 
-        setUserData(oldArray => [...oldArray, input]);
+        /*setUserData(oldArray => [...oldArray, input]);*/
     }
 
     const handleLastSubmit = (e) => {
@@ -44,7 +42,7 @@ const FormLogIn = ({setUserID, userID}) => {
         const formArray = [...e.target];
         const input = formArray[0].value;
 
-        setUserData(oldArray => [...oldArray, input]);
+        /*setUserData(oldArray => [...oldArray, input]);*/
 
     }
 
