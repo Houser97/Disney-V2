@@ -1,12 +1,13 @@
 .profile-user{
     height: 100%;
     display: flex; align-items: center; justify-content: space-evenly;
-    width: 120px;
     position: relative;
+    padding: 0px 20px;
 }
 
 .profile-picture-header{
     width: 50px; height: 50px;
+    margin-left: 14px;
 }
 
 .profile-picture-header .header-picture-profile {
