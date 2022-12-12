@@ -1,7 +1,7 @@
 import {  useEffect, useRef, useState } from 'react';
 import '../styles/FormSignup.css';
 import { useNavigate } from 'react-router-dom';
-
+import useWindowSize from '../assets/hooks/windowSize.js';
 
 const FormSignup = ({setUsername1}) => {
     let navigate = useNavigate();
@@ -10,6 +10,19 @@ const FormSignup = ({setUsername1}) => {
     const pwdSection = useRef(null);
     const pwdSectionRepeat = useRef(null);
     const errorMessagePwd = useRef(null);
+
+    const windowSize = useWindowSize()
+
+    const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
+
+    useEffect(() => {
+      if(windowSize.width <= 470){
+        setIsMobile(true)
+      } else {
+        setIsMobile(false)
+      }
+    }, [windowSize])
+    
 
     const [userData, setUserData] = useState([]); 
 
