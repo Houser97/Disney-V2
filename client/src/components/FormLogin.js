@@ -9,11 +9,20 @@ const FormLogIn = ({setUserID, userID}) => {
     let navigate = useNavigate()
     const windowSize = useWindowSize()
 
-    const [isMobile, setIsMobile] = useState(windowSize <= 470)
+    const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
     const containerForm = useRef(null);
+
+    useEffect(() => {
+      if(windowSize.width <= 470){
+        setIsMobile(true)
+      } else {
+        setIsMobile(false)
+      }
+    }, [windowSize])
+    
 /*
     const [userData, setUserData] = useState([]);
 
@@ -31,8 +40,8 @@ const FormLogIn = ({setUserID, userID}) => {
 */
     const handleSubmit = (e) => {
         e.preventDefault();
-        /*e.target.style.marginLeft = "-380px"*/
-        containerForm.current.style.transform = 'translateX(-370px)'
+        const TranslateX = isMobile ? 280 : 370;
+        containerForm.current.style.transform = `translateX(-${TranslateX}px)`
         e.target.style.opacity = 0;
         const formArray = [...e.target];
         //console.log(formArray)
