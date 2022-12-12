@@ -45,7 +45,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
                 mainContainer.current.style.display = 'flex'
                 setHeaderDisplay(mainContainer.current.style.display)
             }
-        } else if(location.pathname === '/login') {
+        } else if(location.pathname === '/login' || location.pathname === '/signup') {
             mainContainer.current.style.display = 'none'
             setHeaderDisplay(mainContainer.current.style.display)
         } else {
