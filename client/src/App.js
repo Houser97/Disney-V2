@@ -8,6 +8,7 @@ import Search from './components/Search';
 import MoviesAndSeries from './components/MoviesAndSeries';
 import Watchlist from './components/Watchlist';
 import Originals from './components/Originals';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -24,8 +25,8 @@ function App() {
             <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} titleSection = {"Series"} />} ></Route>
             <Route path='/watchlist' element = {<Watchlist userID={null} />} ></Route>
             <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
-            {/*<Route path='/login' element = {<LogInSection formToOpen={"1"} key={"logInSection"} headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader} />} ></Route>
-            <Route path='/signup' element = {<LogInSection formToOpen={"2"} key={"signUpSection"} headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader} />} ></Route>
+            <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"} /*headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader}*/ />} ></Route>
+            {/*<Route path='/signup' element = {<LogInSection formToOpen={"2"} key={"signUpSection"} headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader} />} ></Route>
             <Route path="/avatar" element = {<ChooseAvatar headerRef={header} footerRef ={footer} setUserPicture = {setUserPictureHeader} />} ></Route>           
             */}
           </Routes>
