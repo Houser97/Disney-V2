@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/FormLogin.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import useWindowSize from '../assets/hooks/windowSize.js';
 
 const FormLogIn = ({setUserID, userID}) => {
 
     let navigate = useNavigate()
+    const windowSize = useWindowSize()
+
+    const [isMobile, setIsMobile] = useState(windowSize <= 470)
 
     const emailSection = useRef(null);
     const pwdSection = useRef(null);
