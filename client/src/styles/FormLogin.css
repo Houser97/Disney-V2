@@ -59,8 +59,7 @@
 }
 
 .form-data-carousel .email-section {
-    min-width: 370px; height: 100%;
-    max-width: 370px;
+    width: 370px; height: 100%;
     display: flex; flex-flow: column;
     justify-content: space-evenly;
     transition: all 350ms ease-in-out;
@@ -68,7 +67,7 @@
 
 .pdw-section {
     position: relative;
-    min-width: 370px; height: 100%;
+    width: 370px; height: 100%;
     display: flex; flex-flow: column;
     justify-content: space-evenly;
     transition: 350ms ease-in-out;
@@ -82,4 +81,13 @@
     display: flex;
     flex-flow: row;
     transition: transform 350ms ease-in-out;
+}
+
+@media (max-width: 470px) {  
+    .form-data-carousel,
+    .form-data-carousel .email-section,
+    .pdw-section,
+    .sign-up-section {
+        width: 280px;
+    }
 }
