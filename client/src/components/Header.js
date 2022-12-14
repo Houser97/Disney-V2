@@ -14,7 +14,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
 
     const mainContainer = useRef(null)
     const headerBg = useRef(null);
-    const headerMS = useRef(null);
+    const headerMS = useRef(null); /*Contenedor de fondo gris*/
 
     const [headerDisplay, setHeaderDisplay] = useState(null)
 
@@ -65,9 +65,9 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
             <header className='header'>
                 <div className='bg-header' ref={headerBg}></div>
                 <div className='options-header'>
-                    <div className='logo'>
+                    <a className='logo' href='/'>
                         <img className='img-logo' src = {logo} alt = "logo disney"></img>
-                    </div>
+                    </a>
                     <Link className='link' to = "/">
                         <div className='home option'>
                             <div className='svg-option'>
@@ -140,9 +140,9 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
                     </Link>
                 )}
             </header>
-            <div className='logo-sm'>
+            <a className='logo-sm' href='/'>
                 <img className='img-logo' src = {logo} alt = "logo disney"></img>
-            </div>
+            </a>
         </div>
     )
 }
