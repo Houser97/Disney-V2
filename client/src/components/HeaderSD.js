@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../styles/HeaderSD.css'
+import UserMenuSD from './UserMenuSD';
 
 const HeaderSD = ({userID}) => {
   return (
@@ -33,17 +34,8 @@ const HeaderSD = ({userID}) => {
             </div>
         </Link>
         {(userID) ? (
-            <div className='profile-user'>
-                <div className='username-header'>Username</div>
-                <div className='profile-picture-header'>
-                    <img /*src={userPicture}*/ alt ="headerpicture" className='header-picture-profile' ></img>
-                </div>
-                <div className='signOut-user'>
-                    <div className='button-log-out'>
-                        Log Out
-                    </div>
-                </div>
-            </div>) : (
+            <UserMenuSD />    
+        ) : (
             <Link className='link log-in-container' to = "/login">
                 <div className='log-in-button-header'>
                     Log in
