@@ -33,8 +33,12 @@
 }
 
 @media (max-width: 650px) {
-    .image-category .image-png{
+    .image-category .image-png {
         height: 105%; width: 133%;
+    }
+
+    .image-category .video-tag{
+        height: 150%; width: 140%;
     }
 
     .image-category {
