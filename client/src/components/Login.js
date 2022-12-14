@@ -6,9 +6,9 @@ import FormSignup from './FormSignup';
 const Login = ({formToOpen, setUsername1, setUserID, userID}) => {
     return(
         <div className='log-in-section'>
-            <div className='image-log-in'>
+            <a className='image-log-in' href='/'>
                 <img src={logo} alt = "disney-logo" className='disney-logo-login'></img>
-            </div>
+            </a>
             {formToOpen === "1" ? <FormLogin setUserID ={setUserID} userID = {userID} /> : <FormSignup setUsername1 = {setUsername1} />}
         </div>
     )
