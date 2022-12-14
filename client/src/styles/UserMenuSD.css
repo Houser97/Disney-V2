@@ -3,6 +3,11 @@
     position: relative;
 }
 
+.profile-user-SD .profile-picture-header{
+    width: 43px; height: 43px;
+    margin: 0px;
+}
+
 .signOut-user-SD{
     display: flex;
     flex-flow: column;
