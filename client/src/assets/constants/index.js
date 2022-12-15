@@ -62,6 +62,14 @@ import NemoAvatar from '../images/Avatars/NemoAvatar.png'
 import ObiWanAvatar from '../images/Avatars/ObiWanAvatar.png'
 import PerryAvatar from '../images/Avatars/PerryAvatar.png'
 
+import PumbaAvatar from '../images/Avatars/PumbaAvatar.png'
+import RatchetAvatar from '../images/Avatars/RatchetAvatar.png'
+import SparkyAvatar from '../images/Avatars/SparkyAvatar.png'
+import SpiderManAvatar from '../images/Avatars/SpiderManAvatar.png'
+import StitchAvatar from '../images/Avatars/StitchAvatar.png'
+import WandaAvatar from '../images/Avatars/WandaAvatar.png'
+import WAvatar from '../images/Avatars/WAvatar.png'
+
 export const movies = 
 [   {image:Daredevil, 
     title: "Daredevil", 
