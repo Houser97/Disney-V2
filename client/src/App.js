@@ -9,6 +9,7 @@ import MoviesAndSeries from './components/MoviesAndSeries';
 import Watchlist from './components/Watchlist';
 import Originals from './components/Originals';
 import Login from './components/Login';
+import Avatar from './components/Avatar';
 
 function App() {
   return (
@@ -27,8 +28,7 @@ function App() {
             <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
             <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"} /*headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader}*/ />} ></Route>
             <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"}  /*setUsername1 ={setUsernameHeader}*/ />} ></Route>
-            {/*<Route path="/avatar" element = {<ChooseAvatar headerRef={header} footerRef ={footer} setUserPicture = {setUserPictureHeader} />} ></Route>           
-            */}
+            <Route path="/avatar" element = {<Avatar /*setUserPicture = {setUserPictureHeader}*/ />} ></Route>           
           </Routes>
           <Footer />
         </div>
