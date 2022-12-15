@@ -47,6 +47,14 @@ import DisneyVideo from '../images/Videos/disney.mp4'
 import NationalVideo from '../images/Videos/geographic.mp4'
 import StarVideo from '../images/Videos/starwars.mp4'
 
+/*Imágenes de avatar*/
+import BuzzAvatar from '../images/Avatars/BuzzAvatar.png'
+import DanteAvatar from '../images/Avatars/DanteAvatar.png'
+import DarthVaderAvatar from '../images/Avatars/DarthVaderAvatar.png'
+import DoriAvatar from '../images/Avatars/DoriAvatar.png'
+import DrStrangeAvatar from '../images/Avatars/DrStrangeAvatar.png'
+import ElsaAvatar from '../images/Avatars/ElsaAvatar.png'
+
 export const movies = 
 [   {image:Daredevil, 
     title: "Daredevil", 
