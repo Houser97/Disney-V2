@@ -9,9 +9,9 @@ const ChooseAvatar = ({setUserPicture}) => {
         <div className='choose-avatar-section'>
             <div className='instruction-avatar'>Choose Avatar</div>
             <div className='avatars-grid'>
-                {avatarsImages.map(function iterateAvatars(avatar, i){
+                {AvatarImages.map(function iterateAvatars(avatar, i){
                     return(
-                        <AvatarCard key={`${i}-avatar-image`} avatarImage = {avatar} setUserPicture = {setUserPicture} />
+                        <AvatarCard key={`${i}-avatar-image`} avatarImage = {avatar.image} setUserPicture = {setUserPicture} />
                     )
                 })}
             </div>
