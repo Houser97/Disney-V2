@@ -1,8 +1,8 @@
 import '../styles/Avatar.css';
-import AvatarCard from './avatarCard';
+import AvatarCard from './AvatarCard';
 import { AvatarImages } from '../assets/constants';
 
-const ChooseAvatar = ({setUserPicture}) => {
+const Avatar = ({setUserPicture}) => {
 
     return(
         <div className='choose-avatar-section'>
@@ -18,4 +18,4 @@ const ChooseAvatar = ({setUserPicture}) => {
     )
 }
 
-export default ChooseAvatar;
+export default Avatar;
