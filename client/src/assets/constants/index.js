@@ -55,6 +55,13 @@ import DoriAvatar from '../images/Avatars/DoriAvatar.png'
 import DrStrangeAvatar from '../images/Avatars/DrStrangeAvatar.png'
 import ElsaAvatar from '../images/Avatars/ElsaAvatar.png'
 
+import IronManAvatar from '../images/Avatars/IronManAvatar.png'
+import JackAvatar from '../images/Avatars/JackAvatar.png'
+import MoonAvatar from '../images/Avatars/MoonAvatar.png'
+import NemoAvatar from '../images/Avatars/NemoAvatar.png'
+import ObiWanAvatar from '../images/Avatars/ObiWanAvatar.png'
+import PerryAvatar from '../images/Avatars/PerryAvatar.png'
+
 export const movies = 
 [   {image:Daredevil, 
     title: "Daredevil", 
