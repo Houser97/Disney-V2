@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import '../styles/chooseAvatar.css';
+import '../styles/Avatar.css';
 import AvatarCard from './avatarCard';
 import { AvatarImages } from '../assets/constants';
 
