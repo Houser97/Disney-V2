@@ -313,3 +313,5 @@ export const AnimatedMovies = [
     {image: Chip},
     {image: Raya}
 ]
+
+/* Imágenes para Avatar */
