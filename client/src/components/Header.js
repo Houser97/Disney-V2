@@ -19,6 +19,7 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     const [headerDisplay, setHeaderDisplay] = useState(null)
 
     const RoutesGrayBG = ['/series','/movies','/originals']
+    const RoutesFlexNone = ['/login','/signup','/avatar']
     /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
     const setUsernameHeader = useContext(userContext)[5];*/
@@ -46,15 +47,15 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
                 mainContainer.current.style.display = 'flex'
                 setHeaderDisplay(mainContainer.current.style.display)
             }
-        } else if(location.pathname === '/login' || location.pathname === '/signup') {
+        } else if(RoutesFlexNone.includes(location.pathname)) {
             mainContainer.current.style.display = 'none'
-            setHeaderDisplay(mainContainer.current.style.display)
+            setHeaderDisplay('none')
         } else {
             headerMS.current.style.opacity = 0
             /*Se checa que el display del Header no sea none*/
             if(headerDisplay !== 'flex'){
                 mainContainer.current.style.display = 'flex'
-                setHeaderDisplay(mainContainer.current.style.display)
+                setHeaderDisplay('flex')
             }
         }
     }, [location.pathname])
