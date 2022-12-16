@@ -74,7 +74,7 @@
     grid-template-rows: repeat(auto-fit, 130px);
     grid-auto-rows: 130px;
     gap: 30px;
-    padding: 25px 5px 50px;
+    padding: 25px 30px;
     padding-bottom: 0px;
     margin-bottom: 50px;
 }
