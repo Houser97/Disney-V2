@@ -24,6 +24,14 @@ const HeaderSD = ({userID}) => {
             setHeaderDisplay('flex')
         }
     }, [location.pathname])
+
+    useEffect(() => {
+        if(windowSize.width <= 520){
+          setIsMobile(true)
+        } else {
+          setIsMobile(false)
+        }
+      }, [windowSize])
     
 
   return (
