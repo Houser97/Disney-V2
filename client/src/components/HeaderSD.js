@@ -1,11 +1,33 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/HeaderSD.css'
 import UserMenuSD from './UserMenuSD';
+import useWindowSize from '../assets/hooks/windowSize';
 
 const HeaderSD = ({userID}) => {
+    const windowSize = useWindowSize()
+    const location = useLocation();
+
+    const mainContainer = useRef(null)
+
+    const [headerDisplay, setHeaderDisplay] = useState(null)
+    const [isMobile, setIsMobile] = useState(windowSize.width <= 520);
+
+    const RoutesFlexNone = ['/login','/signup','/avatar']
+
+    useEffect(() =>{
+        if(RoutesFlexNone.includes(location.pathname)) {
+            mainContainer.current.style.display = 'none'
+            setHeaderDisplay('none')
+        } else if(headerDisplay !== 'flex' && isMobile){
+            mainContainer.current.style.display = 'flex'
+            setHeaderDisplay('flex')
+        }
+    }, [location.pathname])
+    
+
   return (
-    <div className='header-sd-container'>
+    <div className='header-sd-container' ref={mainContainer}>
         <Link className='link' to = "/">
             <div className='home option'>
                 <div className='svg-option'>
