@@ -321,27 +321,13 @@ export const VideosImages = [
 ]
 
 /* Objeto de imágenes para carousels */
-export const MarvelMovies = [
-    {image: Punisher},
-    {image: Jessica},
-    {image: IronFist},
-    {image: Loki},
-    {image: Moon},
-    {image: Luke},
-    {image: Daredevil},
-    {image: Defenders}
-]
+const MarvelMoviesTitles = ['Punisher', 'Jessica Jones', 'Iron Fist', 'Loki',
+                            'Moon Knight', 'Luke Cage', 'Daredevil', 'Defenders'];
+export const MarvelMovies = movies.filter(movie => MarvelMoviesTitles.includes(movie.title));
 
-export const Recommended = [
-    {image: Daredevil},
-    {image: Luca},
-    {image: Malcolm},
-    {image: ObiWan},
-    {image: Rio},
-    {image: Luke},
-    {image: Chip},
-    {image: Moon}
-]
+const RecommendedTitles = ['Chip and Dale', 'Luca', 'Malcolm in the middle', 'Obi-Wan Kenobi',
+                            'Rio', 'Luke Cage', 'Loki', 'Moon Knight']
+export const Recommended = movies.filter(movie => RecommendedTitles.includes(movie.title));
 
 export const AnimatedSeries = [
     {image: Mickey},
