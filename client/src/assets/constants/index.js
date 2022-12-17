@@ -339,24 +339,78 @@ export const AnimatedMovies = [
 
 /* Imágenes para Avatar */
 export const AvatarImages = [
-    {image: BuzzAvatar},
-    {image: DanteAvatar},
-    {image: DarthVaderAvatar},
-    {image: DoriAvatar},
-    {image: DrStrangeAvatar},
-    {image: ElsaAvatar},
-    {image: IronManAvatar},
-    {image: JackAvatar},
-    {image: MoonAvatar},
-    {image: NemoAvatar},
-    {image: ObiWanAvatar},
-    {image: PerryAvatar},
-    {image: PumbaAvatar},
-    {image: SparkyAvatar},
-    {image: RatchetAvatar},
-    {image: SpiderManAvatar},
-    {image: StitchAvatar},
-    {image: WandaAvatar},
-    {image: WAvatar},
+    {
+        image: BuzzAvatar,
+        ref: 'BuzzAvatar'
+    },
+    {
+        image: DanteAvatar, 
+        ref: 'DanteAvatar'},
+    {
+        image: DarthVaderAvatar, 
+        ref: 'VaderAvatar'
+    },
+    {
+        image: DoriAvatar, 
+        ref: 'DoriAvatar'
+    },
+    {
+        image: DrStrangeAvatar,
+        ref: 'DrStrangeAvatar'
+    },
+    {
+        image: ElsaAvatar,
+        ref: 'ElsaAvatar'},
+    {
+        image: IronManAvatar,
+        ref: 'IronManAvatar'
+    },
+    {
+        image: JackAvatar,
+        ref: 'JackAvatar'},
+    {
+        image: MoonAvatar,
+        ref: 'MoonAvatar'
+    },
+    {
+        image: NemoAvatar,
+        ref: 'NemoAvatar'
+    },
+    {
+        image: ObiWanAvatar,
+        ref: 'ObiAvatar'
+    },
+    {
+        image: PerryAvatar,
+        ref: 'PerryAvatar'
+    },
+    {
+        image: PumbaAvatar,
+        ref: 'PumbaAvatar'
+    },
+    {
+        image: SparkyAvatar,
+        ref: 'SparkyAvatar'
+    },
+    {
+        image: RatchetAvatar,
+        ref: 'RatchetAvatar'
+    },
+    {
+        image: SpiderManAvatar,
+        ref: 'SpidermanAvatar'
+    },
+    {
+        image: StitchAvatar,
+        ref: 'StitchAvatar'
+    },
+    {
+        image: WandaAvatar,
+        ref: 'WandaAvatar'
+    },
+    {
+        image: WAvatar,
+        ref: 'WaAvatar'
+    },
 ]
 
