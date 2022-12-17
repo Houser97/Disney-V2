@@ -11,5 +11,8 @@ exports.create_user = [
         .matches('[0-9]').withMessage('Password must contain at least 1 number')
         .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter')
         .trim()
+        .escape(),
+    body('username')
+        .trim()
         .escape()
 ];
