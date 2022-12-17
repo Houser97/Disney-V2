@@ -19,7 +19,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 // Acceso a la base de datos
-const MongoDB = `Here goes link`;
+const MongoDB = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.yohxpy9.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
 mongoose.connect(MongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind((console, 'MongoDB connection error: ')))
