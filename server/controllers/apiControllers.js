@@ -14,5 +14,19 @@ exports.create_user = [
         .escape(),
     body('username')
         .trim()
-        .escape()
+        .escape(),
+    
+    (req, res, next) => {
+        const errors = validationResult(req);
+        const user = {
+            password: req.body.pwd,
+            email: req.body.email
+        }
+
+        if(!errors.isEmpty()){
+            'Handle errors'
+            return;
+        }
+        
+    }
 ];
