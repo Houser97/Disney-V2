@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const cors = require('cors')
+// Passport
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
