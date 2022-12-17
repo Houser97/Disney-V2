@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const {body, validationResult} = require('express-validator');
+const bcryptjs = require('bcryptjs');
 
 exports.create_user = [
     body('email', 'Email must be a valid address').isEmail()
@@ -24,9 +25,19 @@ exports.create_user = [
         }
 
         if(!errors.isEmpty()){
-            'Handle errors'
+            //Handle errors
             return;
         }
-        
+
+        bcryptjs.hash(req.body.pwd, 10, (err, hashedPwd) => {
+            if(err) return next(err);
+            const user = new User({
+                email: req.body.email,
+                password: hashedPwd,
+                username: req.body.username
+            }).save(err => {
+                if(err) return err;
+            })
+        })
     }
 ];
