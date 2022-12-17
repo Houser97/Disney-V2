@@ -13,6 +13,11 @@ var app = express();
 // CORS
 app.use(cors())
 
+// Set up Dotenv
+if(process.env.NODE_ENV !== 'production'){
+  require('dotenv').config();
+}
+
 // Acceso a la base de datos
 const MongoDB = `Here goes link`;
 mongoose.connect(MongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
