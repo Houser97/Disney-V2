@@ -3,6 +3,15 @@ const {body, validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
 
 exports.create_user = [
+    // Revisar que usuario no exista en base de datos.
+    (req, res, next) => {
+        User.findOne({email: req.body.email}, (err, user) => {
+            if(err) return next(err);
+            if(user) return res.json('User exists');
+        })
+        next();
+    },
+
     body('email', 'Email must be a valid address').isEmail()
         .trim()
         .escape()
@@ -26,7 +35,7 @@ exports.create_user = [
 
         if(!errors.isEmpty()){
             //Handle errors
-            return;
+            return res.json(false);
         }
 
         bcryptjs.hash(req.body.pwd, 10, (err, hashedPwd) => {
@@ -36,7 +45,8 @@ exports.create_user = [
                 password: hashedPwd,
                 username: req.body.username
             }).save(err => {
-                if(err) return err;
+                if(err) return next(err);
+                return res.json(true)
             })
         })
     }
