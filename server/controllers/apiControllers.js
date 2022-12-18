@@ -46,7 +46,7 @@ exports.create_user = [
                 username: req.body.username
             }).save(err => {
                 if(err) return next(err);
-                return res.json(true)
+                return res.json(user)
             })
         })
     }
