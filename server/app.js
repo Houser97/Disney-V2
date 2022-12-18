@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const cors = require('cors')
+const bcryptjs = require('bcryptjs');
+const User = require('./models/user');
 // Passport
 const session = require('express-session');
 const passport = require('passport');
@@ -31,6 +33,7 @@ db.on('error', console.error.bind((console, 'MongoDB connection error: ')))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 
 //PASSPORT
 app.use(session({secret:'cats', resave: false, saveUninitialized: true}));
