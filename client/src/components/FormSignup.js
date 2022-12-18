@@ -73,6 +73,10 @@ const FormSignup = ({setUsername1}) => {
         const input = formArray[0].value;
         setUsername1(input);
         setUserData(oldArray => [...oldArray, input]);
+        fetch('/api/signup', {
+            method: 'POST',
+            body: JSON.stringify('data')
+        })
         navigate("/avatar");
     }
 
