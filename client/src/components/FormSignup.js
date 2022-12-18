@@ -16,7 +16,6 @@ const FormSignup = ({setUsername1}) => {
     const windowSize = useWindowSize()
 
     const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
-    let currentTranslateX = 0;
 
     useEffect(() => {
       if(windowSize.width <= 470){
@@ -31,7 +30,6 @@ const FormSignup = ({setUsername1}) => {
 
     useEffect(() => {
         if(userData.length === 3){
-            const email = userData[0];
             const pwd = userData[1];
             const pwdRepat = userData[2];
 
@@ -40,10 +38,8 @@ const FormSignup = ({setUsername1}) => {
                 setUserData([...userData.slice(0, 2)]);
             } else if(pwd === pwdRepat) {
                 translateForms();
-                /*createUser(email, pwd);*/
             }
         }
-        //console.log(userData)//
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userData])
 
