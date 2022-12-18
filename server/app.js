@@ -50,6 +50,17 @@ passport.use(
   })
 )
 
+//Creación de Cookie para mantener usuario en sesión.
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+})
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user)
+  })
+})
+
 //PASSPORT
 app.use(session({secret:'cats', resave: false, saveUninitialized: true}));
 app.use(passport.initialize());
