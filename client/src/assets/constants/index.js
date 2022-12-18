@@ -326,30 +326,19 @@ const MarvelMoviesTitles = ['Punisher', 'Jessica Jones', 'Iron Fist', 'Loki',
 export const MarvelMovies = movies.filter(movie => MarvelMoviesTitles.includes(movie.title));
 
 const RecommendedTitles = ['Chip and Dale', 'Luca', 'Malcolm in the middle', 'Obi-Wan Kenobi',
-                            'Rio', 'Luke Cage', 'Loki', 'Moon Knight']
+                            'Rio', 'Luke Cage', 'Loki', 'Moon Knight'];
+
 export const Recommended = movies.filter(movie => RecommendedTitles.includes(movie.title));
 
-export const AnimatedSeries = [
-    {image: Mickey},
-    {image: Bluey},
-    {image: Mira},
-    {image: Bymax},
-    {image: StarWarsAn},
-    {image: Kim},
-    {image: Dalmatas},
-    {image: Kusko}
-]
+const AnimatedSeriesTitles = ['Mickey', 'Bluey', 'Miraculous', 'Baymax', 'Star Wars',
 
-export const AnimatedMovies = [
-    {image: Increibles},
-    {image: Robots},
-    {image: Rio},
-    {image: Toystory},
-    {image: Dino},
-    {image: WallE},
-    {image: Chip},
-    {image: Raya}
-]
+                              'Kim possible', '101 dalmatian street',  "The emperor's new school kusko"];
+export const AnimatedSeries = movies.filter(movie => AnimatedSeriesTitles.includes(movie.title));
+
+const AnimatedMoviesTitles = ['Robots', 'Rio', 'Toy Story', 'Incredibles', 'Raya and the last dragon',
+                              'WallE', 'The good dinosaur', 'Chip and Dale'];
+
+export const AnimatedMovies = movies.filter(movie => AnimatedMoviesTitles.includes(movie.title));
 
 /* Imágenes para Avatar */
 export const AvatarImages = [
