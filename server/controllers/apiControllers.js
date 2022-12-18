@@ -35,7 +35,7 @@ exports.create_user = [
 
         if(!errors.isEmpty()){
             //Handle errors
-            return res.json(false);
+            return res.json({error:errors.array()});
         }
 
         bcryptjs.hash(req.body.pwd, 10, (err, hashedPwd) => {
