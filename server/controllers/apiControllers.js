@@ -49,6 +49,16 @@ exports.create_user = [
     }
 ];
 
+exports.check_email = [
+    body('email', 'Email should not be empty').isEmail().normalizeEmail(),
+    (req, res, next) =>{
+        User.findOne({email: req.body.email}, (err, user) => {
+            if(err) return res.json('error');
+            return res.json(user)
+        })
+    }
+]
+
 exports.login = (req, res, next) => {
     return res.json('Houser')
 }
