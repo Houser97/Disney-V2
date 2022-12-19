@@ -35,19 +35,13 @@ const FormSignup = ({setUsername1}) => {
     const [currentForm, setCurrentForm] = useState('email')
 
     useEffect(() => {
-        if(userData.length === 3){
-            const pwd = userData[1];
-            const pwdRepat = userData[2];
-
-            if(pwd !== pwdRepat){
-                errorMessagePwd.current.style.display = "flex";
-                setUserData([...userData.slice(0, 2)]);
-            } else if(pwd === pwdRepat) {
-                translateForms();
-            }
+        if(pwd !== repeatPwd){
+            errorMessagePwd.current.style.display = "flex";
+        } else {
+            translateForms();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userData])
+    }, [repeatPwd])
 
     const translateForms = () => {
         const TranslateX = isMobile ? 280 : 370;
@@ -57,34 +51,38 @@ const FormSignup = ({setUsername1}) => {
         containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
     }
 
-    const handleSubmit = (e) => {
+    const handleEmailSubmit = (e) => {
         e.preventDefault();
-        let value = [...e.target][0].value
-        currentForm === 'email' ? setEmail(value) : setPwd(value)
-        setCurrentForm('pwd')
+        const email = [...e.target][0].value;
+        setEmail(email);
         translateForms();
         e.target.style.opacity = 0;
-        const formArray = [...e.target];
-        const input = formArray[0].value;
-        setUserData(oldArray => [...oldArray, input]);
     }
 
     const handlePwdSubmit = (e) => {
         e.preventDefault();
-        const formArray = [...e.target];
-        const input = formArray[0].value;
-        setUserData(oldArray => [...oldArray, input]);
+        const pwd = [...e.target][0].value;
+        setPwd(pwd);
+        translateForms();
+        e.target.style.opacity = 0;
+    }
+
+    const handleRepeatPwdSubmit = (e) => {
+        e.preventDefault();
+        const repeatPwd = [...e.target][0].value;
+        setRepeatPwd(repeatPwd)
     }
 
     const handleLastSubmit = (e) => {
         e.preventDefault();
-        const formArray = [...e.target];
-        const input = formArray[0].value;
-        setUsername1(input);
-        setUserData(oldArray => [...oldArray, input]);
+        const username = [...e.target][0].value
+        setUsername(username)
         fetch('/api/signup', {
             method: 'POST',
-            body: JSON.stringify('data')
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, pwd, username, avatarRef})
         })
         navigate("/avatar");
     }
@@ -93,7 +91,7 @@ const FormSignup = ({setUsername1}) => {
         <div className='form-log-in-sign-up'>
                 <div className='form-data-carousel'>
                     <div ref={containerForm} className='form-container'>
-                        <form ref={emailSection} className='email-section' onSubmit={handleSubmit}>
+                        <form ref={emailSection} className='email-section' onSubmit={handleEmailSubmit}>
                             <div className='input-label-login'>
                                 <label htmlFor='login'>Enter your email</label>
                                 <input id='login' className='input-login' type="email" required></input>
@@ -103,7 +101,7 @@ const FormSignup = ({setUsername1}) => {
                             </div>
                         </form>
 
-                        <form ref={pwdSection} className='pdw-section' onSubmit={handleSubmit}>
+                        <form ref={pwdSection} className='pdw-section' onSubmit={handlePwdSubmit}>
                             <div className='input-label-login'>
                                 <label htmlFor='login'>Enter your password</label>
                                 <input id='pwd' className='input-login' type="password" minLength="6" required></input>
@@ -113,7 +111,7 @@ const FormSignup = ({setUsername1}) => {
                             </div>
                         </form>
 
-                        <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handlePwdSubmit}>
+                        <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
                             <div className='input-label-login pwd-repeat'>
                                 <label htmlFor='login'>Repeat your password</label>
                                 <input id='pwdRepeat' className='input-login' type="password" required></input>
