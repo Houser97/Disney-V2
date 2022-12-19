@@ -22,6 +22,24 @@ const FormSignup = () => {
     const [username, setUsername] = useState(null);
 
     useEffect(() => {
+        if(email !== null){
+            fetch('/api/check_email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({email})
+            }).then(response => response.json())
+            .then(data => {
+                if(data === null){
+                    translateForms();
+                }
+            })
+        } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [email])
+
+    useEffect(() => {
         if(pwd !== repeatPwd){
             errorMessagePwd.current.style.display = "flex";
         } else if(pwd == repeatPwd && pwd !== null){
@@ -65,8 +83,7 @@ const FormSignup = () => {
         e.preventDefault();
         const email = [...e.target][0].value;
         setEmail(email);
-        translateForms();
-        e.target.style.opacity = 0;
+        //e.target.style.opacity = 0;
     }
 
     const handlePwdSubmit = (e) => {
