@@ -22,6 +22,13 @@ const FormLogIn = ({setUserID, userID}) => {
         setIsMobile(false)
       }
     }, [windowSize])
+
+    useEffect(() => {
+      fetch('/api/login')
+      .then(response => response.json())
+      .then(response => console.log(response))
+    }, [])
+    
     
 /*
     const [userData, setUserData] = useState([]);
