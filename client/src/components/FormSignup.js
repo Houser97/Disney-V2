@@ -32,6 +32,7 @@ const FormSignup = ({setUsername1}) => {
     const [repeatPwd, setRepeatPwd] = useState(null);
     const [username, setUsername] = useState(null);
     const [avatarRef, setAvatarRef] = useState(null)
+    const [currentForm, setCurrentForm] = useState('email')
 
     useEffect(() => {
         if(userData.length === 3){
@@ -58,6 +59,9 @@ const FormSignup = ({setUsername1}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let value = [...e.target][0].value
+        currentForm === 'email' ? setEmail(value) : setPwd(value)
+        setCurrentForm('pwd')
         translateForms();
         e.target.style.opacity = 0;
         const formArray = [...e.target];
