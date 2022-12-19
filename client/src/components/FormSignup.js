@@ -3,7 +3,7 @@ import '../styles/FormSignup.css';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
 
-const FormSignup = ({setUsername1}) => {
+const FormSignup = () => {
     let navigate = useNavigate();
 
     const emailSection = useRef(null);
@@ -15,24 +15,11 @@ const FormSignup = ({setUsername1}) => {
 
     const windowSize = useWindowSize()
 
-    const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
-
-    useEffect(() => {
-      if(windowSize.width <= 470){
-        setIsMobile(true)
-      } else {
-        setIsMobile(false)
-      }
-    }, [windowSize])
-    
-
-    const [userData, setUserData] = useState([]); 
+    const [isMobile, setIsMobile] = useState(windowSize.width <= 470)    
     const [email, setEmail] = useState(null);
     const [pwd, setPwd] = useState(null);
     const [repeatPwd, setRepeatPwd] = useState(null);
     const [username, setUsername] = useState(null);
-    const [avatarRef, setAvatarRef] = useState(null)
-    const [currentForm, setCurrentForm] = useState('email')
 
     useEffect(() => {
         if(pwd !== repeatPwd){
@@ -44,10 +31,7 @@ const FormSignup = ({setUsername1}) => {
     }, [repeatPwd])
 
     useEffect(() => {
-        if(username !== null && pwd !== null && email !== null){
-            console.log(username);
-            console.log(email);
-            console.log(pwd);
+        if(username && pwd && email){
             fetch('/api/signup', {
                 method: 'POST',
                 headers: {
@@ -61,6 +45,13 @@ const FormSignup = ({setUsername1}) => {
         };
     }, [username])
     
+    useEffect(() => {
+        if(windowSize.width <= 470){
+          setIsMobile(true)
+        } else {
+          setIsMobile(false)
+        }
+      }, [windowSize])
 
     const translateForms = () => {
         const TranslateX = isMobile ? 280 : 370;
