@@ -54,8 +54,10 @@ const FormSignup = ({setUsername1}) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({email, pwd, username})
-            }).then(response => console.log('aca'))
-            //navigate("/avatar");
+            }).then(response => response.json())
+            .then(response => {
+                if( response === 'Success') {navigate("/avatar")};
+            })
         };
     }, [username])
     
