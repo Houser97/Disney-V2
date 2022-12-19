@@ -27,6 +27,11 @@ const FormSignup = ({setUsername1}) => {
     
 
     const [userData, setUserData] = useState([]); 
+    const [email, setEmail] = useState(null);
+    const [pwd, setPwd] = useState(null);
+    const [repeatPwd, setRepeatPwd] = useState(null);
+    const [username, setUsername] = useState(null);
+    const [avatarRef, setAvatarRef] = useState(null)
 
     useEffect(() => {
         if(userData.length === 3){
