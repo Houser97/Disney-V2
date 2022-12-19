@@ -4,13 +4,13 @@ const bcryptjs = require('bcryptjs');
 
 exports.create_user = [
     // Revisar que usuario no exista en base de datos.
-    (req, res, next) => {
+    /*(req, res, next) => {
         User.findOne({email: req.body.email}, (err, user) => {
             if(err) return next(err);
             if(user) return res.json('User exists');
         })
         next();
-    },
+    },*/
 
     body('email', 'Email must be a valid address').isEmail()
         .trim()
@@ -28,14 +28,10 @@ exports.create_user = [
     
     (req, res, next) => {
         const errors = validationResult(req);
-        const user = {
-            password: req.body.pwd,
-            email: req.body.email
-        }
 
         if(!errors.isEmpty()){
             //Handle errors
-            return res.json({error:errors.array()});
+            return res.json('errors') //res.json({error:errors.array()});
         }
 
         bcryptjs.hash(req.body.pwd, 10, (err, hashedPwd) => {
@@ -43,11 +39,16 @@ exports.create_user = [
             const user = new User({
                 email: req.body.email,
                 password: hashedPwd,
-                username: req.body.username
+                username: req.body.username,
+                avatar: 0,
             }).save(err => {
-                if(err) return next(err);
-                return res.json(user)
+                if(err) return res.json('error save');
+                return res.json('Success')
             })
         })
     }
 ];
+
+exports.login = (req, res, next) => {
+    return res.json('Houser')
+}
