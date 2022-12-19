@@ -37,11 +37,28 @@ const FormSignup = ({setUsername1}) => {
     useEffect(() => {
         if(pwd !== repeatPwd){
             errorMessagePwd.current.style.display = "flex";
-        } else {
+        } else if(pwd == repeatPwd && pwd !== null){
             translateForms();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [repeatPwd])
+
+    useEffect(() => {
+        if(username !== null && pwd !== null && email !== null){
+            console.log(username);
+            console.log(email);
+            console.log(pwd);
+            fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({email, pwd, username})
+            }).then(response => console.log('aca'))
+            //navigate("/avatar");
+        };
+    }, [username])
+    
 
     const translateForms = () => {
         const TranslateX = isMobile ? 280 : 370;
@@ -77,14 +94,6 @@ const FormSignup = ({setUsername1}) => {
         e.preventDefault();
         const username = [...e.target][0].value
         setUsername(username)
-        fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({email, pwd, username, avatarRef})
-        })
-        navigate("/avatar");
     }
 
     return(
