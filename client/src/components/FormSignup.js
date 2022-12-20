@@ -115,6 +115,9 @@ const FormSignup = () => {
                                 <label htmlFor='login'>Enter your email</label>
                                 <input id='login' className='input-login' type="email" required></input>
                             </div>
+                            <div className='error-email'>
+                                This email has already been used.
+                            </div>
                             <div className='button-login-section'>
                                 <button className='button-login'>CONTINUE</button>
                             </div>
