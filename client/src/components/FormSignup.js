@@ -62,7 +62,10 @@ const FormSignup = () => {
                 body: JSON.stringify({email, pwd, username})
             }).then(response => response.json())
             .then(response => {
-                if( response === 'Success') {navigate("/avatar")};
+                if( typeof(response) === 'object') {
+                    window.sessionStorage.setItem('user', JSON.stringify(response))
+                    navigate("/avatar")
+                };
             })
         };
     }, [username])
