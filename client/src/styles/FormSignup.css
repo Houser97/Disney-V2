@@ -24,6 +24,7 @@
 }
 
 .error-email{
+    opacity: 0;
     position: absolute;
     justify-self: center;
     background-color: rgba(224, 224, 1, 0.857);
