@@ -10,6 +10,7 @@ const FormSignup = () => {
     const pwdSection = useRef(null);
     const pwdSectionRepeat = useRef(null);
     const errorMessagePwd = useRef(null);
+    const emailMessage = useRef(null);
 
     const containerForm = useRef(null);
 
@@ -33,6 +34,9 @@ const FormSignup = () => {
             .then(data => {
                 if(data === null){
                     translateForms();
+                    emailMessage.current.style.opacity = 0;
+                } else {
+                    emailMessage.current.style.opacity = 1;
                 }
             })
         } 
@@ -115,7 +119,7 @@ const FormSignup = () => {
                                 <label htmlFor='login'>Enter your email</label>
                                 <input id='login' className='input-login' type="email" required></input>
                             </div>
-                            <div className='error-email'>
+                            <div ref={emailMessage} className='error-email'>
                                 This email has already been used.
                             </div>
                             <div className='button-login-section'>
