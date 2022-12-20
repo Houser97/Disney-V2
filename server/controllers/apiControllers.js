@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const {body, validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
+const passport = require('passport');
 
 exports.create_user = [
     // Revisar que usuario no exista en base de datos.
@@ -41,9 +42,12 @@ exports.create_user = [
                 password: hashedPwd,
                 username: req.body.username,
                 avatar: 0,
-            }).save(err => {
+            }).save((err, user) => {
                 if(err) return res.json('error save');
-                return res.json('Success')
+                req.login(user, (err) => {
+                    if(err) return res.json('error')
+                    return res.json({username: req.user.username, watchlist: req.user.watchlist, avatar: req.user.avatar})
+                })
             })
         })
     }
@@ -58,6 +62,12 @@ exports.check_email = [
         })
     }
 ]
+
+// Actualizar foto de perfil
+exports.update_avatar = (req, res, next) => {
+    const user = {}
+    User.findByIdAndUpdate(req.params.id)
+}
 
 exports.login = (req, res, next) => {
     return res.json('Houser')
