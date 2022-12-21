@@ -38,13 +38,13 @@ app.set('view engine', 'jade');
 // Funciones PASSPORT
 // Se busca usuario y se verifica que la contraseña coincida. LOG IN
 passport.use(
-  new LocalStrategy((username, password, done) => {
-    User.findOne({username}, (err, user) => {
+  new LocalStrategy({usernameField: 'email'},(email, password, done) => {
+    User.findOne({email}, (err, user) => {
       if(err) return done(err);
       if(!user) return done(null, false, {message:'Incorrect username'});
       bcryptjs.compare(password, user.password, (err, res) => {
         if(res) return done(null, user);
-        return done(null, false, {message: 'Incorrect password'});
+        else return done(null, false, {message: 'Incorrect password'});
       })
     })
   })
