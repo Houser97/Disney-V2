@@ -2,40 +2,9 @@ import '../styles/MovieSerieCard.css';
 /*import { userContext } from '../App';*/
 import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
+import { watchlistContext } from './MoviesSeriesSection';
 
-const MovieSerieCard = ({movie, imageFirestore}) => {
-     /*
-
-    useEffect(() => {
-        if(imageFirestore !== undefined) setShouldPlaceCheckedSVG("yes");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[imageFirestore])
-    
-    /*let userID = useContext(userContext)[0];
-    const setMoviesInWatchList = useContext(userContext)[1];
-    let moviesInWatchList = useContext(userContext)[2];
-    const URL = useContext(userContext)[6];
-    
-    // Colocar palomita si imagen se encuentra ya en la lista por ver //
-    useEffect(() => {
-       
-            let moviesReference = [];
-            let moviesInWatchListHelper = [...moviesInWatchList];
-            // /Disney-website/ contiene 16 caracteres
-            // http:// contiene 7 caracteres, pero no hace falta contemplarlo.
-            const lengthToCutURL = URL.length -16;
-            moviesInWatchListHelper.forEach(link => {
-                
-                moviesReference.push(link.slice(lengthToCutURL))}
-            )
-            if(moviesReference.indexOf(image) >= 0){
-                setShouldPlaceCheckedSVG("yes");
-            }
-            //console.log(moviesReference)
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [shouldPlaceCheckedSVG, moviesInWatchList])
-    */
+const MovieSerieCard = ({movie}) => {
 
     const isUserLogged = useContext(userContext)[0]
     const [isInWatchList, setIsInWatchList] = useState(false);
