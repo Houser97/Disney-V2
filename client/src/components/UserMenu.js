@@ -9,11 +9,10 @@ const UserMenu = ({user}) => {
   const [username, setUsername] = useState(null)
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem('user'));
+    /*const user = JSON.parse(sessionStorage.getItem('user'));*/
     const avatarImage = AvatarImages.filter(avatarObject => avatarObject.ref === user.avatar)
     setAvatar(avatarImage[0].image);
     setUsername(user.username)
-    console.log(avatarImage)
   }, [user])
   
   return (
