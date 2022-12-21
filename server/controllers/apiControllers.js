@@ -65,8 +65,22 @@ exports.check_email = [
 
 // Actualizar foto de perfil
 exports.update_avatar = (req, res, next) => {
-    const user = {}
-    User.findByIdAndUpdate(req.params.id)
+    if(req.user){
+        const user = new User({
+            username: req.user.username,
+            password: req.user.password,
+            email: req.user.email,
+            watchlist: req.user.watchlist,
+            avatar: req.body.avatar,
+            _id: req.user._id
+        });
+        User.findByIdAndUpdate(req.user._id, user, {new: true}, (err, user) => {
+            if(err) return res.json('error avatar update');
+            return res.json({username: user.username, watchlist: user.watchlist, avatar: user.avatar})
+        })
+    } else {
+        return res.json('Not Logged In')
+    }
 }
 
 exports.login = (req, res, next) => {
