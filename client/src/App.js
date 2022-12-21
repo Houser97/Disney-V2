@@ -14,12 +14,19 @@ import { createContext, useEffect, useState } from 'react';
 
 export const userContext = createContext()
 
-const [isUserLogged, setIsUserLogged] = useState(null)
-
 function App() {
+
+  const [isUserLogged, setIsUserLogged] = useState(null)
+
+  useEffect(() => {
+    fetch('/api/check_if_user_is_logged')
+    .then(response => response.json())
+    .then(data => setIsUserLogged(data))
+  }, [])
+
   return (
     <BrowserRouter basename='/'>
-      <userContext.Provider value={valueProvider}>
+      <userContext.Provider /*value={valueProvider}*/>
         <div className="App">
           <div className='full-height'>
             <Header userID = {false}/>
