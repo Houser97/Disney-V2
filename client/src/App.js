@@ -24,9 +24,11 @@ function App() {
     .then(data => setIsUserLogged(data))
   }, [])
 
+  const valueProvider = [isUserLogged, setIsUserLogged]
+
   return (
     <BrowserRouter basename='/'>
-      <userContext.Provider /*value={valueProvider}*/>
+      <userContext.Provider value={valueProvider}>
         <div className="App">
           <div className='full-height'>
             <Header userID = {false}/>
