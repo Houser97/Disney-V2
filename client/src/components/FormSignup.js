@@ -64,6 +64,10 @@ const FormSignup = () => {
             .then(response => {
                 if( typeof(response) === 'object') {
                     window.sessionStorage.setItem('user', JSON.stringify(response))
+                    setEmail(null);
+                    setPwd(null);
+                    setRepeatPwd(null);
+                    setUsername(null);
                     navigate("/avatar")
                 };
             })
