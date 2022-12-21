@@ -14,6 +14,12 @@ const UserMenu = ({user}) => {
     setAvatar(avatarImage[0].image);
     setUsername(user.username)
   }, [user])
+
+  const logout = () => {
+    fetch('/api/logout')
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
   
   return (
     <div className='profile-user'>
@@ -22,7 +28,7 @@ const UserMenu = ({user}) => {
         </div>
         <div className='signOut-user'>
             <div className='username-header'>{username}</div>
-            <div className='button-log-out'>
+            <div className='button-log-out' onClick={logout}>
                 Log Out
             </div>
         </div>
