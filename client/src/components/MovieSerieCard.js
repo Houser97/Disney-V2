@@ -2,19 +2,31 @@ import '../styles/MovieSerieCard.css';
 /*import { userContext } from '../App';*/
 import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
-import { watchlistContext } from './MoviesSeriesSection';
 
 const MovieSerieCard = ({movie}) => {
 
     const isUserLogged = useContext(userContext)[0]
     const [isInWatchList, setIsInWatchList] = useState(false);
 
+    const watchlist = useContext(userContext)[2]
+    const setWatchlist = useContext(userContext)[3]
+
+    useEffect(() => {
+        if(watchlist.length > 0){      
+            const isMovieInWatchlist = watchlist.includes(movie.ref)
+            isMovieInWatchlist ? setIsInWatchList(true):setIsInWatchList(false)
+        }
+    }, [watchlist])
+    
+    
     const handleWatchList = () => {
         /*const imageMovie = e.target.parentNode.childNodes[1].src;*/
         if(isInWatchList) {
             setIsInWatchList(false);
+            setWatchlist(()=> watchlist.filter(watchlist => movie.ref !== watchlist))
         } else {
             setIsInWatchList(true)
+            setWatchlist(oldArray => [...oldArray, movie.ref])
         }
     }
 
