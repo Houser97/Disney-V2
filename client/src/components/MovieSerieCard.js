@@ -10,22 +10,6 @@ const MovieSerieCard = ({movie, imageFirestore}) => {
         if(imageFirestore !== undefined) setShouldPlaceCheckedSVG("yes");
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[imageFirestore])
-
-    const toggleSVG = (e) => {
-        const imageMovie = e.target.parentNode.childNodes[1].src;
-        if(shouldPlaceCheckedSVG === "no") {
-            setShouldPlaceCheckedSVG("yes");
-            if(!moviesInWatchList.includes(imageMovie)){
-                setMoviesInWatchList(oldArray => [...oldArray, imageMovie]);
-            }
-        }
-        else {
-            setShouldPlaceCheckedSVG("no");
-            const indexMovieToRemove = moviesInWatchList.indexOf(imageMovie);
-            setMoviesInWatchList([...moviesInWatchList.slice(0, indexMovieToRemove),
-                                  ...moviesInWatchList.slice(indexMovieToRemove+1)]);
-        };
-    }
     
     /*let userID = useContext(userContext)[0];
     const setMoviesInWatchList = useContext(userContext)[1];
@@ -54,7 +38,16 @@ const MovieSerieCard = ({movie, imageFirestore}) => {
     */
 
     const isUserLogged = useContext(userContext)[0]
-    const [shouldPlaceCheckedSVG, setShouldPlaceCheckedSVG] = useState("no");
+    const [isInWatchList, setIsInWatchList] = useState(false);
+
+    const handleWatchList = () => {
+        /*const imageMovie = e.target.parentNode.childNodes[1].src;*/
+        if(isInWatchList) {
+            setIsInWatchList(false);
+        } else {
+            setIsInWatchList(true)
+        }
+    }
 
     return(
         <div className='movie-card' id='movie-card'>
@@ -62,9 +55,9 @@ const MovieSerieCard = ({movie, imageFirestore}) => {
             <img src= {movie.image} alt = "Daredevil" className='image-movie-card'></img>
             {
                 isUserLogged ? (
-                    <div className='add-icon-movieCard' /*onClick={toggleSVG}*/>
+                    <div className='add-icon-movieCard' onClick={handleWatchList}>
                         {
-                            shouldPlaceCheckedSVG === "no" ? (
+                            !isInWatchList ? (
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 120 120">
                                 <g fill="none" fillRule="evenodd" opacity=".2">
                                     <circle cx="60" cy="60" r="57.5" stroke="#FFF" strokeWidth="5"/>
