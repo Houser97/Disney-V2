@@ -1,14 +1,14 @@
 import '../styles/AvatarCard.css';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-/*import { userContext } from '../App';*/
+import { userContext } from '../App';
 
 const AvatarCard = ({avatar}) => {
     const navigate = useNavigate()
+    const setIsUserLogged = useContext(userContext)[1]
 
     const UpdateAvatar = (e) => {
         /*console.log(e.target.childNodes[0].src);*/
-        const src = e.target.childNodes[0].src
         fetch('/api/update_avatar', {
             method: 'POST',
             headers: {
@@ -19,6 +19,7 @@ const AvatarCard = ({avatar}) => {
         .then(response => response.json())
         .then(data => {
             window.sessionStorage.setItem('user', JSON.stringify(data))
+            setIsUserLogged(data)
             navigate("/")  
         })
     }
