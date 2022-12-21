@@ -22,7 +22,7 @@ const Carousel = () => {
                 {carouselImages.map(
                     function iterateMovies(image, iterator){
                         return(
-                            <SliderCreated key={iterator} image={image}/>
+                            <SliderCreated key={`Slider-${iterator}`} image={image}/>
                         )
                     }
                 )}

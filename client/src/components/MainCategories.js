@@ -36,7 +36,7 @@ const MainCategories = () => {
             {
                 VideosImages.map(function iterateImageVideos(item, iterator){
                     return(
-                        <ImageVideo key={iterator} imageAndVideo = {item} videoElement = {videoElement} iterator = {iterator} />
+                        <ImageVideo key={`ImageVide-${iterator}`} imageAndVideo = {item} videoElement = {videoElement} iterator = {iterator} />
                     )
                 })
             }

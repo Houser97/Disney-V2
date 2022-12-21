@@ -39,7 +39,7 @@ const MovieSeriesCarousel = ({movies, title}) => {
                 {
                     movies.map(function iterateMovies(movie, i){
                         return(
-                            <MovieSerieCard key={`${i}-movie-carousel-section`} movie = {movie} />
+                            <MovieSerieCard key={`movieSeries-carousel-section-${i}`} movie = {movie} />
                         )
                     })
                 }

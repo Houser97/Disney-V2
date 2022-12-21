@@ -77,7 +77,7 @@ const Search = () => {
                 {
                     filteredMovies.map(function iterateMovies(movie, iterator){
                         return(
-                            <MovieSerieCard key={iterator} movie={movie}/>
+                            <MovieSerieCard key={`search-${iterator}`} movie={movie}/>
                         )
                     })
                 }

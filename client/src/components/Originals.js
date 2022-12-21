@@ -4,7 +4,7 @@ import MovieSerieCard from './MovieSerieCard'
 import { movies } from '../assets/constants';
 
 const Originals = ({}) => {
-    const [originals, setOriginals] = useState(movies)
+    const originals = movies.filter(movie => movie.isOriginal === true);
     const originalsContainer = useRef(null);
 
     const changeTitle = () => {
@@ -16,11 +16,7 @@ const Originals = ({}) => {
     }
 
     useEffect(()=>{
-        const originalsArray = originals.filter(movie => movie.isOriginal === true);
-        setOriginals(originalsArray);
-
         window.addEventListener("scroll", changeTitle)
-
 
         return () => {
             window.removeEventListener("scroll", changeTitle);
@@ -42,7 +38,7 @@ const Originals = ({}) => {
                 {
                     originals.map(function iterateMovies(movie, iterator){
                         return(
-                            <MovieSerieCard key={`${iterator}-original`} movie={movie} />
+                            <MovieSerieCard key={`original-movie-card-${iterator}`} movie={movie} />
                         )
                     })
                 }

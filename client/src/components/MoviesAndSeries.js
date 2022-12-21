@@ -63,7 +63,7 @@ const MoviesAndSeries = ({titleSection}) => {
             <div className='section-cards'>
                 {moviesOrSeries.map(function iterateMovies(movie, iterator){
                     return(
-                        <MovieSerieCard key={`${iterator}-movie-serie-react`} movie={movie} />
+                        <MovieSerieCard key={`movieANDserie-react-${iterator}`} movie={movie} />
                     )
                 })}
             </div>
