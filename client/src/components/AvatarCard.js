@@ -6,7 +6,6 @@ import { useContext } from 'react';
 const AvatarCard = ({avatar}) => {
     const navigate = useNavigate()
 
-
     const UpdateAvatar = (e) => {
         /*console.log(e.target.childNodes[0].src);*/
         const src = e.target.childNodes[0].src
@@ -20,9 +19,8 @@ const AvatarCard = ({avatar}) => {
         .then(response => response.json())
         .then(data => {
             window.sessionStorage.setItem('user', JSON.stringify(data))
-            console.log(JSON.parse(window.sessionStorage.getItem('user')))
+            navigate("/")  
         })
-        /*navigate("/")*/
     }
 
     return(
