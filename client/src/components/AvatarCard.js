@@ -8,10 +8,21 @@ const AvatarCard = ({avatar}) => {
 
 
     const UpdateAvatar = (e) => {
-        /*console.log(e.target.childNodes[0].src);
-        setUserPicture(e.target.childNodes[0].src);
-        setShouldRegisterNewUser("yes");*/
-        navigate("/")
+        /*console.log(e.target.childNodes[0].src);*/
+        const src = e.target.childNodes[0].src
+        fetch('/api/update_avatar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({avatar: avatar.ref})
+        })
+        .then(response => response.json())
+        .then(data => {
+            window.sessionStorage.setItem('user', JSON.stringify(data))
+            console.log(JSON.parse(window.sessionStorage.getItem('user')))
+        })
+        /*navigate("/")*/
     }
 
     return(
