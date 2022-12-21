@@ -2,7 +2,7 @@ import '../styles/Header.css';
 import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-/*import { userContext } from '../App';*/
+import { userContext } from '../App';
 import useWindowSize from '../assets/hooks/windowSize.js';
 import UserMenu from './UserMenu';
 
@@ -20,6 +20,8 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
 
     const RoutesGrayBG = ['/series','/movies','/originals']
     const RoutesFlexNone = ['/login','/signup','/avatar']
+
+    const isUserLogged = useContext(userContext)[0]
     /*const setMoviesInWatchList = useContext(userContext)[1];
     const setUserPictureHeader = useContext(userContext)[4];
     const setUsernameHeader = useContext(userContext)[5];*/
@@ -131,8 +133,8 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
                     </Link>
                 </div>
                 
-                {(userID) ? (
-                    <UserMenu />
+                {(isUserLogged) ? (
+                    <UserMenu user = {isUserLogged}/>
                 ) : (
                     <Link className='link log-in-container' to = "/login">
                         <div className='log-in-button-header'>
