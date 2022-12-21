@@ -18,6 +18,7 @@ function App() {
 
   const [isUserLogged, setIsUserLogged] = useState(null)
   const [watchlist, setWatchlist] = useState(isUserLogged ? isUserLogged.watchlist:[])
+  const [updateWatchlist, setUpdateWatchlist] = useState(false)
 
   const arraysMatch = (arr1, arr2) => {
     if(arr1.length !== arr2.length) return false
@@ -48,7 +49,7 @@ function App() {
   useEffect(() => {
     //console.log(watchlist)
     const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
-    if(!arraysMatch(currentWatchlist, watchlist)){    
+    if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist){    
         fetch('/api/update_watchlist', {
         method: 'POST',
         headers: {
@@ -60,7 +61,7 @@ function App() {
     }
   }, [watchlist])
 
-  const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist]
+  const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist]
 
   return (
     <BrowserRouter basename='/'>

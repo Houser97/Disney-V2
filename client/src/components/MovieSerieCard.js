@@ -10,6 +10,7 @@ const MovieSerieCard = ({movie}) => {
 
     const watchlist = useContext(userContext)[2]
     const setWatchlist = useContext(userContext)[3]
+    const setUpdateWatchlist = useContext(userContext)[4]
 
     useEffect(() => {
         if(watchlist.length > 0){      
@@ -21,6 +22,7 @@ const MovieSerieCard = ({movie}) => {
     
     const handleWatchList = () => {
         /*const imageMovie = e.target.parentNode.childNodes[1].src;*/
+        setUpdateWatchlist(true)
         if(isInWatchList) {
             setIsInWatchList(false);
             setWatchlist(()=> watchlist.filter(watchlist => movie.ref !== watchlist))
