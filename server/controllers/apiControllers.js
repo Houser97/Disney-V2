@@ -46,7 +46,7 @@ exports.create_user = [
                 if(err) return res.json('error save');
                 req.login(user, (err) => {
                     if(err) return res.json('error')
-                    return res.json({username: req.user.username, watchlist: req.user.watchlist, avatar: req.user.avatar})
+                    return res.json({username: req.user.username, watchlist: req.user.watchlist, avatar: req.user.avatar,id: req.user._id})
                 })
             })
         })
@@ -76,13 +76,41 @@ exports.update_avatar = (req, res, next) => {
         });
         User.findByIdAndUpdate(req.user._id, user, {new: true}, (err, user) => {
             if(err) return res.json('error avatar update');
-            return res.json({username: user.username, watchlist: user.watchlist, avatar: user.avatar})
+            return res.json({username: user.username, watchlist: user.watchlist, avatar: user.avatar,id: req.user._id})
         })
     } else {
         return res.json('Not Logged In')
     }
 }
 
-exports.login = (req, res, next) => {
-    return res.json('Houser')
+exports.login = [
+    body('email', 'Email must be a valid address').isEmail()
+    .trim()
+    .escape()
+    .normalizeEmail(),
+    body('password', 'Password must not be empty')
+    .isLength({min:8}).withMessage('Password must contain at least 8 characters')
+    .matches('[0-9]').withMessage('Password must contain at least 1 number')
+    .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter')
+    .trim()
+    .escape(),
+    passport.authenticate('local')
+]
+
+exports.logout = (req, res, next) => {
+    req.logout((err) => {
+        if(err) return res.json('error logout');
+        return res.json(true)
+    })
 }
+
+// Revisar si hay usuario con sesión
+exports.check_if_user_is_logged = (req, res, next) => {
+    if(req.user){
+        return res.json({username: req.user.username,
+                        watchlist: req.user.watchlist,
+                        avatar: req.user.avatar,
+                        id: req.user._id})
+    }
+    return res.json(false)
+};
