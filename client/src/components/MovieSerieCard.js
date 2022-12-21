@@ -1,10 +1,10 @@
 import '../styles/MovieSerieCard.css';
 /*import { userContext } from '../App';*/
 import { useContext, useEffect, useState } from 'react';
+import { userContext } from '../App';
 
 const MovieSerieCard = ({movie, imageFirestore}) => {
      /*
-    const [shouldPlaceCheckedSVG, setShouldPlaceCheckedSVG] = useState("no");
 
     useEffect(() => {
         if(imageFirestore !== undefined) setShouldPlaceCheckedSVG("yes");
@@ -53,20 +53,16 @@ const MovieSerieCard = ({movie, imageFirestore}) => {
     }, [shouldPlaceCheckedSVG, moviesInWatchList])
     */
 
-    let image;
+    const isUserLogged = useContext(userContext)[0]
+    const [shouldPlaceCheckedSVG, setShouldPlaceCheckedSVG] = useState("no");
 
-    if(imageFirestore !== undefined){
-        image = imageFirestore;
-    } else {
-        image = movie.image;
-    }
     return(
         <div className='movie-card' id='movie-card'>
             <div className='effect-border'></div>
-            <img src= {image} alt = "Daredevil" className='image-movie-card'></img>
-            {/*
-                userID !== null ? (
-                    <div className='add-icon-movieCard' onClick={toggleSVG}>
+            <img src= {movie.image} alt = "Daredevil" className='image-movie-card'></img>
+            {
+                isUserLogged ? (
+                    <div className='add-icon-movieCard' /*onClick={toggleSVG}*/>
                         {
                             shouldPlaceCheckedSVG === "no" ? (
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 120 120">
@@ -85,7 +81,7 @@ const MovieSerieCard = ({movie, imageFirestore}) => {
                         nothing
                     </div>
                 )
-                */}
+            }
         </div>
     )
 }
