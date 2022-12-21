@@ -1,17 +1,23 @@
 import '../styles/Watchlist.css';
 import MovieSerieCard from './MovieSerieCard';
+import { userContext } from '../App';
+import { useContext } from 'react';
+import { movies } from '../assets/constants';
 
-const Watchlist = ({userID}) => {
+const Watchlist = () => {
+
+    const isUser = useContext(userContext)[0];
+    const watchlist = useContext(userContext)[2];
+    const moviesInWatchlist = movies.filter(movie => watchlist.includes(movie.ref))
 
     return(
         <div className='watchlist-section'>
-            {userID === null ? (
+            {!isUser ? (
                 <div className='watchlist-userID-null'>
                     <h3>Log In to start adding movies to the watchlist</h3>
                 </div>
-            ):( <div>Nothing</div>/*
-                
-                    (moviesInWatchList.length === 0) ? (
+            ):(  
+                    (watchlist.length === 0) ? (
                         <div className='watchlist-userID-noNull'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
                                 <g fill="none" fillRule="evenodd" opacity=".2">
@@ -27,9 +33,9 @@ const Watchlist = ({userID}) => {
                             <h1 className='watchlist-title' > Watchlist</h1>
                             <div className='section-cards'>
                                 {
-                                    moviesInWatchList.map(function watchlist(movie, i){
+                                    moviesInWatchlist.map(function watchlist(movie, i){
                                         return(
-                                            <MovieCard  key={`${i}-watchlist-movie-serie`} movie={movie} imageFirestore={movie}/>
+                                            <MovieSerieCard  key={`watchlist-movie-serie${i}`} movie={movie}/>
                                         )
                                     })
                                 }
@@ -37,7 +43,7 @@ const Watchlist = ({userID}) => {
                         </div>
                     )
                 
-            */)}
+            )}
         </div>
     )
 }
