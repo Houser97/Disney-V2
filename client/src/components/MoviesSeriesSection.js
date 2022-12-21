@@ -1,9 +1,10 @@
 import '../styles/MoviesSeriesSection.css'
 import { AnimatedMovies, AnimatedSeries, Recommended, MarvelMovies } from '../assets/constants'
 import MovieSeriesCarousel from './MovieSeriesCarousel'
-import { useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { userContext } from '../App'
 
+export const watchlistContext = createContext()
 
 const MoviesSeriesSection = () => {
     const titleRecommendedSection = "Recommended for you"
@@ -21,14 +22,16 @@ const MoviesSeriesSection = () => {
       }
     }, [isUser])
     
-
+    const valueProvider = [watchlist, setWatchlist]
 
     return(
         <div className='movies-series-section'>
-            <MovieSeriesCarousel key={"movie-carousel-1"} movies={Recommended} title = {titleRecommendedSection} />
-            <MovieSeriesCarousel key={"movie-carousel-2"} movies={MarvelMovies} title = {titleMarvelSection} />
-            <MovieSeriesCarousel key={"movie-carousel-3"} movies={AnimatedMovies} title = {titleAnimatedMoviesSection} />
-            <MovieSeriesCarousel key={"movie-carousel-4"} movies={AnimatedSeries} title = {titleAnimatedSeriesSection} />
+            <watchlistContext.Provider value={valueProvider}>
+                <MovieSeriesCarousel key={"movie-carousel-1"} movies={Recommended} title = {titleRecommendedSection} />
+                <MovieSeriesCarousel key={"movie-carousel-2"} movies={MarvelMovies} title = {titleMarvelSection} />
+                <MovieSeriesCarousel key={"movie-carousel-3"} movies={AnimatedMovies} title = {titleAnimatedMoviesSection} />
+                <MovieSeriesCarousel key={"movie-carousel-4"} movies={AnimatedSeries} title = {titleAnimatedSeriesSection} />
+            </watchlistContext.Provider>
         </div>
     )
 }
