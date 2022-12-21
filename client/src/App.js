@@ -18,6 +18,8 @@ function App() {
 
   const [isUserLogged, setIsUserLogged] = useState(null)
 
+  const [watchlist, setWatchlist] = useState([])
+
   useEffect(() => {
     fetch('/api/check_if_user_is_logged')
     .then(response => response.json())
@@ -27,7 +29,15 @@ function App() {
     })
   }, [])
 
-  const valueProvider = [isUserLogged, setIsUserLogged]
+  useEffect(() => {
+    if(isUserLogged){
+      setWatchlist(isUserLogged.watchlist)
+    } else {
+      setWatchlist([])
+    }
+  }, [isUserLogged])
+
+  const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist]
 
   return (
     <BrowserRouter basename='/'>
