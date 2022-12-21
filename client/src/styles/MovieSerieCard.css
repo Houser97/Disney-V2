@@ -44,19 +44,24 @@
 
 #movie-card:hover .add-icon-movieCard{
     opacity: 1;
-    bottom: 20px;
+    transform: translateY(-30px)
+}
+
+.add-icon-movieCard svg{
+    color: blue;
+    fill: green;
 }
 
 .add-icon-movieCard:hover svg{
-    background-color: #f9f9f9;
-    color: black;
+    opacity: 1;
 }
 
+/*
 .add-icon-movieCard:hover path{
     fill: black;
     opacity: 1;
 }
-
+*/
 .add-icon-movieCard:hover g{
     opacity: 1;
 }
