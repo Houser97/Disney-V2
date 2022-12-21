@@ -37,6 +37,19 @@ function App() {
     }
   }, [isUserLogged])
 
+  useEffect(() => {
+    //console.log(watchlist)
+    const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
+    fetch('/api/update_watchlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({watchlist})
+    }).then(response => response.json())
+    .then(data => console.log(data))
+  }, [watchlist])
+
   const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist]
 
   return (
