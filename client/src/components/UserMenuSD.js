@@ -15,6 +15,16 @@ const UserMenuSD = ({user}) => {
     setUsername(user.username)
   }, [user])
 
+  const logout = () => {
+    fetch('/api/logout')
+    .then(response => response.json())
+    .then(data => {
+      if(data){
+        window.location.reload(true)
+      }
+    })
+  }
+
   return (
     <div className='profile-user-SD'>
         <div className='profile-picture-header'>
@@ -22,7 +32,7 @@ const UserMenuSD = ({user}) => {
         </div>
         <div className='signOut-user-SD'>
             <div className='username-header'>{username}</div>
-            <div className='button-log-out'>
+            <div className='button-log-out' onClick={logout}>
                 Log Out
             </div>
         </div>
