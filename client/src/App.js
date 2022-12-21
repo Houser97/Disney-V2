@@ -49,7 +49,8 @@ function App() {
   useEffect(() => {
     //console.log(watchlist)
     if(isUserLogged){
-      const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
+      let currentWatchlist = JSON.parse(sessionStorage.getItem('user'))
+      currentWatchlist = !currentWatchlist ? [] : currentWatchlist.watchlist
       if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist ){    
           fetch('/api/update_watchlist', {
           method: 'POST',
@@ -57,8 +58,7 @@ function App() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({watchlist})
-        }).then(response => response.json())
-        .then(data => console.log(data))
+        })
       }
     }
   }, [watchlist])
