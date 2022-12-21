@@ -10,4 +10,6 @@ router.get('/login', apiController.login);
 
 router.post('/check_email', apiController.check_email);
 
+router.post('/update_avatar', apiController.update_avatar);
+
 module.exports = router
