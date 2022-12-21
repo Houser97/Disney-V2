@@ -19,14 +19,15 @@ const HeaderSD = ({userID}) => {
     const isUserLogged = useContext(userContext)[0]
 
     useEffect(() =>{
-        if(RoutesFlexNone.includes(location.pathname)) {
+        setHeaderDisplay(mainContainer.current.style.display)
+        if(RoutesFlexNone.includes(location.pathname) || !isMobile) {
             mainContainer.current.style.display = 'none'
             setHeaderDisplay('none')
-        } else if(headerDisplay !== 'flex' && isMobile){
+        } else if(isMobile){
             mainContainer.current.style.display = 'flex'
             setHeaderDisplay('flex')
         }
-    }, [location.pathname])
+    }, [location.pathname, isMobile])
 
     useEffect(() => {
         if(windowSize.width <= 520){
