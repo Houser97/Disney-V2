@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/FormLogin.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
+import { userContext } from '../App';
 
 const FormLogIn = ({setUserID, userID}) => {
 
@@ -17,6 +18,8 @@ const FormLogIn = ({setUserID, userID}) => {
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
+
+    const setIsUserLogged = useContext(userContext)[1]
 
     useEffect(() => {
       if(windowSize.width <= 470){
@@ -37,9 +40,10 @@ const FormLogIn = ({setUserID, userID}) => {
             })
             .then(response => response.json())
             .then(response => {
-                console.log(response)
-                setEmail(null)
-                setPassword(null)
+                setEmail(null);
+                setPassword(null);
+                setIsUserLogged(response)
+                navigate('/')
             })
         }
     }, [password])
@@ -65,13 +69,11 @@ const FormLogIn = ({setUserID, userID}) => {
         e.target.style.opacity = 0;
         const email = [...e.target][0].value
         setEmail(email)
-        console.log(email)
     }
 
     const handleLastSubmit = (e) => {
         e.preventDefault();
         const pwd = [...e.target][0].value;
-        console.log(pwd)
         setPassword(pwd);
     }
 
