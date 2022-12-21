@@ -18,7 +18,11 @@ const UserMenu = ({user}) => {
   const logout = () => {
     fetch('/api/logout')
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      if(data){
+        window.location.reload(true)
+      }
+    })
   }
   
   return (
