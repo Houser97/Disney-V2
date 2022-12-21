@@ -67,14 +67,12 @@ const FormLogIn = ({setUserID, userID}) => {
         const TranslateX = isMobile ? 280 : 370;
         containerForm.current.style.transform = `translateX(-${TranslateX}px)`
         e.target.style.opacity = 0;
-        const email = [...e.target][0].value
-        setEmail(email)
+        setEmail([...e.target][0].value)
     }
 
     const handleLastSubmit = (e) => {
         e.preventDefault();
-        const pwd = [...e.target][0].value;
-        setPassword(pwd);
+        setPassword([...e.target][0].value);
     }
 
     return (

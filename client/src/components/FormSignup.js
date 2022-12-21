@@ -92,29 +92,25 @@ const FormSignup = () => {
 
     const handleEmailSubmit = (e) => {
         e.preventDefault();
-        const email = [...e.target][0].value;
-        setEmail(email);
+        setEmail([...e.target][0].value);
         //e.target.style.opacity = 0;
     }
 
     const handlePwdSubmit = (e) => {
         e.preventDefault();
-        const pwd = [...e.target][0].value;
-        setPwd(pwd);
+        setPwd([...e.target][0].value);
         translateForms();
         e.target.style.opacity = 0;
     }
 
     const handleRepeatPwdSubmit = (e) => {
         e.preventDefault();
-        const repeatPwd = [...e.target][0].value;
-        setRepeatPwd(repeatPwd)
+        setRepeatPwd([...e.target][0].value)
     }
 
     const handleLastSubmit = (e) => {
         e.preventDefault();
-        const username = [...e.target][0].value
-        setUsername(username)
+        setUsername([...e.target][0].value)
     }
 
     return(
