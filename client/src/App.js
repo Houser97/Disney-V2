@@ -17,8 +17,16 @@ export const userContext = createContext()
 function App() {
 
   const [isUserLogged, setIsUserLogged] = useState(null)
+  const [watchlist, setWatchlist] = useState(isUserLogged ? isUserLogged.watchlist:[])
 
-  const [watchlist, setWatchlist] = useState([])
+  const arraysMatch = (arr1, arr2) => {
+    if(arr1.length !== arr2.length) return false
+    const lengthArr1 = arr1.length
+    for(let i = 0; i < lengthArr1; i++){
+      if(arr1[i] !== arr2[i]) return false
+    } 
+    return true;
+  }
 
   useEffect(() => {
     fetch('/api/check_if_user_is_logged')
@@ -40,14 +48,16 @@ function App() {
   useEffect(() => {
     //console.log(watchlist)
     const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
-    fetch('/api/update_watchlist', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({watchlist})
-    }).then(response => response.json())
-    .then(data => console.log(data))
+    if(!arraysMatch(currentWatchlist, watchlist)){    
+        fetch('/api/update_watchlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({watchlist})
+      }).then(response => response.json())
+      .then(data => console.log(data))
+    }
   }, [watchlist])
 
   const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist]
