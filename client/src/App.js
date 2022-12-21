@@ -48,16 +48,18 @@ function App() {
 
   useEffect(() => {
     //console.log(watchlist)
-    const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
-    if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist){    
-        fetch('/api/update_watchlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({watchlist})
-      }).then(response => response.json())
-      .then(data => console.log(data))
+    if(isUserLogged){
+      const currentWatchlist = JSON.parse(sessionStorage.getItem('user')).watchlist
+      if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist ){    
+          fetch('/api/update_watchlist', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({watchlist})
+        }).then(response => response.json())
+        .then(data => console.log(data))
+      }
     }
   }, [watchlist])
 
