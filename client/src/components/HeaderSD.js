@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/HeaderSD.css'
 import UserMenuSD from './UserMenuSD';
 import useWindowSize from '../assets/hooks/windowSize';
+import { userContext } from '../App';
 
 const HeaderSD = ({userID}) => {
     const windowSize = useWindowSize()
@@ -14,6 +15,8 @@ const HeaderSD = ({userID}) => {
     const [isMobile, setIsMobile] = useState(windowSize.width <= 520);
 
     const RoutesFlexNone = ['/login','/signup','/avatar']
+
+    const isUserLogged = useContext(userContext)[0]
 
     useEffect(() =>{
         if(RoutesFlexNone.includes(location.pathname)) {
@@ -63,8 +66,8 @@ const HeaderSD = ({userID}) => {
                 </div>
             </div>
         </Link>
-        {(userID) ? (
-            <UserMenuSD />    
+        {(isUserLogged) ? (
+            <UserMenuSD user = {isUserLogged}/>    
         ) : (
             <Link className='link log-in-container' to = "/login">
                 <div className='log-in-button-header'>
