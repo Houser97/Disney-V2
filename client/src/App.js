@@ -21,7 +21,10 @@ function App() {
   useEffect(() => {
     fetch('/api/check_if_user_is_logged')
     .then(response => response.json())
-    .then(data => setIsUserLogged(data))
+    .then(data => {
+      sessionStorage.setItem('user', JSON.stringify(data))
+      setIsUserLogged(data)
+    })
   }, [])
 
   const valueProvider = [isUserLogged, setIsUserLogged]
@@ -40,9 +43,9 @@ function App() {
               <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} titleSection = {"Series"} />} ></Route>
               <Route path='/watchlist' element = {<Watchlist userID={null} />} ></Route>
               <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
-              <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"} /*headerRef={header} footerRef = {footer} setUserID ={setUserID} userID = {userID} setUsername1 ={setUsernameHeader}*/ />} ></Route>
-              <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"}  /*setUsername1 ={setUsernameHeader}*/ />} ></Route>
-              <Route path="/avatar" element = {<Avatar /*setUserPicture = {setUserPictureHeader}*/ />} ></Route>           
+              <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"}  />} ></Route>
+              <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"} />} ></Route>
+              <Route path="/avatar" element = {<Avatar />} ></Route>           
             </Routes>
             <Footer />
           </div>
