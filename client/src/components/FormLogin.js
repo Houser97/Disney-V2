@@ -15,6 +15,9 @@ const FormLogIn = ({setUserID, userID}) => {
     const pwdSection = useRef(null);
     const containerForm = useRef(null);
 
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
     useEffect(() => {
       if(windowSize.width <= 470){
         setIsMobile(true)
@@ -24,12 +27,22 @@ const FormLogIn = ({setUserID, userID}) => {
     }, [windowSize])
 
     useEffect(() => {
-      fetch('/api/login')
-      .then(response => response.json())
-      .then(response => console.log(response))
-    }, [])
-    
-    
+        if(password !== null && email !== null){
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email, password})
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response)
+                setEmail(null)
+                setPassword(null)
+            })
+        }
+    }, [password])
 /*
     const [userData, setUserData] = useState([]);
 
@@ -50,21 +63,16 @@ const FormLogIn = ({setUserID, userID}) => {
         const TranslateX = isMobile ? 280 : 370;
         containerForm.current.style.transform = `translateX(-${TranslateX}px)`
         e.target.style.opacity = 0;
-        const formArray = [...e.target];
-        //console.log(formArray)
-        const input = formArray[0].value;
-
-        /*setUserData(oldArray => [...oldArray, input]);*/
+        const email = [...e.target][0].value
+        setEmail(email)
+        console.log(email)
     }
 
     const handleLastSubmit = (e) => {
         e.preventDefault();
-
-        const formArray = [...e.target];
-        const input = formArray[0].value;
-
-        /*setUserData(oldArray => [...oldArray, input]);*/
-
+        const pwd = [...e.target][0].value;
+        console.log(pwd)
+        setPassword(pwd);
     }
 
     return (
