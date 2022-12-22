@@ -4,14 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import OptionDropdownMenu from './OptionDropdownMenu';
 
 const DropdownMenu = ({setFilter}) => {
-
-    const [options] = useState(["ALL MOVIES A-Z",
-                                "ANIMATED",
-                                "KIDS"]);
+    const options = ["ALL MOVIES A-Z", "ANIMATED", "KIDS"];
 
     const optionsRef = useRef([]);
-    const spansEffectRef = useRef([]);
-    const dropdownMenu = useRef(null);
+    const spansEffectRef = useRef([]); 
+    const dropdownMenu = useRef(null); 
+    const resultDropdown = useRef(null);
 
     const clearEffects = () => {
         spansEffectRef.current.forEach(span => span.classList.remove("span-effect-selected"));
@@ -24,31 +22,38 @@ const DropdownMenu = ({setFilter}) => {
         else if(dropdownDisplay === "flex") dropdownMenu.current.style.display = "none";
     }
 
+    const initializeDropdown = (option) => {
+        if(option.textContent === "ALL MOVIES A-Z"){
+            const spanEffect =  option.childNodes[0]
+            spanEffect.classList.add("span-effect-selected");
+            option.classList.add("selected-option-dropdown");
+            resultDropdown.current.textContent = 'ALL MOVIES A-Z'
+        }
+    }
+
+    const setCurrentOption = (e) => {
+        const optionContainer = e.target;
+        const spanEffect = optionContainer.childNodes[0];
+        const text = optionContainer.childNodes[1].textContent;
+
+        spanEffect.classList.add("span-effect-selected");
+        resultDropdown.current.textContent = text;
+
+        optionContainer.classList.add("selected-option-dropdown");
+        //Al seleccionar una opción se esconde el Dropdown.
+        dropdownMenu.current.style.display = "none";
+        setFilter(resultDropdown.current.textContent);
+    }
+
     useEffect(() => {
         optionsRef.current.forEach(option => {
-            /*Se coloca valor por defecto de Dropdown menu al montarse el componente*/
-            if(option.textContent === "ALL MOVIES A-Z"){
-                option.childNodes[0].classList.add("span-effect-selected");
-                option.classList.add("selected-option-dropdown");
-                option.parentNode.parentNode.childNodes[0].childNodes[0].textContent = "ALL MOVIES A-Z";
-            }
-        })
+            initializeDropdown(option);
 
-        optionsRef.current.forEach(option => 
             option.addEventListener("click", (e) => {
                 clearEffects();
-                const spanEffect = e.target.childNodes[0];
-                spanEffect.classList.add("span-effect-selected")
-    
-                e.target.classList.add("selected-option-dropdown") 
-                /* Se obtiene el DIV en donde se muestra el valor del filtro */
-                const resultDiv = e.target.parentNode.parentNode.childNodes[0].childNodes[0];
-                resultDiv.textContent = e.target.childNodes[1].textContent;
-                
-                dropdownMenu.current.style.display = "none";
-
-                setFilter(resultDiv.textContent);
-            }))
+                setCurrentOption(e);
+            })
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -57,7 +62,7 @@ const DropdownMenu = ({setFilter}) => {
         <div className='drop-down-menu-section'>
         <div className='drop-down-menu'>
             <div onClick={toggleDropdown} className='icon-result'>
-                <div className='result-dropmenu'>Here goes result</div>
+                <div ref={resultDropdown} className='result-dropmenu'>Here goes result</div>
                 <div className='icon-arrow'>
                     <svg className='chevron-down' viewBox="0 0 24 24">
                         <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
