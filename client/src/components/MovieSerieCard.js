@@ -3,13 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
 
 const MovieSerieCard = ({movie}) => {
-
-    const isUserLogged = useContext(userContext)[0]
     const [isInWatchList, setIsInWatchList] = useState(false);
 
-    const watchlist = useContext(userContext)[2]
-    const setWatchlist = useContext(userContext)[3]
-    const setUpdateWatchlist = useContext(userContext)[4]
+    const isUserLogged = useContext(userContext).isUserLogged;
+    const watchlist = useContext(userContext).watchlist;
+    const setWatchlist = useContext(userContext).setWatchlist;
+    const setUpdateWatchlist = useContext(userContext).setUpdateWatchlist;
 
     useEffect(() => {
         if(watchlist.length > 0){      

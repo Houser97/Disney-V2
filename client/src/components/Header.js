@@ -19,7 +19,7 @@ const Header = () => {
     const RoutesGrayBG = ['/series','/movies','/originals']
     const RoutesFlexNone = ['/login','/signup','/avatar']
 
-    const isUserLogged = useContext(userContext)[0]
+    const isUserLogged = useContext(userContext).isUserLogged
 
     useEffect(() => {
         setHeaderDisplay(mainContainer.current.style.display)

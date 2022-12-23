@@ -6,8 +6,8 @@ import { movies } from '../assets/constants';
 
 const Watchlist = () => {
 
-    const isUser = useContext(userContext)[0];
-    const watchlist = useContext(userContext)[2];
+    const isUser = useContext(userContext).isUserLogged;
+    const watchlist = useContext(userContext).watchlist;
     const moviesInWatchlist = movies.filter(movie => watchlist.includes(movie.ref))
 
     return(

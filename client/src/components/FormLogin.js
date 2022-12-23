@@ -17,7 +17,7 @@ const FormLogIn = () => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const setIsUserLogged = useContext(userContext)[1]
+    const setIsUserLogged = useContext(userContext).setIsUserLogged;
 
     useEffect(() => {
       if(windowSize.width <= 470){

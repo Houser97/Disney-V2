@@ -15,7 +15,7 @@ const HeaderSD = () => {
 
     const RoutesFlexNone = ['/login','/signup','/avatar']
 
-    const isUserLogged = useContext(userContext)[0]
+    const isUserLogged = useContext(userContext).isUserLogged;
 
     useEffect(() =>{
         if(RoutesFlexNone.includes(location.pathname) || !isMobile) {

@@ -5,7 +5,7 @@ import { userContext } from '../App';
 
 const AvatarCard = ({avatar}) => {
     const navigate = useNavigate()
-    const setIsUserLogged = useContext(userContext)[1]
+    const setIsUserLogged = useContext(userContext).setIsUserLogged;
 
     const UpdateAvatar = (e) => {
         /*console.log(e.target.childNodes[0].src);*/
