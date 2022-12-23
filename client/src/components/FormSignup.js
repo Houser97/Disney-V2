@@ -6,9 +6,6 @@ import useWindowSize from '../assets/hooks/windowSize.js';
 const FormSignup = () => {
     let navigate = useNavigate();
 
-    const emailSection = useRef(null);
-    const pwdSection = useRef(null);
-    const pwdSectionRepeat = useRef(null);
     const errorMessagePwd = useRef(null);
     const emailMessage = useRef(null);
 
@@ -117,7 +114,7 @@ const FormSignup = () => {
         <div className='form-log-in-sign-up'>
                 <div className='form-data-carousel'>
                     <div ref={containerForm} className='form-container'>
-                        <form ref={emailSection} className='email-section' onSubmit={handleEmailSubmit}>
+                        <form className='email-section' onSubmit={handleEmailSubmit}>
                             <div className='input-label-login'>
                                 <label htmlFor='login'>Enter your email</label>
                                 <input id='login' className='input-login' type="email" required></input>
@@ -130,7 +127,7 @@ const FormSignup = () => {
                             </div>
                         </form>
 
-                        <form ref={pwdSection} className='pdw-section' onSubmit={handlePwdSubmit}>
+                        <form className='pdw-section' onSubmit={handlePwdSubmit}>
                             <div className='input-label-login'>
                                 <label htmlFor='login'>Enter your password</label>
                                 <input id='pwd' className='input-login' type="password" minLength="6" required></input>
@@ -140,7 +137,7 @@ const FormSignup = () => {
                             </div>
                         </form>
 
-                        <form ref={pwdSectionRepeat} className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
+                        <form className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
                             <div className='input-label-login pwd-repeat'>
                                 <label htmlFor='login'>Repeat your password</label>
                                 <input id='pwdRepeat' className='input-login' type="password" required></input>
