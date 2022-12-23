@@ -18,17 +18,20 @@ const MainCategories = () => {
                 video.pause();
             })
         })
+        /*
         return () => {
-            videoElementCleaner.forEach(video => {
-                video.RemoveEventListener("mouseover", () => {
-                    video.play();
-                })
-    
-                video.RemoveEventListener("mouseleave", () => {
-                    video.pause();
-                })
-            }) 
-        }
+            if(videoElementCleaner.length > 0){
+                videoElementCleaner.forEach(video => {
+                    video.RemoveEventListener("mouseover", () => {
+                        video.play();
+                    })
+        
+                    video.RemoveEventListener("mouseleave", () => {
+                        video.pause();
+                    })
+                }) 
+            }
+        }*/
     }, [])
 
     return(
