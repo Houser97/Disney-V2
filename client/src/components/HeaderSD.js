@@ -5,13 +5,12 @@ import UserMenuSD from './UserMenuSD';
 import useWindowSize from '../assets/hooks/windowSize';
 import { userContext } from '../App';
 
-const HeaderSD = ({userID}) => {
+const HeaderSD = () => {
     const windowSize = useWindowSize()
     const location = useLocation();
 
     const mainContainer = useRef(null)
 
-    const [headerDisplay, setHeaderDisplay] = useState(null)
     const [isMobile, setIsMobile] = useState(windowSize.width <= 520);
 
     const RoutesFlexNone = ['/login','/signup','/avatar']
@@ -19,13 +18,10 @@ const HeaderSD = ({userID}) => {
     const isUserLogged = useContext(userContext)[0]
 
     useEffect(() =>{
-        setHeaderDisplay(mainContainer.current.style.display)
         if(RoutesFlexNone.includes(location.pathname) || !isMobile) {
             mainContainer.current.style.display = 'none'
-            setHeaderDisplay('none')
         } else if(isMobile){
             mainContainer.current.style.display = 'flex'
-            setHeaderDisplay('flex')
         }
     }, [location.pathname, isMobile])
 
