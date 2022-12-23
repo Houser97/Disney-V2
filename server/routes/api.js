@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport')
 
 const apiController = require('../controllers/apiControllers');
 const user = require('../models/user');
@@ -19,5 +18,7 @@ router.post('/update_avatar', apiController.update_avatar);
 router.get('/check_if_user_is_logged', apiController.check_if_user_is_logged);
 
 router.post('/login', apiController.login, apiController.check_if_user_is_logged);
+
+router.post('/update_watchlist', apiController.update_watchlist);
 
 module.exports = router
