@@ -63,7 +63,7 @@ function App() {
     }
   }, [watchlist])
 
-  const valueProvider = [isUserLogged, setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist]
+  const valueProvider = {isUserLogged,  setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist}
 
   return (
     <BrowserRouter basename='/'>
