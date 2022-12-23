@@ -4,15 +4,6 @@ const bcryptjs = require('bcryptjs');
 const passport = require('passport');
 
 exports.create_user = [
-    // Revisar que usuario no exista en base de datos.
-    /*(req, res, next) => {
-        User.findOne({email: req.body.email}, (err, user) => {
-            if(err) return next(err);
-            if(user) return res.json('User exists');
-        })
-        next();
-    },*/
-
     body('email', 'Email must be a valid address').isEmail()
         .trim()
         .escape()
@@ -46,7 +37,10 @@ exports.create_user = [
                 if(err) return res.json('error save');
                 req.login(user, (err) => {
                     if(err) return res.json('error')
-                    return res.json({username: req.user.username, watchlist: req.user.watchlist, avatar: req.user.avatar,id: req.user._id})
+                    return res.json({username: req.user.username, 
+                                    watchlist: req.user.watchlist, 
+                                    avatar: req.user.avatar,
+                                    id: req.user._id})
                 })
             })
         })
@@ -99,7 +93,7 @@ exports.login = [
 
 exports.logout = (req, res, next) => {
     req.logout((err) => {
-        if(err) return res.json('error logout');
+        if(err) return res.json(false);
         return res.json(true)
     })
 }
@@ -114,3 +108,27 @@ exports.check_if_user_is_logged = (req, res, next) => {
     }
     return res.json(false)
 };
+
+// Actualizar Watchlist
+exports.update_watchlist = (req, res, next) => {
+    if(req.user){
+        const user = new User({
+            username: req.user.username,
+            password: req.user.password,
+            avatar: req.user.avatar,
+            email: req.user.email,
+            watchlist: req.body.watchlist,
+            _id: req.user._id,
+        });
+
+        User.findByIdAndUpdate(req.user._id, user, {new:true}, (err, user) => {
+            if(err) return res.json('error update watchlist')
+            return res.json({username: user.username,
+                            avatar: user.avatar,
+                            watchlist: user.watchlist,
+                            id: user._id})
+        })
+    } else {
+        return res.json('No user logged')
+    }
+}
