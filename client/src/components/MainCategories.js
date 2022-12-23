@@ -8,6 +8,7 @@ const MainCategories = () => {
     const videoElement = useRef([]);
 
     useEffect(() => {
+        const videoElementCleaner = [...videoElement.current];
         videoElement.current.forEach(video => {
             video.addEventListener("mouseover", () => {
                 video.play();
@@ -17,9 +18,8 @@ const MainCategories = () => {
                 video.pause();
             })
         })
-        /*
-        return()=>{
-            videoElement.current.forEach(video => {
+        return () => {
+            videoElementCleaner.forEach(video => {
                 video.RemoveEventListener("mouseover", () => {
                     video.play();
                 })
@@ -27,8 +27,8 @@ const MainCategories = () => {
                 video.RemoveEventListener("mouseleave", () => {
                     video.pause();
                 })
-            })
-        }*/
+            }) 
+        }
     }, [])
 
     return(
