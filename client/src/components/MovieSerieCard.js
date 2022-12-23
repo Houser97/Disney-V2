@@ -1,5 +1,4 @@
 import '../styles/MovieSerieCard.css';
-/*import { userContext } from '../App';*/
 import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
 
