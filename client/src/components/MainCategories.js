@@ -1,5 +1,5 @@
 import '../styles/MainCategories.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import ImageVideo from './ImageVideo';
 import {VideosImages} from '../assets/constants/index.js'
 
