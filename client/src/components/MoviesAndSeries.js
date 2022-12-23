@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/MoviesAndSeries.css';
 import DropdownMenu from './DropdownMenu';
 import MovieSerieCard from './MovieSerieCard.js';
