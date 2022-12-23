@@ -50,7 +50,6 @@ const FormLogIn = () => {
         e.preventDefault();
         const TranslateX = isMobile ? 280 : 370;
         containerForm.current.style.transform = `translateX(-${TranslateX}px)`
-        e.target.style.opacity = 0;
         setEmail([...e.target][0].value)
     }
 
@@ -59,20 +58,33 @@ const FormLogIn = () => {
         setPassword([...e.target][0].value);
     }
 
+    const translateFormsArrows = (isLeft) => {
+        const TranslateX = isMobile ? 280 : 370;
+        let currentTranslateX = containerForm.current.style.transform;
+        currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
+        if(isLeft){
+            currentTranslateX = +currentTranslateX - TranslateX
+            containerForm.current.style.transform = `translateX(${currentTranslateX}px)`
+        } else {
+            currentTranslateX = +currentTranslateX + TranslateX
+            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
+        }
+    }
+
     return (
         <div className='form-log-in-sign-up'>
-            <div className='arrow arrow-left'>
+            <div className='arrow arrow-left' onClick={() => translateFormsArrows(true)}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
             </div>
 
-            <div className='arrow arrow-right'>
+            <div className='arrow arrow-right' onClick={() => translateFormsArrows(false)}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
             </div>
-            
+
             <div className='form-data-carousel'>
                 <div ref={containerForm} className='form-container'>
                     <form  className='email-section' onSubmit={handleSubmit}>
