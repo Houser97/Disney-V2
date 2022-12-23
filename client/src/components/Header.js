@@ -3,17 +3,15 @@ import logo from '../assets/images/disney-logo.png';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { userContext } from '../App';
-import useWindowSize from '../assets/hooks/windowSize.js';
 import UserMenu from './UserMenu';
 
 
-const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*/}) => {
+const Header = () => {
 
-    const windowSize = useWindowSize()
     const location = useLocation()
 
     const mainContainer = useRef(null)
-    const headerBg = useRef(null);
+    const headerBg = useRef(null); /*Contenedor de fondo negro*/
     const headerMS = useRef(null); /*Contenedor de fondo gris*/
 
     const [headerDisplay, setHeaderDisplay] = useState(null)
@@ -22,9 +20,6 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
     const RoutesFlexNone = ['/login','/signup','/avatar']
 
     const isUserLogged = useContext(userContext)[0]
-    /*const setMoviesInWatchList = useContext(userContext)[1];
-    const setUserPictureHeader = useContext(userContext)[4];
-    const setUsernameHeader = useContext(userContext)[5];*/
 
     useEffect(() => {
         setHeaderDisplay(mainContainer.current.style.display)
@@ -35,7 +30,6 @@ const Header = ({userID/*, shouldRender, setShouldRender, username, userPicture*
             } else {
                 headerBg.current.style.opacity = 0;
             }
-            /*console.log(document.documentElement.scrollTop)*/
         })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
