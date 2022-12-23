@@ -1,5 +1,5 @@
 import '../styles/Originals.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import MovieSerieCard from './MovieSerieCard'
 import { movies } from '../assets/constants';
 
