@@ -34,3 +34,18 @@
     border: 2px solid rgb(189, 189, 0);
     border-radius: 5px;
 }
+
+.error-messages{
+    position: absolute;
+    bottom: 50px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.li-error-msg{
+    text-decoration: dotted;
+    list-style: disc;
+}
