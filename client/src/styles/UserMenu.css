@@ -40,7 +40,7 @@
     border-radius: 5px;
     border: 2px solid rgb(255, 255, 255);
     padding: 10px 18px;
-    transition: opacity 0ms ease-in-out 0ms;
+    transition: opacity 0ms ease-in-out 0ms, transform 250ms ease-in-out 0ms;
     cursor: pointer;
     opacity: 0;
     align-self: center;
@@ -54,9 +54,8 @@
 .profile-user:hover .change-Avatar-btn
  {
     opacity: 1;
-    transition: opacity 250ms ease-in-out 250ms;
+    transition: opacity 250ms ease-in-out 250ms, transform 250ms ease-in-out 0ms;
 }
-
 
 .change-Avatar-btn{
     display: flex;
@@ -67,7 +66,7 @@
     margin-top: 20px;
     padding: 5px 0px;
     cursor: pointer;
-    transition: opacity 0ms ease-in-out 0ms;
+    transition: opacity 0ms ease-in-out 0ms, transform 250ms ease-in-out 0ms;
     opacity: 0;
     align-self: center;
 }
@@ -78,4 +77,9 @@
 
 .profile-user .button-log-out{
     margin-top: 40px;
+}
+
+.button-log-out:hover,
+.change-Avatar-btn:hover {
+    transform: scale(0.95);
 }
