@@ -19,6 +19,7 @@ const FormSignup = () => {
     const [pwd, setPwd] = useState(null);
     const [repeatPwd, setRepeatPwd] = useState(null);
     const [username, setUsername] = useState(null);
+    const [validationErrors, setValidationErrors] = useState(null)
 
     useEffect(() => {
         if(email !== null){
@@ -68,6 +69,8 @@ const FormSignup = () => {
                     setRepeatPwd(null);
                     setUsername(null);
                     navigate("/avatar")
+                } else {
+                    setValidationErrors(response);
                 }
             })
         };
@@ -181,7 +184,17 @@ const FormSignup = () => {
                 </div>
             </div>
             <ul className='error-messages'>
-                
+                {validationErrors ? 
+                (
+                    validationErrors.map((error, i) => {
+                        return(
+                            <li className='li-error-msg'>{error.msg}</li>
+                        )
+                    })
+                ):(
+                    <div className='no-errors-msg'></div>
+                )
+            }
             </ul>
         </div>
     )
