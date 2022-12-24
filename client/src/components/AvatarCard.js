@@ -7,7 +7,7 @@ const AvatarCard = ({avatar}) => {
     const navigate = useNavigate()
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
 
-    const UpdateAvatar = (e) => {
+    const UpdateAvatar = () => {
         /*console.log(e.target.childNodes[0].src);*/
         fetch('/api/update_avatar', {
             method: 'POST',
