@@ -46,7 +46,7 @@ const FormLogIn = () => {
                     setIsUserLogged(response)
                     navigate('/')
                 } else {
-                    console.log('User or password are incorrect')
+                    setValidationErrors('Email or password incorrect')
                 }
             })
         }
@@ -120,11 +120,7 @@ const FormLogIn = () => {
             <ul className='error-messages'>
                 {validationErrors ? 
                 (
-                    validationErrors.map((error, i) => {
-                        return(
-                            <li key={`error-msg${i}`} className='li-error-msg'>{error.msg}</li>
-                        )
-                    })
+                   <li className='li-error-msg'>{validationErrors}</li>
                 ):(
                     <div className='no-errors-msg'></div>
                 )
