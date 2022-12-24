@@ -11,8 +11,11 @@ import Originals from './components/Originals';
 import Login from './components/Login';
 import Avatar from './components/Avatar';
 import { createContext, useEffect, useState } from 'react';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
 export const userContext = createContext()
+
+if(process.env.NODE_ENV === 'production'){disableReactDevTools()}
 
 function App() {
 
