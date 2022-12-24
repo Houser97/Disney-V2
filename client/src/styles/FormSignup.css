@@ -49,3 +49,7 @@
     text-decoration: dotted;
     list-style: disc;
 }
+
+.no-errors-msg{
+    display: none;
+}
