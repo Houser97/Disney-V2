@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/UserMenuSD.css'
 import { AvatarImages } from '../assets/constants'
+import { Link } from 'react-router-dom'
 
 const UserMenuSD = ({user}) => {
 
@@ -33,6 +34,9 @@ const UserMenuSD = ({user}) => {
             <div className='button-log-out' onClick={logout}>
                 Log Out
             </div>
+            <a className='change-Avatar-btn' href = "/avatar">
+                Change Avatar
+            </a>
         </div>
     </div>
   )
