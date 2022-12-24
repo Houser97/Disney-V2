@@ -13,6 +13,8 @@ router.get('/logout', apiController.logout);
 
 router.post('/check_email', apiController.check_email);
 
+router.post('/check_password', apiController.check_password);
+
 router.post('/update_avatar', apiController.update_avatar);
 
 router.get('/check_if_user_is_logged', apiController.check_if_user_is_logged);
