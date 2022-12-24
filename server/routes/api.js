@@ -19,7 +19,9 @@ router.post('/update_avatar', apiController.update_avatar);
 
 router.get('/check_if_user_is_logged', apiController.check_if_user_is_logged);
 
-router.post('/login', apiController.login, apiController.check_if_user_is_logged);
+router.get('/login_failure', apiController.login_failure);
+
+router.post('/login', apiController.login);
 
 router.post('/update_watchlist', apiController.update_watchlist);
 
