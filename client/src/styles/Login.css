@@ -13,3 +13,14 @@
 .disney-logo-login {
     width: 100%; height: 100%;
 }
+
+.user-already-logged{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 33px;
+    font-weight: 600;
+}
