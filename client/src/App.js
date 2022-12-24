@@ -22,6 +22,9 @@ function App() {
   const [isUserLogged, setIsUserLogged] = useState(null)
   const [watchlist, setWatchlist] = useState(isUserLogged ? isUserLogged.watchlist:[])
   const [updateWatchlist, setUpdateWatchlist] = useState(false)
+  const [API, setAPI] = useState('')
+
+  if(process.env.NODE_ENV === 'production'){setAPI(process.env.API_ROOT)}
 
   const arraysMatch = (arr1, arr2) => {
     if(arr1.length !== arr2.length) return false
@@ -66,7 +69,7 @@ function App() {
     }
   }, [watchlist])
 
-  const valueProvider = {isUserLogged,  setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist}
+  const valueProvider = {isUserLogged,  setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist, API}
 
   return (
     <BrowserRouter basename='/'>
