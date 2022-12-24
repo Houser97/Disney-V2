@@ -69,4 +69,13 @@
     cursor: pointer;
     transition: opacity 0ms ease-in-out 0ms;
     opacity: 0;
+    align-self: center;
+}
+
+.profile-user .change-Avatar-btn{
+    padding: 15px 10px;
+}
+
+.profile-user .button-log-out{
+    margin-top: 40px;
 }
