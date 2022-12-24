@@ -50,6 +50,7 @@ const FormLogIn = () => {
                 }
             })
         }
+        // eslint-disable-next-line
     }, [password])
 
     const handleSubmit = (e) => {
@@ -65,7 +66,7 @@ const FormLogIn = () => {
         setPassword([...e.target][0].value);
     }
 
-    const translateFormsArrows = (isLeft, isLast, isBeginning) => {
+    const translateFormsLeft = () => {
         const TranslateX = isMobile ? 280 : 370;
         let currentTranslateX = containerForm.current.style.transform;
         currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
@@ -76,7 +77,7 @@ const FormLogIn = () => {
 
     return (
         <div className='form-log-in-sign-up'>
-            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsArrows(true, false, true)}>
+            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsLeft()}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
