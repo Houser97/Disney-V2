@@ -112,54 +112,59 @@ const FormSignup = () => {
 
     return(
         <div className='form-log-in-sign-up'>
-                <div className='form-data-carousel'>
-                    <div ref={containerForm} className='form-container'>
-                        <form className='email-section' onSubmit={handleEmailSubmit}>
-                            <div className='input-label-login'>
-                                <label htmlFor='login'>Enter your email</label>
-                                <input id='login' className='input-login' type="email" required></input>
-                            </div>
-                            <div ref={emailMessage} className='error-email'>
-                                This email has already been used.
-                            </div>
-                            <div className='button-login-section'>
-                                <button className='button-login'>CONTINUE</button>
-                            </div>
-                        </form>
+            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsArrows(true, false, true)}>
+                <svg className='arrow-svg' viewBox="0 0 24 24">
+                    <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
+                </svg>
+            </div>
+            <div className='form-data-carousel'>
+                <div ref={containerForm} className='form-container'>
+                    <form className='email-section' onSubmit={handleEmailSubmit}>
+                        <div className='input-label-login'>
+                            <label htmlFor='login'>Enter your email</label>
+                            <input id='login' className='input-login' type="email" required></input>
+                        </div>
+                        <div ref={emailMessage} className='error-email'>
+                            This email has already been used.
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
 
-                        <form className='pdw-section' onSubmit={handlePwdSubmit}>
-                            <div className='input-label-login'>
-                                <label htmlFor='login'>Enter your password</label>
-                                <input id='pwd' className='input-login' type="password" minLength="6" required></input>
-                            </div>
-                            <div className='button-login-section'>
-                                <button className='button-login'>CONTINUE</button>
-                            </div>
-                        </form>
+                    <form className='pdw-section' onSubmit={handlePwdSubmit}>
+                        <div className='input-label-login'>
+                            <label htmlFor='login'>Enter your password</label>
+                            <input id='pwd' className='input-login' type="password" minLength="6" required></input>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
 
-                        <form className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
-                            <div className='input-label-login pwd-repeat'>
-                                <label htmlFor='login'>Repeat your password</label>
-                                <input id='pwdRepeat' className='input-login' type="password" required></input>
-                                <div ref={errorMessagePwd} className='pwds-incorrect'>Passwords do not match</div>
-                            </div>
-                            <div className='button-login-section'>
-                                <button className='button-login'>CONTINUE</button>
-                            </div>
-                        </form>
+                    <form className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
+                        <div className='input-label-login pwd-repeat'>
+                            <label htmlFor='login'>Repeat your password</label>
+                            <input id='pwdRepeat' className='input-login' type="password" required></input>
+                            <div ref={errorMessagePwd} className='pwds-incorrect'>Passwords do not match</div>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
 
-                        <form className='pdw-section-repeat username' onSubmit={handleLastSubmit}>
-                            <div className='input-label-login username'>
-                                <label htmlFor='username'>Enter new username</label>
-                                <input id='username' className='input-login' type="text" required></input>
-                            </div>
-                            <div className='button-login-section'>
-                                <button className='button-login'>CONTINUE</button>
-                            </div>
-                        </form>
-                    </div>
+                    <form className='pdw-section-repeat username' onSubmit={handleLastSubmit}>
+                        <div className='input-label-login username'>
+                            <label htmlFor='username'>Enter new username</label>
+                            <input id='username' className='input-login' type="text" required></input>
+                        </div>
+                        <div className='button-login-section'>
+                            <button className='button-login'>CONTINUE</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
     )
 }
 
