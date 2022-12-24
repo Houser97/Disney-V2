@@ -32,7 +32,7 @@ const UserMenuSD = ({user}) => {
         <div className='signOut-user-SD'>
             <div className='username-header'>{username}</div>
             <div className='button-log-out' onClick={logout}>
-                Log Out
+                Logout
             </div>
             <a className='change-Avatar-btn' href = "/avatar">
                 Change Avatar

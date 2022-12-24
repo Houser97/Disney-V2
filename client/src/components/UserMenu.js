@@ -31,8 +31,11 @@ const UserMenu = ({user}) => {
         <div className='signOut-user'>
             <div className='username-header'>{username}</div>
             <div className='button-log-out' onClick={logout}>
-                Log Out
+                Logout
             </div>
+            <a className='change-Avatar-btn' href = "/avatar">
+                Change Avatar
+            </a>
         </div>
     </div>
   )
