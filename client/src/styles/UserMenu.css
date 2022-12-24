@@ -22,8 +22,8 @@
 
 .signOut-user{ /*Contenedor que se expande.*/
     position: absolute;
-    top: -200px; right: 0px;
-    height: 200px;
+    top: -250px; right: 0px;
+    height: 250px;
     width: 100%;
     display: flex; align-items: flex-start; justify-content: space-between;
     flex-flow: column;
@@ -47,7 +47,7 @@
 }
 
 .profile-user:hover .signOut-user {
-    transform: translateY(190px);
+    transform: translateY(240px);
 }
 
 .profile-user:hover .button-log-out,
