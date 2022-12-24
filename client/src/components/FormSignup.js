@@ -8,6 +8,7 @@ const FormSignup = () => {
 
     const errorMessagePwd = useRef(null);
     const emailMessage = useRef(null);
+    const leftArrow = useRef(null);
 
     const containerForm = useRef(null);
 
@@ -31,6 +32,7 @@ const FormSignup = () => {
             .then(data => {
                 if(data === null){
                     translateForms();
+                    leftArrow.current.classList.remove('arrow-hide')
                     emailMessage.current.style.opacity = 0;
                 } else {
                     emailMessage.current.style.opacity = 1;
@@ -97,7 +99,6 @@ const FormSignup = () => {
         e.preventDefault();
         setPwd([...e.target][0].value);
         translateForms();
-        e.target.style.opacity = 0;
     }
 
     const handleRepeatPwdSubmit = (e) => {
@@ -110,9 +111,24 @@ const FormSignup = () => {
         setUsername([...e.target][0].value)
     }
 
+    const translateFormsLeft = () => {
+        const TranslateX = isMobile ? 280 : 370;
+        let currentTranslateX = containerForm.current.style.transform;
+        currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
+        currentTranslateX = +currentTranslateX - TranslateX
+        if(currentTranslateX === 0){
+            leftArrow.current.classList.add('arrow-hide');
+            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`;
+        } else if(currentTranslateX < 0){
+            leftArrow.current.classList.add('arrow-hide')
+        } else {
+            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`;
+        }
+    }
+
     return(
         <div className='form-log-in-sign-up'>
-            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsArrows(true, false, true)}>
+            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsLeft()}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
