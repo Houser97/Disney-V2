@@ -39,10 +39,11 @@
     position: absolute;
     bottom: 50px;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     flex-flow: column;
     align-items: flex-start;
+    max-width: 360px;
 }
 
 .li-error-msg{
@@ -52,4 +53,10 @@
 
 .no-errors-msg{
     display: none;
+}
+
+@media (max-width: 400px) {
+    .error-messages{
+        font-size: 14px;
+    }
 }
