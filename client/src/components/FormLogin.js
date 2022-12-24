@@ -17,6 +17,7 @@ const FormLogIn = () => {
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
+    const [validationErrors, setValidationErrors] = useState(null)
 
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
 
@@ -39,10 +40,14 @@ const FormLogIn = () => {
             })
             .then(response => response.json())
             .then(response => {
-                setEmail(null);
-                setPassword(null);
-                setIsUserLogged(response)
-                navigate('/')
+                if(response){
+                    setEmail(null);
+                    setPassword(null);
+                    setIsUserLogged(response)
+                    navigate('/')
+                } else {
+                    console.log('User or password are incorrect')
+                }
             })
         }
     }, [password])
@@ -112,6 +117,19 @@ const FormLogIn = () => {
                     <div className='signup-link'>Sign up</div>
                 </Link>
             </div>
+            <ul className='error-messages'>
+                {validationErrors ? 
+                (
+                    validationErrors.map((error, i) => {
+                        return(
+                            <li key={`error-msg${i}`} className='li-error-msg'>{error.msg}</li>
+                        )
+                    })
+                ):(
+                    <div className='no-errors-msg'></div>
+                )
+            }
+            </ul>
         </div>
     )
 }
