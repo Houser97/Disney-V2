@@ -13,6 +13,8 @@ const FormLogIn = () => {
     const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
 
     const containerForm = useRef(null); //Se usa para mover los formularios
+    const leftArrow = useRef(null);
+    const rightArrow = useRef(null);
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -50,7 +52,8 @@ const FormLogIn = () => {
         e.preventDefault();
         const TranslateX = isMobile ? 280 : 370;
         containerForm.current.style.transform = `translateX(-${TranslateX}px)`
-        setEmail([...e.target][0].value)
+        setEmail([...e.target][0].value);
+        leftArrow.current.classList.remove('arrow-hide')
     }
 
     const handleLastSubmit = (e) => {
@@ -58,32 +61,28 @@ const FormLogIn = () => {
         setPassword([...e.target][0].value);
     }
 
-    const translateFormsArrows = (isLeft) => {
+    const translateFormsArrows = (isLeft, isLast, isBeginning) => {
         const TranslateX = isMobile ? 280 : 370;
         let currentTranslateX = containerForm.current.style.transform;
         currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
-        if(isLeft){
-            currentTranslateX = +currentTranslateX - TranslateX
-            containerForm.current.style.transform = `translateX(${currentTranslateX}px)`
-        } else {
-            currentTranslateX = +currentTranslateX + TranslateX
-            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
-        }
+        currentTranslateX = +currentTranslateX - TranslateX
+        containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
+        leftArrow.current.classList.add('arrow-hide')
     }
 
     return (
         <div className='form-log-in-sign-up'>
-            <div className='arrow arrow-left' onClick={() => translateFormsArrows(true)}>
+            <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsArrows(true, false, true)}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
             </div>
 
-            <div className='arrow arrow-right' onClick={() => translateFormsArrows(false)}>
+            {/*<div ref={rightArrow}  className='arrow arrow-right' onClick={() => translateFormsArrows(false, true, false)}>
                 <svg className='arrow-svg' viewBox="0 0 24 24">
                     <path fill="gray" d="M11,6V14L7.5,10.5L6.08,11.92L12,17.84L17.92,11.92L16.5,10.5L13,14V6H11M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22Z" />
                 </svg>
-            </div>
+            </div>*/}
 
             <div className='form-data-carousel'>
                 <div ref={containerForm} className='form-container'>
