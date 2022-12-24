@@ -23,7 +23,7 @@ exports.create_user = [
 
         if(!errors.isEmpty()){
             //Handle errors
-            return res.json('errors') //res.json({error:errors.array()});
+            return res.json(errors.array()) //res.json({error:errors.array()});
         }
 
         bcryptjs.hash(req.body.pwd, 10, (err, hashedPwd) => {
@@ -48,12 +48,21 @@ exports.create_user = [
 ];
 
 exports.check_email = [
-    body('email', 'Email should not be empty').isEmail().normalizeEmail(),
+    body('email', 'Email should not be empty').isEmail()
+    .trim()
+    .escape()
+    .normalizeEmail(),
+
     (req, res, next) =>{
-        User.findOne({email: req.body.email}, (err, user) => {
-            if(err) return res.json('error');
-            return res.json(user)
-        })
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.json(errors.array())
+        } else {
+            User.findOne({email: req.body.email}, (err, user) => {
+                if(err) return res.json('error');
+                return res.json(user)
+            })
+        }
     }
 ]
 
