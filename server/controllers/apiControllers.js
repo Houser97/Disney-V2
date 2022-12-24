@@ -115,8 +115,13 @@ exports.login = [
     .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter.')
     .trim()
     .escape(),
-    passport.authenticate('local')
+    passport.authenticate('local', {successRedirect: '/api/check_if_user_is_logged',
+                                    failureRedirect: '/api/login_failure'})
 ]
+
+exports.login_failure = (req, res, next) => {
+    return res.json(false)
+}
 
 exports.logout = (req, res, next) => {
     req.logout((err) => {
