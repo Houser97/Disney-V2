@@ -14,7 +14,6 @@ const FormLogIn = () => {
 
     const containerForm = useRef(null); //Se usa para mover los formularios
     const leftArrow = useRef(null);
-    const rightArrow = useRef(null);
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -53,7 +52,7 @@ const FormLogIn = () => {
         const TranslateX = isMobile ? 280 : 370;
         containerForm.current.style.transform = `translateX(-${TranslateX}px)`
         setEmail([...e.target][0].value);
-        leftArrow.current.classList.remove('arrow-hide')
+        leftArrow.current.classList.remove('arrow-hide');
     }
 
     const handleLastSubmit = (e) => {
