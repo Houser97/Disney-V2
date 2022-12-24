@@ -48,7 +48,7 @@ exports.create_user = [
 ];
 
 exports.check_email = [
-    body('email', 'Email should not be empty.').isEmail()
+    body('email', 'Email must be a valid address.').isEmail()
     .trim()
     .escape()
     .normalizeEmail(),
@@ -63,6 +63,24 @@ exports.check_email = [
                 return res.json(user)
             })
         }
+    }
+];
+
+exports. check_password = [
+    body('pwd', 'Password must not be empty.')
+    .isLength({min:8}).withMessage('Password must contain at least 8 characters.')
+    .matches('[0-9]').withMessage('Password must contain at least 1 number.')
+    .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter.')
+    .trim()
+    .escape(),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            return res.json(errors.array());
+        }
+        return res.json(true)
     }
 ]
 
