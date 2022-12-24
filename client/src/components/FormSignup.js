@@ -35,8 +35,12 @@ const FormSignup = () => {
                     translateForms();
                     leftArrow.current.classList.remove('arrow-hide')
                     emailMessage.current.style.opacity = 0;
+                    setValidationErrors(null)
+                } else if(Array.isArray(data)){
+                    setValidationErrors(data)
                 } else {
                     emailMessage.current.style.opacity = 1;
+                    setValidationErrors(null)
                 }
             })
         } 
