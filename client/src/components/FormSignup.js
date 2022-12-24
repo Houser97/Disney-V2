@@ -180,6 +180,9 @@ const FormSignup = () => {
                     </form>
                 </div>
             </div>
+            <ul className='error-messages'>
+                
+            </ul>
         </div>
     )
 }
