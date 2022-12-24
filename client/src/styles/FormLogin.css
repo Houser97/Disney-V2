@@ -120,6 +120,32 @@
     display: none;
 }
 
+@media (max-width: 1200px) {  
+    .arrow-left {
+        left: 25%;
+    }
+}
+
+@media (max-width: 1000px) {  
+    .arrow-left {
+        left: 18%;
+    }
+}
+
+@media (max-width: 800px) {  
+    .arrow-left {
+        left: 10%;
+    }
+}
+
+@media (max-width: 620px) {  
+    .arrow-left {
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        top: 83%;
+    }
+}
+
 @media (max-width: 470px) {  
     .form-data-carousel,
     .form-data-carousel .email-section,
