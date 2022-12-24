@@ -48,6 +48,27 @@ const FormSignup = () => {
     }, [email])
 
     useEffect(() => {
+        if(pwd !== null){
+            fetch('/api/check_password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({pwd})
+            }).then(response => response.json())
+            .then(data => {
+                if(Array.isArray(data)){
+                    setValidationErrors(data)
+                } else {
+                    setValidationErrors(null)
+                    translateForms();
+                }
+            })
+        } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pwd])
+
+    useEffect(() => {
         if(pwd !== repeatPwd){
             errorMessagePwd.current.style.display = "flex";
         } else if(pwd == repeatPwd && pwd !== null){
@@ -105,7 +126,6 @@ const FormSignup = () => {
     const handlePwdSubmit = (e) => {
         e.preventDefault();
         setPwd([...e.target][0].value);
-        translateForms();
     }
 
     const handleRepeatPwdSubmit = (e) => {
