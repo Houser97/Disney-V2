@@ -4,14 +4,14 @@ const bcryptjs = require('bcryptjs');
 const passport = require('passport');
 
 exports.create_user = [
-    body('email', 'Email must be a valid address').isEmail()
+    body('email', 'Email must be a valid address.').isEmail()
         .trim()
         .escape()
         .normalizeEmail(),
-    body('pwd', 'Password must not be empty')
-        .isLength({min:8}).withMessage('Password must contain at least 8 characters')
-        .matches('[0-9]').withMessage('Password must contain at least 1 number')
-        .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter')
+    body('pwd', 'Password must not be empty.')
+        .isLength({min:8}).withMessage('Password must contain at least 8 characters.')
+        .matches('[0-9]').withMessage('Password must contain at least 1 number.')
+        .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter.')
         .trim()
         .escape(),
     body('username')
@@ -48,7 +48,7 @@ exports.create_user = [
 ];
 
 exports.check_email = [
-    body('email', 'Email should not be empty').isEmail()
+    body('email', 'Email should not be empty.').isEmail()
     .trim()
     .escape()
     .normalizeEmail(),
@@ -87,14 +87,14 @@ exports.update_avatar = (req, res, next) => {
 }
 
 exports.login = [
-    body('email', 'Email must be a valid address').isEmail()
+    body('email', 'Email must be a valid address.').isEmail()
     .trim()
     .escape()
     .normalizeEmail(),
-    body('password', 'Password must not be empty')
-    .isLength({min:8}).withMessage('Password must contain at least 8 characters')
-    .matches('[0-9]').withMessage('Password must contain at least 1 number')
-    .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter')
+    body('password', 'Password must not be empty.')
+    .isLength({min:8}).withMessage('Password must contain at least 8 characters.')
+    .matches('[0-9]').withMessage('Password must contain at least 1 number.')
+    .matches('[A-Z]').withMessage('Password must contain at least 1 upper letter.')
     .trim()
     .escape(),
     passport.authenticate('local')
