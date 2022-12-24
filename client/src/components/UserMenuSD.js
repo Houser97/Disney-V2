@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../styles/UserMenuSD.css'
 import { AvatarImages } from '../assets/constants'
-import { Link } from 'react-router-dom'
+import { userContext } from '../App'
 
 const UserMenuSD = ({user}) => {
 
   const [avatar, setAvatar] = useState(null)
   const [username, setUsername] = useState(null)
+  const API = useContext(userContext).API;
 
   useEffect(() => {
     const avatarImage = AvatarImages.filter(avatarObject => avatarObject.ref === user.avatar)
@@ -15,7 +16,7 @@ const UserMenuSD = ({user}) => {
   }, [user])
 
   const logout = () => {
-    fetch('/api/logout')
+    fetch(`${API}/api/logout`)
     .then(response => response.json())
     .then(data => {
       if(data){

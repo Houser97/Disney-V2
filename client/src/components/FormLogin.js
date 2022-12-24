@@ -20,6 +20,7 @@ const FormLogIn = () => {
     const [validationErrors, setValidationErrors] = useState(null)
 
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
+    const API = useContext(userContext).API;
 
     useEffect(() => {
       if(windowSize.width <= 470){
@@ -31,7 +32,7 @@ const FormLogIn = () => {
 
     useEffect(() => {
         if(password !== null && email !== null){
-            fetch('/api/login', {
+            fetch(`${API}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

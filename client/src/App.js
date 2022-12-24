@@ -36,7 +36,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('/api/check_if_user_is_logged')
+    fetch(`${API}/api/check_if_user_is_logged`)
     .then(response => response.json())
     .then(data => {
       sessionStorage.setItem('user', JSON.stringify(data))
@@ -58,7 +58,7 @@ function App() {
       let currentWatchlist = JSON.parse(sessionStorage.getItem('user'))
       currentWatchlist = !currentWatchlist ? [] : currentWatchlist.watchlist
       if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist ){    
-          fetch('/api/update_watchlist', {
+          fetch(`${API}/api/update_watchlist`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

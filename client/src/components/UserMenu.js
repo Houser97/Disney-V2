@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../styles/UserMenu.css'
 import { AvatarImages } from '../assets/constants'
+import { userContext } from '../App'
 
 const UserMenu = ({user}) => {
 
   const [avatar, setAvatar] = useState(null)
   const [username, setUsername] = useState(null)
+
+  const API = useContext(userContext).API;
 
   useEffect(() => {
     const avatarImage = AvatarImages.filter(avatarObject => avatarObject.ref === user.avatar)
@@ -14,7 +17,7 @@ const UserMenu = ({user}) => {
   }, [user])
 
   const logout = () => {
-    fetch('/api/logout')
+    fetch(`${API}/api/logout`)
     .then(response => response.json())
     .then(data => {
       if(data){

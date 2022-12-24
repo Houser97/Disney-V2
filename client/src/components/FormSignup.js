@@ -1,7 +1,8 @@
-import {  useEffect, useRef, useState } from 'react';
+import {  useContext, useEffect, useRef, useState } from 'react';
 import '../styles/FormSignup.css';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
+import { userContext } from '../App';
 
 const FormSignup = () => {
     let navigate = useNavigate();
@@ -19,11 +20,13 @@ const FormSignup = () => {
     const [pwd, setPwd] = useState(null);
     const [repeatPwd, setRepeatPwd] = useState(null);
     const [username, setUsername] = useState(null);
-    const [validationErrors, setValidationErrors] = useState(null)
+    const [validationErrors, setValidationErrors] = useState(null);
+
+    const API = useContext(userContext).API;
 
     useEffect(() => {
         if(email !== null){
-            fetch('/api/check_email', {
+            fetch(`${API}/api/check_email`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +53,7 @@ const FormSignup = () => {
 
     useEffect(() => {
         if(pwd !== null){
-            fetch('/api/check_password', {
+            fetch(`${API}/api/check_password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +83,7 @@ const FormSignup = () => {
 
     useEffect(() => {
         if(username && pwd && email){
-            fetch('/api/signup', {
+            fetch(`${API}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

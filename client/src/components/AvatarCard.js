@@ -6,10 +6,11 @@ import { userContext } from '../App';
 const AvatarCard = ({avatar}) => {
     const navigate = useNavigate()
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
+    const API = useContext(userContext).API;
 
     const UpdateAvatar = () => {
         /*console.log(e.target.childNodes[0].src);*/
-        fetch('/api/update_avatar', {
+        fetch(`${API}/api/update_avatar`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
