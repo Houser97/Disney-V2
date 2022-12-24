@@ -38,6 +38,7 @@ const FormSignup = () => {
                     setValidationErrors(null)
                 } else if(Array.isArray(data)){
                     setValidationErrors(data)
+                    emailMessage.current.style.opacity = 0;
                 } else {
                     emailMessage.current.style.opacity = 1;
                     setValidationErrors(null)
@@ -212,7 +213,7 @@ const FormSignup = () => {
                 (
                     validationErrors.map((error, i) => {
                         return(
-                            <li className='li-error-msg'>{error.msg}</li>
+                            <li key={`error-msg${i}`} className='li-error-msg'>{error.msg}</li>
                         )
                     })
                 ):(
