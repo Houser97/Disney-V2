@@ -32,7 +32,8 @@
     transform: translateY(-250px);
 }
 
-.profile-user-SD:hover .button-log-out {
+.profile-user-SD:hover .button-log-out,
+.profile-user-SD:hover .change-Avatar-btn {
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms;
 }

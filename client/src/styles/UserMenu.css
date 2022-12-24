@@ -50,7 +50,23 @@
     transform: translateY(190px);
 }
 
-.profile-user:hover .button-log-out {
+.profile-user:hover .button-log-out,
+.profile-user:hover .change-Avatar-btn
+ {
     opacity: 1;
     transition: opacity 250ms ease-in-out 250ms;
+}
+
+
+.change-Avatar-btn{
+    display: flex;
+    font-size: 14px;
+    color: white;
+    border: 2px white solid;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 5px 0px;
+    cursor: pointer;
+    transition: opacity 0ms ease-in-out 0ms;
+    opacity: 0;
 }
