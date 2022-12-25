@@ -73,7 +73,6 @@ function App() {
     <BrowserRouter basename='/'>
       <userContext.Provider value={valueProvider}>
         <div className="App">
-          <div className='full-height'>
             <Header userID = {false}/>
             <HeaderSD />
             <Routes >
@@ -88,7 +87,6 @@ function App() {
               <Route path="/avatar" element = {<Avatar />} ></Route>           
             </Routes>
             <Footer />
-          </div>
         </div>
       </userContext.Provider>
     </BrowserRouter>
