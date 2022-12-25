@@ -32,7 +32,7 @@ exports.create_user = [
                 email: req.body.email,
                 password: hashedPwd,
                 username: req.body.username,
-                avatar: 0,
+                avatar: 'BuzzAvatar',
             }).save((err, user) => {
                 if(err) return res.json('error save');
                 req.login(user, (err) => {
