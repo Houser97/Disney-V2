@@ -29,7 +29,7 @@
     justify-self: center;
     background-color: rgba(224, 224, 1, 0.857);
     align-self: center;
-    padding: 10px 20px;
+    padding: 5px 20px;
     bottom: 0px;
     border: 2px solid rgb(189, 189, 0);
     border-radius: 5px;
@@ -37,7 +37,7 @@
 
 .error-messages{
     position: absolute;
-    bottom: 90px;
+    bottom: 40px;
     color: white;
     font-size: 16px;
     display: flex;
@@ -53,6 +53,12 @@
 
 .no-errors-msg{
     display: none;
+}
+
+@media (max-width: 480px) {
+    .error-email{
+        padding: 5px 10px;
+    }
 }
 
 @media (max-width: 400px) {
