@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=sever:* npm start",
-    "deployment": "cd .. && cd client && npm run build && cd .. && cd server && cp -a ../client/build/. ./public"
+    "deployment": "cd .. && cd client && npm run build && cd .. && cd server && cp -a ../client/build/. ./public && npm start"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
