@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
-const cors = require('cors')
 const bcryptjs = require('bcryptjs');
 const User = require('./models/user');
 // Passport
@@ -17,8 +16,6 @@ var usersRouter = require('./routes/users');
 const apiRouter = require('./routes/api');
 
 var app = express();
-// CORS
-app.use(cors())
 
 // Set up Dotenv
 if(process.env.NODE_ENV !== 'production'){
