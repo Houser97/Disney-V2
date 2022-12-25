@@ -76,3 +76,14 @@ path,
 svg {
     pointer-events: none;
 }
+
+@media (max-width: 400px) {
+    #movie-card:hover .add-icon-movieCard{
+        transform: translateY(-15px)
+    }
+
+    .add-icon-movieCard{
+        width: 32px; height: 32px;
+    }
+    
+}
