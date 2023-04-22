@@ -62,15 +62,11 @@ function App() {
   }, [])
 
   useEffect(() => {
-    setIsLoading(true)
     if(isUserLogged){
       setWatchlist(isUserLogged.watchlist)
     } else {
       setWatchlist([])
     }
-    setTimeout(() => {
-      setIsLoading(false)
-    }, randomValue())
   }, [isUserLogged])
 
   useEffect(() => {
