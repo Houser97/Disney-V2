@@ -3,6 +3,7 @@ import '../styles/FormSignup.css';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
 import { userContext } from '../App';
+import Loading from './Loading';
 
 const FormSignup = () => {
     let navigate = useNavigate();
@@ -22,12 +23,18 @@ const FormSignup = () => {
     const [username, setUsername] = useState(null);
     const [validationErrors, setValidationErrors] = useState(null);
 
+    // Estado para deshabilitar botón de Login cuando la petición está en curso
+    const [disableSubmit, setDisableSubmit] = useState(false)
+
+    const [isLoading, setIsLoading] = useState(false)
+
     const API = useContext(userContext).API;
 
     useEffect(() => {
         if(email !== null){
             fetch(`${API}/api/check_email`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -83,14 +90,19 @@ const FormSignup = () => {
 
     useEffect(() => {
         if(username && pwd && email){
+            setIsLoading(true);
+            setDisableSubmit(true)
             fetch(`${API}/api/signup`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({email, pwd, username})
             }).then(response => response.json())
             .then(response => {
+                setIsLoading(false);
+                setDisableSubmit(false)
                 if( !Array.isArray(response)) {
                     window.sessionStorage.setItem('user', JSON.stringify(response))
                     setEmail(null);
@@ -140,6 +152,11 @@ const FormSignup = () => {
     const handleLastSubmit = (e) => {
         e.preventDefault();
         setUsername([...e.target][0].value)
+    }
+
+    const buttonContent = () => {
+        if(isLoading) return <Loading />
+        return 'CONTINUE'
     }
 
     const translateFormsLeft = () => {
@@ -206,7 +223,11 @@ const FormSignup = () => {
                             <input id='username' className='input-login' type="text" required></input>
                         </div>
                         <div className='button-login-section'>
-                            <button className='button-login'>CONTINUE</button>
+                            <button className='button-login' disabled = {disableSubmit}>
+                                {
+                                   buttonContent() 
+                                } 
+                            </button>
                         </div>
                     </form>
                 </div>
