@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
 import { userContext } from '../App';
+import Loading from './Loading';
 
 const FormLogIn = () => {
 
@@ -19,6 +20,11 @@ const FormLogIn = () => {
     const [password, setPassword] = useState(null);
     const [validationErrors, setValidationErrors] = useState(null)
 
+    // Estado para deshabilitar botón de Login cuando la petición está en curso
+    const [disableSubmit, setDisableSubmit] = useState(false)
+
+    const [isLoading, setIsLoading] = useState(false)
+
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
     const API = useContext(userContext).API;
 
@@ -32,8 +38,11 @@ const FormLogIn = () => {
 
     useEffect(() => {
         if(password !== null && email !== null){
+            setIsLoading(true)
+            setDisableSubmit(true)
             fetch(`${API}/api/login`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -41,6 +50,8 @@ const FormLogIn = () => {
             })
             .then(response => response.json())
             .then(response => {
+                setIsLoading(false)
+                setDisableSubmit(false)
                 if(response){
                     setEmail(null);
                     setPassword(null);
@@ -76,6 +87,11 @@ const FormLogIn = () => {
         leftArrow.current.classList.add('arrow-hide')
     }
 
+    const buttonContent = () => {
+        if(isLoading) return <Loading />
+        return 'CONTINUE'
+    }
+
     return (
         <div className='form-log-in-sign-up'>
             <div ref={leftArrow} className='arrow arrow-left arrow-hide' onClick={() => translateFormsLeft()}>
@@ -108,7 +124,11 @@ const FormLogIn = () => {
                             <input id='pwd' className='input-login' type="password" required></input>
                         </div>
                         <div className='button-login-section'>
-                            <button className='button-login'>CONTINUE</button>
+                            <button className='button-login' disabled = {disableSubmit}>
+                                {
+                                   buttonContent() 
+                                } 
+                            </button>
                         </div>
                     </form>
                 </div>
