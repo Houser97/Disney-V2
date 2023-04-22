@@ -18,11 +18,8 @@ const UserMenu = ({user}) => {
 
   const logout = () => {
     fetch(`${API}/api/logout`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      method: 'GET',
+      credentials: 'include'
     })
     .then(response => response.json())
     .then(data => {

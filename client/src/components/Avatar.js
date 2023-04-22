@@ -2,22 +2,11 @@ import '../styles/Avatar.css';
 import AvatarCard from './AvatarCard';
 import { AvatarImages } from '../assets/constants';
 import { userContext } from '../App';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 const Avatar = () => {
 
     const isUser = useContext(userContext).isUserLogged;
-    const setIsUserLogged = useContext(userContext).setIsUserLogged;
-    const API = useContext(userContext).API;
-
-    useEffect(() => {
-        fetch(`${API}/api/check_if_user_is_logged`)
-        .then(response => response.json())
-        .then(data => {
-          sessionStorage.setItem('user', JSON.stringify(data))
-          setIsUserLogged(data)
-        })
-      }, [])    
 
     return(
         <div className='choose-avatar-section'>
@@ -25,9 +14,9 @@ const Avatar = () => {
                 <div>
                     <div className='instruction-avatar'>Choose Avatar</div>
                     <div className='avatars-grid'>
-                        {AvatarImages.map(function iterateAvatars(avatar, i){
+                        {AvatarImages.map(function iterateAvatars(avatar){
                             return(
-                                <AvatarCard key={`${i}-avatar-image`} avatar = {avatar} />
+                                <AvatarCard key={`${avatar.ref}-avatar-image`} avatar = {avatar} />
                             )
                         })}
                     </div>
