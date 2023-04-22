@@ -1,0 +1,53 @@
+/*El Overflow se evita en el padre que que el box shadow del head pueda aparecer sin cortes*/
+.loader_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50%;
+  background: transparent;
+  animation: rotate 900ms infinite linear;
+}
+
+.half_bg_container{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to top, transparent, rgb(0, 162, 255), white 96%);
+  border-top-left-radius: 50px; /*Se evita usar overflow hidden en el padre, ya que con el redondeo parece que no se sale*/
+  border-bottom-left-radius: 50px;
+}
+
+.circle_bg_container{
+  position: absolute;
+  background-color: rgb(26, 29, 41);
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+.loader-head{
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
