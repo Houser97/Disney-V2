@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Avatar from './components/Avatar';
 import { createContext, useEffect, useState } from 'react';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import Loading from './components/Loading';
 
 export const userContext = createContext()
 
@@ -22,6 +23,8 @@ function App() {
   const [isUserLogged, setIsUserLogged] = useState(null)
   const [watchlist, setWatchlist] = useState(isUserLogged ? isUserLogged.watchlist:[])
   const [updateWatchlist, setUpdateWatchlist] = useState(false)
+  //Se inicializa isLoading con TRUE para evitar ver que los componentes comnutan en lo que el programa reacciona al renderizado condicional.
+  const [isLoading, setIsLoading] = useState(true)
   const API = '';
 
   const arraysMatch = (arr1, arr2) => {
@@ -33,7 +36,14 @@ function App() {
     return true;
   }
 
+  // Se usa para determinal la duración que tiene el Loading.
+  const randomValue = () => {
+    //Se multiplica por 5 para obtener un valor entre 0 y 5, luego se le suma 4 para tener un valor entre 6 y 10.
+    return 100 * Math.floor(Math.random()*5+6);
+  }
+
   useEffect(() => {
+    setIsLoading(true)
     fetch(`${API}/api/check_if_user_is_logged`, {
       method: 'GET',
       credentials: 'include',
@@ -45,15 +55,22 @@ function App() {
     .then(data => {
       sessionStorage.setItem('user', JSON.stringify(data))
       setIsUserLogged(data)
+      setTimeout(() => {
+        setIsLoading(false)
+      }, randomValue())
     })
   }, [])
 
   useEffect(() => {
+    setIsLoading(true)
     if(isUserLogged){
       setWatchlist(isUserLogged.watchlist)
     } else {
       setWatchlist([])
     }
+    setTimeout(() => {
+      setIsLoading(false)
+    }, randomValue())
   }, [isUserLogged])
 
   useEffect(() => {
@@ -79,6 +96,11 @@ function App() {
   return (
     <BrowserRouter basename='/'>
       <userContext.Provider value={valueProvider}>
+        { isLoading ? 
+        <div className='loading-app'>
+          <Loading />
+        </div>
+        :        
         <div className="App">
             <Header userID = {false}/>
             <HeaderSD />
@@ -95,6 +117,7 @@ function App() {
             </Routes>
             <Footer />
         </div>
+        }
       </userContext.Provider>
     </BrowserRouter>
   );
