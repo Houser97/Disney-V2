@@ -20,6 +20,11 @@ var app = express();
 // Set up Dotenv
 if(process.env.NODE_ENV !== 'production'){
   require('dotenv').config();
+  const cors = require('cors')
+  app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+  }))
 }
 
 // Acceso a la base de datos
