@@ -17,7 +17,13 @@ const UserMenu = ({user}) => {
   }, [user])
 
   const logout = () => {
-    fetch(`${API}/api/logout`)
+    fetch(`${API}/api/logout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then(response => response.json())
     .then(data => {
       if(data){

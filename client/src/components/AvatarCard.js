@@ -12,6 +12,7 @@ const AvatarCard = ({avatar}) => {
         /*console.log(e.target.childNodes[0].src);*/
         fetch(`${API}/api/update_avatar`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },

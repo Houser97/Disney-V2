@@ -34,7 +34,13 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(`${API}/api/check_if_user_is_logged`)
+    fetch(`${API}/api/check_if_user_is_logged`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     .then(response => response.json())
     .then(data => {
       sessionStorage.setItem('user', JSON.stringify(data))
@@ -58,6 +64,7 @@ function App() {
       if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist ){    
           fetch(`${API}/api/update_watchlist`, {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -65,7 +72,7 @@ function App() {
         })
       }
     }
-  }, [watchlist])
+  }, [watchlist, updateWatchlist])
 
   const valueProvider = {isUserLogged,  setIsUserLogged, watchlist, setWatchlist, setUpdateWatchlist, API}
 
