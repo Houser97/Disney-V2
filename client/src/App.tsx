@@ -30,7 +30,14 @@ interface UserContextProps {
   API: string;
 }
 
-export const userContext = createContext<UserContextProps | null>(null)
+export const userContext = createContext<UserContextProps>({
+  isUserLogged: null,
+  setIsUserLogged: () => null,
+  watchlist: [],
+  setWatchlist: () => [],
+  setUpdateWatchlist: () => false,
+  API: 'http://localhost:5000',
+})
 
 if(process.env.NODE_ENV === 'production'){disableReactDevTools()}
 
@@ -82,7 +89,7 @@ function App() {
   //Se quitó setIsLoading
   useEffect(() => {
     if(isUserLogged){
-      console.table(isUserLogged)
+      //console.table(isUserLogged)
       setWatchlist(isUserLogged.watchlist)
     } else {
       setWatchlist([])
@@ -115,14 +122,14 @@ function App() {
         </div>
         :        
         <div className="App">
-            <Header userID = {false}/>
+            <Header />
             <HeaderSD />
             <Routes >
               <Route path='/' element = {<Home />}/>
               <Route path='/search' element = {<Search />}/>
               <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} titleSection = {"Movies"} />} ></Route>
               <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} titleSection = {"Series"} />} ></Route>
-              <Route path='/watchlist' element = {<Watchlist userID={null} />} ></Route>
+              <Route path='/watchlist' element = {<Watchlist />} ></Route>
               <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
               <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"}  />} ></Route>
               <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"} />} ></Route>
