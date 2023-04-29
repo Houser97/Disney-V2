@@ -149,33 +149,25 @@ const FormSignup = () => {
         containerForm.current.style.transform = `translateX(-${translateXValue}px)`
     }
 
-    const handleEmailSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFormsSubmit = (e: React.FormEvent<HTMLFormElement>, inputId:string) => {
         e.preventDefault();
-        let email = (e.currentTarget.elements.namedItem('login') as HTMLInputElement).value
-        setEmail(email);
-        email = ''
-        //e.target.style.opacity = 0;
-    }
+        let inputValue = (e.currentTarget.elements.namedItem(inputId) as HTMLInputElement).value
 
-    const handlePwdSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        let pwd = (e.currentTarget.elements.namedItem('pwd') as HTMLInputElement).value
-        setPwd(pwd);
-        pwd = ''
-    }
-
-    const handleRepeatPwdSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        let pwdRepeat = (e.currentTarget.elements.namedItem('pwdRepeat') as HTMLInputElement).value
-        setRepeatPwd(pwdRepeat)
-        pwdRepeat = ''
-    }
-
-    const handleLastSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        let username = (e.currentTarget.elements.namedItem('username') as HTMLInputElement).value
-        setUsername(username)
-        username = ''
+        switch(inputId){
+            case 'login':
+                setEmail(inputValue);
+                break;
+            case 'pwd':
+                setPwd(inputValue);
+                break;
+            case 'pwdRepeat':
+                setRepeatPwd(inputValue);
+                break;
+            default:
+                setUsername(inputValue)
+        }
+        
+        inputValue = ''
     }
 
     const buttonContent = () => {
@@ -208,7 +200,7 @@ const FormSignup = () => {
             </div>
             <div className='form-data-carousel'>
                 <div ref={containerForm} className='form-container'>
-                    <form className='email-section' onSubmit={handleEmailSubmit}>
+                    <form className='email-section' onSubmit={e => handleFormsSubmit(e, 'login')}>
                         <div className='input-label-login'>
                             <label htmlFor='login'>Enter your email</label>
                             <input id='login' className='input-login' type="email" required></input>
@@ -221,7 +213,7 @@ const FormSignup = () => {
                         </div>
                     </form>
 
-                    <form className='pdw-section' onSubmit={handlePwdSubmit}>
+                    <form className='pdw-section' onSubmit={e => handleFormsSubmit(e, 'pwd')}>
                         <div className='input-label-login'>
                             <label htmlFor='login'>Enter your password</label>
                             <input id='pwd' className='input-login' type="password" minLength={6} required></input>
@@ -231,7 +223,7 @@ const FormSignup = () => {
                         </div>
                     </form>
 
-                    <form className='pdw-section' onSubmit={handleRepeatPwdSubmit}>
+                    <form className='pdw-section' onSubmit={e => handleFormsSubmit(e, 'pwdRepeat')}>
                         <div className='input-label-login pwd-repeat'>
                             <label htmlFor='login'>Repeat your password</label>
                             <input id='pwdRepeat' className='input-login' type="password" required></input>
@@ -242,7 +234,7 @@ const FormSignup = () => {
                         </div>
                     </form>
 
-                    <form className='pdw-section-repeat username' onSubmit={handleLastSubmit}>
+                    <form className='pdw-section-repeat username' onSubmit={e => handleFormsSubmit(e, 'username')}>
                         <div className='input-label-login username'>
                             <label htmlFor='username'>Enter new username</label>
                             <input id='username' className='input-login' type="text" required></input>
