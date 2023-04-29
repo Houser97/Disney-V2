@@ -14,30 +14,48 @@ import { createContext, useEffect, useState } from 'react';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import Loading from './components/Loading';
 
-export const userContext = createContext()
+interface userData {
+  username: string;
+  watchlist: number[];
+  avatar: string;
+  _id: string;
+}
+
+interface UserContextProps {
+  isUserLogged: userData | null;
+  setIsUserLogged: React.Dispatch<React.SetStateAction<userData | null>>;
+  watchlist: number[];
+  setWatchlist: React.Dispatch<React.SetStateAction<number[]>>;
+  setUpdateWatchlist: React.Dispatch<React.SetStateAction<boolean>>;
+  API: string;
+}
+
+export const userContext = createContext<UserContextProps>({
+  isUserLogged: null,
+  setIsUserLogged: () => null,
+  watchlist: [],
+  setWatchlist: () => [],
+  setUpdateWatchlist: () => false,
+  API: '',
+//  API: 'http://localhost:5000',
+})
 
 if(process.env.NODE_ENV === 'production'){disableReactDevTools()}
 
 function App() {
-
-  const [isUserLogged, setIsUserLogged] = useState(null)
+  //Antes tenía definido null, pero se asignó un objeto con las propiedades a recuperar de la API
+  //Se debe ajustar el código para determinar cuándo es que hay usuario y cuando no.
+  const [isUserLogged, setIsUserLogged] = useState<userData | null>(null)
   const [watchlist, setWatchlist] = useState(isUserLogged ? isUserLogged.watchlist:[])
+  //Estado que hace trigger a useEffect para actualizar watchlist
   const [updateWatchlist, setUpdateWatchlist] = useState(false)
   //Se inicializa isLoading con TRUE para evitar ver que los componentes comnutan en lo que el programa reacciona al renderizado condicional.
   const [isLoading, setIsLoading] = useState(true)
   const API = '';
-
-  const arraysMatch = (arr1, arr2) => {
-    if(arr1.length !== arr2.length) return false
-    const lengthArr1 = arr1.length
-    for(let i = 0; i < lengthArr1; i++){
-      if(arr1[i] !== arr2[i]) return false
-    } 
-    return true;
-  }
+  //const API = 'http://localhost:5000';
 
   // Se usa para determinal la duración que tiene el Loading.
-  const randomValue = () => {
+  const randomValue = ():number => {
     //Se multiplica por 5 para obtener un valor entre 0 y 5, luego se le suma 4 para tener un valor entre 6 y 10.
     return 100 * Math.floor(Math.random()*5+6);
   }
@@ -53,7 +71,6 @@ function App() {
     })
     .then(response => response.json())
     .then(data => {
-      sessionStorage.setItem('user', JSON.stringify(data))
       setIsUserLogged(data)
       setTimeout(() => {
         setIsLoading(false)
@@ -61,29 +78,29 @@ function App() {
     })
   }, [])
 
+  //Quitar o ajustar useEffect, ya que causa problemas en AVATAR con el componente de Loading CHECKED.
+  //Se quitó setIsLoading
   useEffect(() => {
     if(isUserLogged){
+      //console.table(isUserLogged)
       setWatchlist(isUserLogged.watchlist)
     } else {
       setWatchlist([])
     }
   }, [isUserLogged])
 
+  //useEffect para hacer update a watchlist
   useEffect(() => {
     //console.log(watchlist)
-    if(isUserLogged){
-      let currentWatchlist = JSON.parse(sessionStorage.getItem('user'))
-      currentWatchlist = !currentWatchlist ? [] : currentWatchlist.watchlist
-      if(!arraysMatch(currentWatchlist, watchlist) && updateWatchlist ){    
-          fetch(`${API}/api/update_watchlist`, {
-          method: 'POST',
-          credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({watchlist})
-        })
-      }
+    if(isUserLogged && updateWatchlist){
+        fetch(`${API}/api/update_watchlist`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({watchlist})
+      })
     }
   }, [watchlist, updateWatchlist])
 
@@ -98,17 +115,17 @@ function App() {
         </div>
         :        
         <div className="App">
-            <Header userID = {false}/>
+            <Header />
             <HeaderSD />
             <Routes >
               <Route path='/' element = {<Home />}/>
               <Route path='/search' element = {<Search />}/>
               <Route path='/movies' element = {<MoviesAndSeries key={"movieSectionRender"} titleSection = {"Movies"} />} ></Route>
               <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} titleSection = {"Series"} />} ></Route>
-              <Route path='/watchlist' element = {<Watchlist userID={null} />} ></Route>
+              <Route path='/watchlist' element = {<Watchlist />} ></Route>
               <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
-              <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"}  />} ></Route>
-              <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"} />} ></Route>
+              <Route path='/login' element = {<Login formToOpen={1} key={"logInSection"}  />} ></Route>
+              <Route path='/signup' element = {<Login formToOpen={0} key={"signUpSection"} />} ></Route>
               <Route path="/avatar" element = {<Avatar />} ></Route>           
             </Routes>
             <Footer />

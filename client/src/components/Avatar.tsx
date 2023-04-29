@@ -18,7 +18,6 @@ const Avatar = () => {
         })
         .then(response => response.json())
         .then(data => {
-          sessionStorage.setItem('user', JSON.stringify(data))
           setIsUserLogged(data)
         })
       }, [])    

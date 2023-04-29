@@ -5,12 +5,12 @@ import { movies } from '../assets/constants';
 
 const Originals = ({}) => {
     const originals = movies.filter(movie => movie.isOriginal === true);
-    const originalsContainer = useRef(null);
+    const originalsContainer = useRef<HTMLDivElement | null>(null);
 
     const changeTitle = () => {
-        if(document.documentElement.scrollTop !== 0){
+        if(document.documentElement.scrollTop !== 0 && originalsContainer.current){
             originalsContainer.current.style.transform = 'scale(0.5)'
-        } else {
+        } else if(originalsContainer.current) {
             originalsContainer.current.style.transform = 'scale(1)'
         }
     }

@@ -10,11 +10,11 @@ const Header = () => {
 
     const location = useLocation()
 
-    const mainContainer = useRef(null)
-    const headerBg = useRef(null); /*Contenedor de fondo negro*/
-    const headerMS = useRef(null); /*Contenedor de fondo gris*/
+    const mainContainer = useRef<HTMLDivElement | null>(null)
+    const headerBg = useRef<HTMLDivElement | null>(null); /*Contenedor de fondo negro*/
+    const headerMS = useRef<HTMLDivElement | null>(null); /*Contenedor de fondo gris*/
 
-    const [headerDisplay, setHeaderDisplay] = useState(null)
+    const [headerDisplay, setHeaderDisplay] = useState<string | null>(null)
 
     const RoutesGrayBG = ['/series','/movies','/originals']
     const RoutesFlexNone = ['/login','/signup','/avatar']
@@ -22,34 +22,37 @@ const Header = () => {
     const isUserLogged = useContext(userContext).isUserLogged
 
     useEffect(() => {
+        if(!mainContainer.current) return undefined
         setHeaderDisplay(mainContainer.current.style.display)
         
         window.addEventListener("scroll", ()=>{      
-            if(document.documentElement.scrollTop !== 0){
-                headerBg.current.style.opacity = 1;
-            } else {
-                headerBg.current.style.opacity = 0;
+            if(document.documentElement.scrollTop !== 0 && headerBg.current){
+                headerBg.current.style.opacity = '1';
+            } else if(headerBg.current) {
+                headerBg.current.style.opacity = '0';
             }
         })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [mainContainer.current])
 
     useEffect(() =>{
         if(RoutesGrayBG.includes(location.pathname)){
-            headerMS.current.style.opacity = 1
+            if(headerMS.current){
+                headerMS.current.style.opacity = '1'
+            }
             /*Se checa que el display del Header no sea none*/
-            if(headerDisplay !== 'flex'){
+            if(headerDisplay !== 'flex' && mainContainer.current){
                 mainContainer.current.style.display = 'flex'
                 setHeaderDisplay(mainContainer.current.style.display)
             }
-        } else if(RoutesFlexNone.includes(location.pathname)) {
+        } else if(RoutesFlexNone.includes(location.pathname) && mainContainer.current) {
             mainContainer.current.style.display = 'none'
             setHeaderDisplay('none')
-        } else {
-            headerMS.current.style.opacity = 0
+        } else if(headerMS.current) {
+            headerMS.current.style.opacity = '0'
             /*Se checa que el display del Header no sea none*/
-            if(headerDisplay !== 'flex'){
+            if(headerDisplay !== 'flex' && mainContainer.current){
                 mainContainer.current.style.display = 'flex'
                 setHeaderDisplay('flex')
             }

@@ -5,10 +5,10 @@ import {VideosImages} from '../assets/constants/index.js'
 
 const MainCategories = () => {
 
-    const videoElement = useRef([]);
+    const videoElement = useRef<HTMLVideoElement[] | []>([]);
 
     useEffect(() => {
-        const videoElementCleaner = [...videoElement.current];
+        if(!videoElement.current) return undefined;
         videoElement.current.forEach(video => {
             video.addEventListener("mouseover", () => {
                 video.play();
@@ -18,21 +18,7 @@ const MainCategories = () => {
                 video.pause();
             })
         })
-        /*
-        return () => {
-            if(videoElementCleaner.length > 0){
-                videoElementCleaner.forEach(video => {
-                    video.RemoveEventListener("mouseover", () => {
-                        video.play();
-                    })
-        
-                    video.RemoveEventListener("mouseleave", () => {
-                        video.pause();
-                    })
-                }) 
-            }
-        }*/
-    }, [])
+    }, [videoElement.current])
 
     return(
         <div className='images-category-container'>

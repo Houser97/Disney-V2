@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import '../styles/MoviesAndSeries.css';
 import DropdownMenu from './DropdownMenu';
-import MovieSerieCard from './MovieSerieCard.js';
+import MovieSerieCard from './MovieSerieCard';
 import { movies } from '../assets/constants';
 
-const MoviesAndSeries = ({titleSection}) => {
+interface MoviesAndSeriesProp {
+    titleSection: string
+}
+
+const MoviesAndSeries = ({titleSection}: MoviesAndSeriesProp) => {
 
     const MoviesOrSeries = titleSection === 'Movies' ? 
                             movies.filter(movie => movie.isMovie)

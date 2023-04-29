@@ -13,12 +13,12 @@ const FormLogIn = () => {
 
     const [isMobile, setIsMobile] = useState(windowSize.width <= 470)
 
-    const containerForm = useRef(null); //Se usa para mover los formularios
-    const leftArrow = useRef(null);
+    const containerForm = useRef<HTMLDivElement | null>(null); //Se usa para mover los formularios
+    const leftArrow = useRef<HTMLDivElement | null>(null);
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [validationErrors, setValidationErrors] = useState(null)
+    const [email, setEmail] = useState<string | null>(null);
+    const [password, setPassword] = useState<string | null>(null);
+    const [validationErrors, setValidationErrors] = useState<string | null>(null)
 
     // Estado para deshabilitar botón de Login cuando la petición está en curso
     const [disableSubmit, setDisableSubmit] = useState(false)
@@ -65,26 +65,42 @@ const FormLogIn = () => {
         // eslint-disable-next-line
     }, [password])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const TranslateX = isMobile ? 280 : 370;
-        containerForm.current.style.transform = `translateX(-${TranslateX}px)`
-        setEmail([...e.target][0].value);
-        leftArrow.current.classList.remove('arrow-hide');
+        // Se valida que no sea null para evitar errores con TypeScript.
+        if(containerForm.current){
+            containerForm.current.style.transform = `translateX(-${TranslateX}px)`
+        }
+        /*El error se produce porque e.target es de tipo EventTarget, y no es un array. 
+        La forma correcta de acceder al valor del campo del formulario es a través del índice
+        de los elementos hijos del formulario, usando HTMLFormElement.elements. */
+        //const email = [...e.target][0].value
+        let email = (e.currentTarget.elements[0] as HTMLInputElement).value;
+        setEmail(email);
+        email = ''
+        if(leftArrow.current){
+            leftArrow.current.classList.remove('arrow-hide');
+        }
     }
 
-    const handleLastSubmit = (e) => {
+    const handleLastSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setPassword([...e.target][0].value);
+        let pwd = (e.currentTarget.elements[0] as HTMLInputElement).value
+        setPassword(pwd);
+        pwd = ''
     }
 
     const translateFormsLeft = () => {
         const TranslateX = isMobile ? 280 : 370;
+        if(!containerForm.current) return
         let currentTranslateX = containerForm.current.style.transform;
         currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
-        currentTranslateX = +currentTranslateX - TranslateX
-        containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
-        leftArrow.current.classList.add('arrow-hide')
+        const translateXValue = +currentTranslateX - TranslateX
+        containerForm.current.style.transform = `translateX(-${translateXValue}px)`
+        if(leftArrow.current){
+            leftArrow.current.classList.add('arrow-hide')
+        }
     }
 
     const buttonContent = () => {

@@ -1,6 +1,10 @@
 import '../styles/Slider.css';
 
-const SliderCreated = ({image}) => {
+interface SliderCreated {
+    image: string
+}
+
+const SliderCreated = ({image}: SliderCreated) => {
 
     return(
         <div className='slider' id='slider-created'>

@@ -2,7 +2,16 @@ import '../styles/MovieSerieCard.css';
 import { useContext, useEffect, useState } from 'react';
 import { userContext } from '../App';
 
-const MovieSerieCard = ({movie}) => {
+interface movieType {
+    ref: number,
+    image: string
+}
+
+interface MovieSerieCardProp {
+    movie: movieType
+}
+
+const MovieSerieCard = ({movie}: MovieSerieCardProp) => {
     const [isInWatchList, setIsInWatchList] = useState(false);
 
     const isUserLogged = useContext(userContext).isUserLogged;

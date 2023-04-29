@@ -1,6 +1,13 @@
 import '../styles/OptionDropdownMenu.css'
 
-const OptionDropdownMenu = ({option, optionRef, spanRef, index}) => {
+interface optionMenuProps {
+    option: string,
+    optionRef: React.RefObject<any>,
+    spanRef: React.RefObject<any>,
+    index: number
+}
+
+const OptionDropdownMenu = ({option, optionRef, spanRef, index}: optionMenuProps) => {
     return(
         <div ref={element => optionRef.current[index] = element} className='option'>
             <span ref={element => spanRef.current[index] = element} className='span-effect-option'></span>

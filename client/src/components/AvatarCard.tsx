@@ -3,7 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { userContext } from '../App';
 
-const AvatarCard = ({avatar}) => {
+interface avatarProps {
+    avatar: {
+        ref: string,
+        image: string, //Es string ya que hace referencia a la ruta de la imagen importada.
+    }
+}
+
+const AvatarCard = ({avatar}: avatarProps) => {
     const navigate = useNavigate()
     const setIsUserLogged = useContext(userContext).setIsUserLogged;
     const API = useContext(userContext).API;

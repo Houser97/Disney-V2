@@ -1,10 +1,25 @@
 import '../styles/MovieSeriesCarousel.css';
-import MovieSerieCard from './MovieSerieCard.js';
+import MovieSerieCard from './MovieSerieCard';
 import Slider from 'react-slick';
 import useWindowSize from '../assets/hooks/windowSize.js'
 import { useEffect, useState } from 'react';
 
-const MovieSeriesCarousel = ({movies, title}) => {
+interface moviesType {
+    image: string, 
+    title: string, 
+    isMovie: boolean, 
+    isForKids: boolean, 
+    isOriginal: boolean, 
+    isAnimated: boolean,
+    ref: number
+}
+
+interface MovieSeriesCarouselProps {
+    title: string,
+    movies: moviesType[]
+}
+
+const MovieSeriesCarousel = ({movies, title}: MovieSeriesCarouselProps) => {
 
     const windowSize = useWindowSize()
 
