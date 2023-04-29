@@ -5,7 +5,11 @@ import FormSignup from './FormSignup';
 import { userContext } from '../App';
 import { useContext } from 'react';
 
-const Login = ({formToOpen}) => {
+interface loginProp {
+    formToOpen: number
+}
+
+const Login = ({formToOpen}: loginProp) => {
 
     const isUser = useContext(userContext).isUserLogged;
 
@@ -15,7 +19,7 @@ const Login = ({formToOpen}) => {
                 <img src={logo} alt = "disney-logo" className='disney-logo-login'></img>
             </a>
             {isUser ? (<div className='user-already-logged'>You are already logged in</div>):(
-                formToOpen === "1" ? <FormLogin /> : <FormSignup />
+                formToOpen ? <FormLogin /> : <FormSignup />
             )}
             
         </div>

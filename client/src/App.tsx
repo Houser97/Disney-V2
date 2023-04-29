@@ -131,8 +131,8 @@ function App() {
               <Route path='/series' element = {<MoviesAndSeries key={"serieSectionRender"} titleSection = {"Series"} />} ></Route>
               <Route path='/watchlist' element = {<Watchlist />} ></Route>
               <Route path='/originals' element = {<Originals key={"originals-component"}/>}/>
-              <Route path='/login' element = {<Login formToOpen={"1"} key={"logInSection"}  />} ></Route>
-              <Route path='/signup' element = {<Login formToOpen={"2"} key={"signUpSection"} />} ></Route>
+              <Route path='/login' element = {<Login formToOpen={1} key={"logInSection"}  />} ></Route>
+              <Route path='/signup' element = {<Login formToOpen={0} key={"signUpSection"} />} ></Route>
               <Route path="/avatar" element = {<Avatar />} ></Route>           
             </Routes>
             <Footer />
