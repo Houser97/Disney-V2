@@ -36,7 +36,8 @@ export const userContext = createContext<UserContextProps>({
   watchlist: [],
   setWatchlist: () => [],
   setUpdateWatchlist: () => false,
-  API: 'http://localhost:5000',
+  API: '',
+//  API: 'http://localhost:5000',
 })
 
 if(process.env.NODE_ENV === 'production'){disableReactDevTools()}
@@ -50,16 +51,8 @@ function App() {
   const [updateWatchlist, setUpdateWatchlist] = useState(false)
   //Se inicializa isLoading con TRUE para evitar ver que los componentes comnutan en lo que el programa reacciona al renderizado condicional.
   const [isLoading, setIsLoading] = useState(true)
-  const API = 'http://localhost:5000';
-
-  const arraysMatch = (arr1:[], arr2:[]):boolean => {
-    if(arr1.length !== arr2.length) return false
-    const lengthArr1 = arr1.length
-    for(let i = 0; i < lengthArr1; i++){
-      if(arr1[i] !== arr2[i]) return false
-    } 
-    return true;
-  }
+  const API = '';
+  //const API = 'http://localhost:5000';
 
   // Se usa para determinal la duración que tiene el Loading.
   const randomValue = ():number => {
