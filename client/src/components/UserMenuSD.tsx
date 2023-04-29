@@ -3,10 +3,19 @@ import '../styles/UserMenuSD.css'
 import { AvatarImages } from '../assets/constants'
 import { userContext } from '../App'
 
-const UserMenuSD = ({user}) => {
+interface userType {
+  avatar: string,
+  username: string
+}
 
-  const [avatar, setAvatar] = useState(null)
-  const [username, setUsername] = useState(null)
+interface UserMenuSD {
+  user: userType
+}
+
+const UserMenuSD = ({user}: UserMenuSD) => {
+
+  const [avatar, setAvatar] = useState<string | null>(null)
+  const [username, setUsername] = useState<string | null>(null)
   const API = useContext(userContext).API;
 
   useEffect(() => {
@@ -20,7 +29,7 @@ const UserMenuSD = ({user}) => {
     .then(response => response.json())
     .then(data => {
       if(data){
-        window.location.reload(true)
+        window.location.reload()
       }
     })
   }
@@ -28,7 +37,7 @@ const UserMenuSD = ({user}) => {
   return (
     <div className='profile-user-SD'>
         <div className='profile-picture-header'>
-            <img src={avatar} alt ="headerpicture" className='header-picture-profile' ></img>
+            <img src={avatar ? avatar : ''} alt ="headerpicture" className='header-picture-profile' ></img>
         </div>
         <div className='signOut-user-SD'>
             <div className='username-header'>{username}</div>

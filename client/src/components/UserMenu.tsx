@@ -3,10 +3,19 @@ import '../styles/UserMenu.css'
 import { AvatarImages } from '../assets/constants'
 import { userContext } from '../App'
 
-const UserMenu = ({user}) => {
+interface userType {
+  avatar: string,
+  username: string
+}
 
-  const [avatar, setAvatar] = useState(null)
-  const [username, setUsername] = useState(null)
+interface UserMenuProp {
+  user: userType
+}
+
+const UserMenu = ({user}: UserMenuProp) => {
+
+  const [avatar, setAvatar] = useState<string | null>(null)
+  const [username, setUsername] = useState<string | null>(null)
 
   const API = useContext(userContext).API;
 
@@ -24,7 +33,7 @@ const UserMenu = ({user}) => {
     .then(response => response.json())
     .then(data => {
       if(data){
-        window.location.reload(true)
+        window.location.reload()
       }
     })
   }
@@ -32,7 +41,7 @@ const UserMenu = ({user}) => {
   return (
     <div className='profile-user'>
         <div className='profile-picture-header'>
-            <img src={avatar} alt ="headerpicture" className='header-picture-profile' ></img>
+            <img src={avatar ? avatar : ''} alt ="headerpicture" className='header-picture-profile' ></img>
         </div>
         <div className='signOut-user'>
             <div className='username-header'>{username}</div>

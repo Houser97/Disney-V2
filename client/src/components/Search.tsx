@@ -1,6 +1,6 @@
 import '../styles/Search.css';
 import {movies} from '../assets/constants/index.js';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import MovieSerieCard from './MovieSerieCard';
 import { Link } from 'react-router-dom';
 
@@ -8,8 +8,8 @@ const Search = () => {
 
     const [filteredMovies, setFilteredMovies] = useState(movies);
 
-    const filterMovies = (e) => {
-        const filter = e.target.value.toLowerCase().replace(/\s/g, '');
+    const filterMovies = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const filter = e.currentTarget.value.toLowerCase().replace(/\s/g, '');
         let moviesToDisplay = movies.filter(movie => {
             const title = movie.title.toLowerCase().replace(/\s/g, '');
             return title.includes(filter);
@@ -17,7 +17,7 @@ const Search = () => {
         setFilteredMovies(moviesToDisplay)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     }
 
