@@ -38,65 +38,61 @@ const FormSignup = () => {
     const API = useContext(userContext).API;
 
     useEffect(() => {
-        if(email !== null){
-            fetch(`${API}/api/check_email`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({email})
-            }).then(response => response.json())
-            .then(data => {
-                if(data === null){
-                    translateForms();
-                    leftArrow.current?.classList.remove('arrow-hide')
-                    if(emailMessage.current){
-                        emailMessage.current.style.opacity = '0';
-                    }
-                    setValidationErrors(null)
-                } else if(Array.isArray(data)){
-                    setValidationErrors(data)
-                    if(emailMessage.current){
-                        emailMessage.current.style.opacity = '0';
-                    }
-                } else {
-                    if(emailMessage.current){
-                        emailMessage.current.style.opacity = '1';
-                    }
-                    setValidationErrors(null)
+        if(!email) return undefined;
+        fetch(`${API}/api/check_email`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email})
+        }).then(response => response.json())
+        .then(data => {
+            if(data === null){
+                translateForms();
+                leftArrow.current?.classList.remove('arrow-hide')
+                if(emailMessage.current){
+                    emailMessage.current.style.opacity = '0';
                 }
-            })
-        } 
+                setValidationErrors(null)
+            } else if(Array.isArray(data)){
+                setValidationErrors(data)
+                if(emailMessage.current){
+                    emailMessage.current.style.opacity = '0';
+                }
+            } else {
+                if(emailMessage.current){
+                    emailMessage.current.style.opacity = '1';
+                }
+                setValidationErrors(null)
+            }
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [email])
 
     useEffect(() => {
-        if(pwd !== null){
-            fetch(`${API}/api/check_password`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({pwd})
-            }).then(response => response.json())
-            .then(data => {
-                if(Array.isArray(data)){
-                    setValidationErrors(data)
-                } else {
-                    setValidationErrors(null)
-                    translateForms();
-                }
-            })
-        } 
+        if(!pwd) return undefined;
+        fetch(`${API}/api/check_password`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({pwd})
+        }).then(response => response.json())
+        .then(data => {
+            if(Array.isArray(data)){
+                setValidationErrors(data)
+            } else {
+                setValidationErrors(null)
+                translateForms();
+            }
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pwd])
 
     useEffect(() => {
-        if(pwd !== repeatPwd){
-            if(errorMessagePwd.current){
-                errorMessagePwd.current.style.display = "flex";
-            }
+        if(pwd !== repeatPwd && errorMessagePwd.current){
+            errorMessagePwd.current.style.display = "flex";
         } else if(pwd == repeatPwd && pwd !== null){
             translateForms();
         }
@@ -104,32 +100,31 @@ const FormSignup = () => {
     }, [repeatPwd])
 
     useEffect(() => {
-        if(username && pwd && email){
-            setIsLoading(true);
-            setDisableSubmit(true)
-            fetch(`${API}/api/signup`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({email, pwd, username})
-            }).then(response => response.json())
-            .then(response => {
-                setIsLoading(false);
-                setDisableSubmit(false)
-                if( !Array.isArray(response)) {
-                    window.sessionStorage.setItem('user', JSON.stringify(response))
-                    setEmail(null);
-                    setPwd(null);
-                    setRepeatPwd(null);
-                    setUsername(null);
-                    navigate("/avatar")
-                } else {
-                    setValidationErrors(response);
-                }
-            })
-        };
+        if(!username && !pwd && !email) return undefined;
+        setIsLoading(true);
+        setDisableSubmit(true)
+        fetch(`${API}/api/signup`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, pwd, username})
+        }).then(response => response.json())
+        .then(response => {
+            setIsLoading(false);
+            setDisableSubmit(false)
+            if( !Array.isArray(response)) {
+                window.sessionStorage.setItem('user', JSON.stringify(response))
+                setEmail(null);
+                setPwd(null);
+                setRepeatPwd(null);
+                setUsername(null);
+                navigate("/avatar")
+            } else {
+                setValidationErrors(response);
+            }
+        })
     }, [username])
     
     useEffect(() => {
@@ -166,7 +161,7 @@ const FormSignup = () => {
             default:
                 setUsername(inputValue)
         }
-        
+
         inputValue = ''
     }
 
