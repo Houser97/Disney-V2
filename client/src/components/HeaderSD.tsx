@@ -9,7 +9,7 @@ const HeaderSD = () => {
     const windowSize = useWindowSize()
     const location = useLocation();
 
-    const mainContainer = useRef(null)
+    const mainContainer = useRef<HTMLDivElement | null>(null)
 
     const [isMobile, setIsMobile] = useState(windowSize.width <= 520);
 
@@ -18,9 +18,9 @@ const HeaderSD = () => {
     const isUserLogged = useContext(userContext).isUserLogged;
 
     useEffect(() =>{
-        if(RoutesFlexNone.includes(location.pathname) || !isMobile) {
+        if((RoutesFlexNone.includes(location.pathname) || !isMobile) && mainContainer.current) {
             mainContainer.current.style.display = 'none'
-        } else if(isMobile){
+        } else if(isMobile && mainContainer.current){
             mainContainer.current.style.display = 'flex'
         }
     }, [location.pathname, isMobile])
