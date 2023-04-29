@@ -1,10 +1,29 @@
-# Disney Plus replica using MongoDB, Express, React, Node and Passport
+# Disney Plus replica using MongoDB, Express, React, TypeScript, Node and Passport
 
-## A fully functional project to show how to merge these technologies to create a Disney Plus replica.
 
 <p align="center">
   <img src="client/src/assets/README_Images/DisneyOverview.JPG">
 </p>
+
+# Technologies
+
+<br>
+<br>
+
+<p align="center" width="300">
+  <img align="center" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" />
+  <img align="center" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" />
+  <img align="center" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
+  <img align="center" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" />
+  <img align="center" width="70" src="https://svgur.com/i/943.svg" />
+  <img align="center" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-plain-wordmark.svg" />
+</p>
+
+<br>
+<br>
+
+
+## A fully functional project to show how to merge these technologies to create a Disney Plus replica.
 
 This project, as the title suggests, is a replica of the Disney Plus site. The application allows users to create an account through Passport, where the SALTING feature is added to add protection to the passwords entered.
 
