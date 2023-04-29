@@ -1,27 +1,34 @@
-import {  useContext, useEffect, useRef, useState } from 'react';
+import React, {  useContext, useEffect, useRef, useState } from 'react';
 import '../styles/FormSignup.css';
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../assets/hooks/windowSize.js';
 import { userContext } from '../App';
 import Loading from './Loading';
 
+interface validationErrors {
+    location: string,
+    msg: string,
+    param: string,
+    value: string
+}
+
 const FormSignup = () => {
     let navigate = useNavigate();
 
-    const errorMessagePwd = useRef(null);
-    const emailMessage = useRef(null);
-    const leftArrow = useRef(null);
+    const errorMessagePwd = useRef<HTMLDivElement | null>(null);
+    const emailMessage = useRef<HTMLDivElement | null>(null); // Div que contiene mensaje para indicar que el email ya ha sido usado.
+    const leftArrow = useRef<HTMLDivElement | null>(null);
 
-    const containerForm = useRef(null);
+    const containerForm = useRef<HTMLDivElement | null>(null);
 
     const windowSize = useWindowSize()
 
     const [isMobile, setIsMobile] = useState(windowSize.width <= 470)    
-    const [email, setEmail] = useState(null);
-    const [pwd, setPwd] = useState(null);
-    const [repeatPwd, setRepeatPwd] = useState(null);
-    const [username, setUsername] = useState(null);
-    const [validationErrors, setValidationErrors] = useState(null);
+    const [email, setEmail] = useState<string | null>(null);
+    const [pwd, setPwd] = useState<string | null>(null);
+    const [repeatPwd, setRepeatPwd] = useState<string | null>(null);
+    const [username, setUsername] = useState<string | null>(null);
+    const [validationErrors, setValidationErrors] = useState<validationErrors[] | null>(null);
 
     // Estado para deshabilitar botón de Login cuando la petición está en curso
     const [disableSubmit, setDisableSubmit] = useState(false)
@@ -43,14 +50,20 @@ const FormSignup = () => {
             .then(data => {
                 if(data === null){
                     translateForms();
-                    leftArrow.current.classList.remove('arrow-hide')
-                    emailMessage.current.style.opacity = 0;
+                    leftArrow.current?.classList.remove('arrow-hide')
+                    if(emailMessage.current){
+                        emailMessage.current.style.opacity = '0';
+                    }
                     setValidationErrors(null)
                 } else if(Array.isArray(data)){
                     setValidationErrors(data)
-                    emailMessage.current.style.opacity = 0;
+                    if(emailMessage.current){
+                        emailMessage.current.style.opacity = '0';
+                    }
                 } else {
-                    emailMessage.current.style.opacity = 1;
+                    if(emailMessage.current){
+                        emailMessage.current.style.opacity = '1';
+                    }
                     setValidationErrors(null)
                 }
             })
@@ -81,7 +94,9 @@ const FormSignup = () => {
 
     useEffect(() => {
         if(pwd !== repeatPwd){
-            errorMessagePwd.current.style.display = "flex";
+            if(errorMessagePwd.current){
+                errorMessagePwd.current.style.display = "flex";
+            }
         } else if(pwd == repeatPwd && pwd !== null){
             translateForms();
         }
@@ -127,31 +142,40 @@ const FormSignup = () => {
 
     const translateForms = () => {
         const TranslateX = isMobile ? 280 : 370;
+        if(!containerForm.current) return;
         let currentTranslateX = containerForm.current.style.transform;
         currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
-        currentTranslateX = +currentTranslateX + TranslateX
-        containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`
+        const translateXValue = +currentTranslateX + TranslateX
+        containerForm.current.style.transform = `translateX(-${translateXValue}px)`
     }
 
-    const handleEmailSubmit = (e) => {
+    const handleEmailSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setEmail([...e.target][0].value);
+        let email = (e.currentTarget.elements.namedItem('login') as HTMLInputElement).value
+        setEmail(email);
+        email = ''
         //e.target.style.opacity = 0;
     }
 
-    const handlePwdSubmit = (e) => {
+    const handlePwdSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setPwd([...e.target][0].value);
+        let pwd = (e.currentTarget.elements.namedItem('pwd') as HTMLInputElement).value
+        setPwd(pwd);
+        pwd = ''
     }
 
-    const handleRepeatPwdSubmit = (e) => {
+    const handleRepeatPwdSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setRepeatPwd([...e.target][0].value)
+        let pwdRepeat = (e.currentTarget.elements.namedItem('pwdRepeat') as HTMLInputElement).value
+        setRepeatPwd(pwdRepeat)
+        pwdRepeat = ''
     }
 
-    const handleLastSubmit = (e) => {
+    const handleLastSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setUsername([...e.target][0].value)
+        let username = (e.currentTarget.elements.namedItem('username') as HTMLInputElement).value
+        setUsername(username)
+        username = ''
     }
 
     const buttonContent = () => {
@@ -161,16 +185,17 @@ const FormSignup = () => {
 
     const translateFormsLeft = () => {
         const TranslateX = isMobile ? 280 : 370;
+        if(!containerForm.current) return;
         let currentTranslateX = containerForm.current.style.transform;
         currentTranslateX = currentTranslateX.replace(/[^\d.]/g, '')
-        currentTranslateX = +currentTranslateX - TranslateX
-        if(currentTranslateX === 0){
-            leftArrow.current.classList.add('arrow-hide');
-            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`;
-        } else if(currentTranslateX < 0){
-            leftArrow.current.classList.add('arrow-hide')
+        const translateXValue = +currentTranslateX - TranslateX
+        if(translateXValue === 0){
+            leftArrow.current?.classList.add('arrow-hide');
+            containerForm.current.style.transform = `translateX(-${translateXValue}px)`;
+        } else if(translateXValue < 0){
+            leftArrow.current?.classList.add('arrow-hide')
         } else {
-            containerForm.current.style.transform = `translateX(-${currentTranslateX}px)`;
+            containerForm.current.style.transform = `translateX(-${translateXValue}px)`;
         }
     }
 
@@ -199,7 +224,7 @@ const FormSignup = () => {
                     <form className='pdw-section' onSubmit={handlePwdSubmit}>
                         <div className='input-label-login'>
                             <label htmlFor='login'>Enter your password</label>
-                            <input id='pwd' className='input-login' type="password" minLength="6" required></input>
+                            <input id='pwd' className='input-login' type="password" minLength={6} required></input>
                         </div>
                         <div className='button-login-section'>
                             <button className='button-login'>CONTINUE</button>
