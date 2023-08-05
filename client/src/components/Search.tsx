@@ -75,9 +75,9 @@ const Search = () => {
 
             <div className='filtered-movies' id = 'filtered-movies'>
                 {
-                    filteredMovies.map(function iterateMovies(movie, iterator){
+                    filteredMovies.map(function iterateMovies(movie){
                         return(
-                            <MovieSerieCard key={`search-${iterator}`} movie={movie}/>
+                            <MovieSerieCard key={`search-${movie.title}`} movie={movie}/>
                         )
                     })
                 }

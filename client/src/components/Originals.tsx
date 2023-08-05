@@ -36,9 +36,9 @@ const Originals = ({}) => {
 
             <div className='originals-cards-section'>
                 {
-                    originals.map(function iterateMovies(movie, iterator){
+                    originals.map(function iterateMovies(movie){
                         return(
-                            <MovieSerieCard key={`original-movie-card-${iterator}`} movie={movie} />
+                            <MovieSerieCard key={`original-movie-card-${movie.title}`} movie={movie} />
                         )
                     })
                 }
