@@ -6,6 +6,12 @@
     justify-content: space-evenly;
 }
 
+@media (min-width: 1600px) {
+    .images-category-container{ 
+        grid-template-columns: repeat(5, minmax(200px, 250px));
+    }
+}
+
 @media (max-width: 1200px) {
     .images-category-container{ 
         column-gap: 30px;
