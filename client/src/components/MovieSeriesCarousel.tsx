@@ -31,8 +31,10 @@ const MovieSeriesCarousel = ({movies, title}: MovieSeriesCarouselProps) => {
         setIsMobile('small')
       } else if(windowSize.width <= 800) {
         setIsMobile('medium')
-      } else {
+      } else if(windowSize.width <= 1700) {
         setIsMobile('large')
+      } else {
+        setIsMobile('extralarge')
       }
     }, [windowSize])
     
@@ -41,7 +43,7 @@ const MovieSeriesCarousel = ({movies, title}: MovieSeriesCarouselProps) => {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: isMobile === 'large' ? 4 : isMobile === 'medium' ? 3 : 2,
+        slidesToShow: isMobile === 'extralarge' ? 6 : isMobile === 'large' ? 4 : isMobile === 'medium' ? 3 : 2,
         slidesToScroll: 2,
         autoplay: false,
     }
