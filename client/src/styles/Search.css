@@ -68,7 +68,6 @@
 
 #filtered-movies {
     width: 100%;
-    flex: 1;
     display: grid;
     justify-content: center !important;
     align-items: center !important;
