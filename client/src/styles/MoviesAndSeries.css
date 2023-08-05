@@ -1,5 +1,6 @@
 .moviesAndSeries-section {
     width: 100%;
+    min-height: 100vh;
     display: flex; flex-flow: column;
     background-color: rgb(26, 29, 41);
 }
@@ -29,10 +30,8 @@
     z-index: 1;
     padding: 50px 23px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    grid-template-rows: repeat(auto-fit, minmax(140px, 140px));
-    grid-auto-rows: 140px;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 320px));
+    gap: 60px;
     justify-content: center;
 }
 

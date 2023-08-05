@@ -1,6 +1,7 @@
 .choose-avatar-section {
     width: 100%;
     display: flex; flex-flow: column;
+    min-height: 100vh;
 }
 
 .instruction-avatar {
@@ -15,11 +16,10 @@
 
 .avatars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 230px));
-    grid-template-rows: repeat(auto-fit, minmax(230px, 230px));
-    column-gap: 10px; row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 300px));
+    gap: 60px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 0px 50px 40px 50px;
 }
 

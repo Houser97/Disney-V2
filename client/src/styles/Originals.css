@@ -3,6 +3,7 @@
     display: flex; flex-flow: column;
     background-color: rgb(26, 29, 41);
     position: relative;
+    min-height: 100vh;
 }
 
 .originals-placeholder {
@@ -43,16 +44,15 @@
     padding: 50px 20px;
     margin-top: 200px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    grid-template-rows: repeat(auto-fit, minmax(150px, 150px));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 320px));
+    gap: 60px;
     justify-content: center;
     min-height: 100%;
 }
 
 @media (max-width: 520px) {
     .originals-placeholder {
-        width: 100%; height: 100px;
+        display: none;
     }
 
     .originals-title{
@@ -60,10 +60,12 @@
         font-size: 40px;
         align-items: center;
         padding: 0px;
+        display: none;
     }
 
     .originals-cards-section{
-        margin-top: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 }
 

@@ -1,7 +1,7 @@
 .search-section{
     width: 100%; 
+    min-height: 100vh;
     display: flex; flex-flow: column;
-    justify-content: center;
 }
 
 .search-container {
@@ -68,13 +68,13 @@
 
 #filtered-movies {
     width: 100%;
+    flex: 1;
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 250px);
-    grid-template-rows: repeat(auto-fit, 130px);
-    grid-auto-rows: 130px;
-    gap: 30px;
-    padding: 25px 30px;
+    justify-content: center !important;
+    align-items: center !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 320px));
+    gap: 50px;
+    padding: 25px 60px;
     padding-bottom: 0px;
     margin-bottom: 50px;
 }
